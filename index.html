@@ -804,6 +804,18 @@ Fire away.`;
 But I *will* answer your actual questions if you have any.`;
       }
 
+      // "Gimmicky" / dismissive about the chatbot itself
+      if (q.includes('gimmick') || q.includes('cute trick') || q.includes('parlor trick') || q.includes('fancy website') || q.includes('just a website')) {
+        return `Gimmicky? This is a custom-built JavaScript state machine with context-aware response routing, dynamic handler prioritization, and a fallback cascade designed to degrade gracefully under ambiguous input. The pattern matching alone accounts for 200+ conditional branches across role-specific, topic-specific, and pushback-detection layers.
+
+I architected the logic. I wrote every response. I trained myself on... myself.
+
+But you know what actually *is* simple? Talking to me directly when you're serious about hiring.
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
+      }
+
       // Resume request
       if (q.includes('resume') || q.includes('cv') || (q.includes('download') && (q.includes('pdf') || q.includes('document')))) {
         return `You're looking at it. This portfolio *is* the resume.
