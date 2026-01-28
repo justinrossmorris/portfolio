@@ -337,6 +337,17 @@
           </div>
         </div>
 
+        <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+          <blockquote class="text-xl text-white mb-4">"You are a legend."</blockquote>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold">GM</div>
+            <div>
+              <p class="font-medium">Gail Mercer-MacKay</p>
+              <p class="text-sm text-slate-400">CEO, Mercer-MacKay Digital Storytelling</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -886,13 +897,41 @@ Soon everyone will be doing this. By then, I'll have moved on to the next thing.
 This chatbot is a perfect example — I anticipated hundreds of questions, built responses, tested them, caught gaps, refined. Same muscle, different medium.`;
       }
 
+      // Resume choice follow-up (must come before general resume handler)
+      if (lastTopic === 'resume_choice') {
+        if (q.includes('campaign') || q.includes('content') || q.includes('demand') || q.includes('e-book') || q.includes('ebook') || q.includes('nurture') || q.includes('ads') || q.includes('copywriting') || q.includes('b2b') || q.includes('marketing')) {
+          lastTopic = null;
+          return `Here's the one tuned for content/campaign roles: <a href="Justin_Morris_Copywriter_Resume.pdf" target="_blank" class="text-emerald-400 underline">Download Copywriter Resume (PDF)</a>
+
+Highlights the B2B work — NetApp, AWS, Google Cloud, the 180M trees campaign, Storyteller of the Year, all of it.`;
+        }
+        if (q.includes('keynote') || q.includes('town hall') || q.includes('exec') || q.includes('speech') || q.includes('ceo') || q.includes('leader')) {
+          lastTopic = null;
+          return `Here's the exec comms version: <a href="Justin_Morris_Resume.pdf" target="_blank" class="text-emerald-400 underline">Download Resume (PDF)</a>
+
+Emphasizes the Fortune 500 CEO work, keynotes, town halls, and the 127+ deliverables.`;
+        }
+        // If they said something else, give them both options
+        lastTopic = null;
+        return `Here are both versions:
+
+• <a href="Justin_Morris_Resume.pdf" target="_blank" class="text-emerald-400 underline">Executive Communications Resume</a> — CEO speechwriting, keynotes, town halls
+• <a href="Justin_Morris_Copywriter_Resume.pdf" target="_blank" class="text-emerald-400 underline">Copywriter Resume</a> — B2B campaigns, content marketing, demand gen
+
+Pick whichever fits the role better.`;
+      }
+
       // Resume request
       if (q.includes('resume') || q.includes('cv') || (q.includes('download') && (q.includes('pdf') || q.includes('document')))) {
+        lastTopic = 'resume_choice';
         return `You're looking at it. This portfolio *is* the resume.
 
-But if your ATS needs something it can parse, here you go: <a href="Justin_Morris_Resume.pdf" target="_blank" class="text-emerald-400 underline">Download Resume (PDF)</a>
+But if your ATS needs a PDF, I've got two versions. **What does this role focus on?**
 
-Fair warning: the PDF has fewer jokes.`;
+• **Campaigns, e-books, ads, nurture** — I'll send the copywriter resume
+• **Keynotes, town halls, exec messaging** — I'll send the exec comms resume
+
+Just tell me which, or say "both" if you want to compare.`;
       }
 
       // Overqualified concern
@@ -2842,19 +2881,21 @@ I'm not a 20-year speechwriting veteran. But I've compressed a lot of relevant e
       // B2B / marketing / copywriting background
       if ((q.includes('b2b') || q.includes('marketing') || q.includes('copywriting') || q.includes('campaign')) && !q.includes('consumer')) {
         lastTopic = 'b2b';
-        return `Before exec comms, I spent four years (2020-2024) as a B2B copywriter and creative consultant.
+        return `Before exec comms, I spent four years (2020-2024) as a B2B copywriter and creative consultant — mostly through Mercer-MacKay Digital Storytelling, where I won "Storyteller of the Year" my first year.
 
-**Clients:** NetApp, AWS, Google Cloud, Splunk, Panasas, and others — mostly through agencies like Mercer-MacKay Digital Storytelling.
+**Clients:** NetApp, AWS, Google Cloud, Microsoft Azure, Splunk, Optimizely, Brillio, Slalom, Snowflake, Red Hat, Panasas, daXai, and others.
 
-**Highlights:**
-• "Storyteller of the Year" award (2022) — first year at Mercer-MacKay
-• Campaign that generated 3,485 MQLs, 237% above target
-• NetApp campaign so successful in NA it was repackaged for Latin America
-• Invited to train Insight's brand writing team (Nov 2023) — before they hired me
+**Two campaigns worth mentioning:**
 
-**Deliverables:** E-books, video scripts, infographics, nurture emails, landing pages, sales enablement, messaging frameworks.
+**1. NetApp + Microsoft sustainability campaign**
+Goal: 300 trees planted. Actual: 180 million. That's not a typo — 59,999,900% above target. I wrote the e-book, landing page, nurture emails, LinkedIn ads, and sales call script.
 
-**Why it matters now:** I understand what moves pipeline, not just what sounds good. That commercial awareness shows up in how I approach exec comms — everything connects to business outcomes.`;
+**2. NetApp + Microsoft Azure lead gen**
+Generated 3,487 MQLs (237% above target) while coming in $65K under budget. Campaign was so successful in North America it got repackaged for Latin America.
+
+**Also relevant:** At daXai, I built the brand strategy from scratch and scripted five CEO-led tutorial videos — basically exec comms before I called it that.
+
+**Why it matters:** I know what moves pipeline. That commercial awareness carries into everything I write now.`;
       }
 
       // Why hire Justin / why should we hire you
