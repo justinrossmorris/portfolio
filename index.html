@@ -789,6 +789,11 @@ Fire away.`;
         return response;
       }
 
+      // SNARKY/NEGATIVE COMMENTS - rickroll handler (must be early to catch before fallback)
+      if (q.includes('dumb') || q.includes('stupid') || q.includes('useless') || q.includes('pointless') || q.includes('waste of time') || q.includes('this sucks') || q.includes('this is bad')) {
+        return `You're right. Let me get you <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-emerald-400 underline">the support you need</a>.`;
+      }
+
       // PUSHBACK DETECTION - check if they're skeptical about previous response
       // Note: "why should i" removed because it conflicts with "why should I hire/consider" questions
       if (q.includes('not convinced') || q.includes('not sure') || q.includes('prove it') || q.includes('sounds generic') || q.includes('everyone says') || q.includes('tell me more') || q.includes('dig deeper') || q.includes('be specific') || q.includes('give me an example') || q.includes('really?') || q.includes('hard to believe')) {
@@ -1543,11 +1548,6 @@ If that tells you anything about how I write, it should. Economy over excess. Ev
         return `You already know it, or we wouldn't be talking.`;
       }
 
-      // Snarky/negative comments - "this is dumb/stupid/useless"
-      if (q.includes('dumb') || q.includes('stupid') || q.includes('useless') || q.includes('pointless') || q.includes('waste of time') || q.includes('this sucks') || q.includes('this is bad')) {
-        return `You're right. Let me get you <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-emerald-400 underline">the support you need</a>.`;
-      }
-
       // "Can you create/build an AI chatbot FOR ME"
       if ((q.includes('create') || q.includes('build') || q.includes('make')) && q.includes('chatbot') && (q.includes('for me') || q.includes('for us') || q.includes('can you'))) {
         return `*gestures at everything around you*
@@ -2180,7 +2180,7 @@ It's completely unrelated to exec comms, except in one way: both require intense
 
 I can be impatient with inefficiency. If something could be done in two steps and we're doing it in six, I get restless. I've learned to voice that constructively, but the impatience is still there.
 
-I sometimes underestimate how much context other people need. I'll skip three steps in an explanation because they seem obvious to me, then have to backtrack when someone's lost.`;
+I get emotionally invested in the work. Sometimes I need to step back and take the wider view. Most of what we produce won't echo into eternity — a lot of it is internet debris. That doesn't make it unimportant. It just means living *outside* the moment is usually more productive than living inside it.`;
       }
 
       // "Are you smart?"
