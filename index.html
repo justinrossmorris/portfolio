@@ -833,7 +833,46 @@ This chatbot exists because I understand both the technology *and* its limits. T
 
 Kidding. Mostly.
 
-In all seriousness: I'm exploring selectively and carefully. If you're reaching out, it means something about the opportunity caught your attention — let's talk about whether the fit is real before anyone's HR gets involved.`;
+In all seriousness: I'm exploring selectively and carefully. If you're reaching out, it means something about me caught your attention — let's talk about whether the fit is real before anyone's HR gets involved.`;
+      }
+
+      // "How did you build this chatbot?"
+      if ((q.includes('how') && q.includes('build') && (q.includes('this') || q.includes('chatbot') || q.includes('site') || q.includes('portfolio'))) || (q.includes('who') && (q.includes('made') || q.includes('built') || q.includes('created')) && q.includes('this'))) {
+        return `Conversation design meets AI collaboration.
+
+I don't write code — but I know how to think through every question a recruiter might ask, how I want to come across, when to be clever vs. direct, and how to stress-test for edge cases. That's the hard part. The JavaScript is just plumbing.
+
+I used Claude to translate my thinking into working code. I'd say "what if someone asks X?" and we'd build a handler. Then I'd test it, find gaps, and iterate. Hundreds of branches later, you're talking to the result.
+
+A few months ago, this wasn't possible for someone like me. Now it is. That's the game — stay ahead of the curve, or get stuck with a flatline.`;
+      }
+
+      // "Can you code?"
+      if ((q.includes('can') && q.includes('code')) || (q.includes('do you') && q.includes('code')) || q.includes('know how to code') || q.includes('programming') || (q.includes('technical') && q.includes('skill'))) {
+        return `Honestly? No. I don't know JavaScript. I couldn't write a function from scratch if you paid me.
+
+But I built this anyway.
+
+A few months ago, that would've been impossible. Now, with AI as a collaborator, the bottleneck isn't "can you code?" — it's "can you think clearly about what you want to build?" I can do that. I anticipated the questions, designed the logic, wrote every response, and stress-tested the edge cases. Claude handled the syntax.
+
+Soon everyone will be doing this. By then, I'll have moved on to the next thing. If you're not ahead of the curve, you're stuck with a flatline.`;
+      }
+
+      // "What's your process?"
+      if ((q.includes('what') && q.includes('process')) || (q.includes('how') && q.includes('approach')) || (q.includes('walk me through') && (q.includes('process') || q.includes('how you')))) {
+        return `Depends on the deliverable, but the bones are the same:
+
+**1. Audience first.** Who's hearing this? What do they need to believe, feel, or do? I don't touch a keyboard until I can answer that.
+
+**2. Messy first draft.** Get the ideas out fast. Perfectionism kills momentum.
+
+**3. Out loud, always.** Especially for speeches. If I wouldn't say it in conversation, it doesn't survive the edit.
+
+**4. Stress-test for misreads.** What's the worst way someone could interpret this? Fix it before it's a headline.
+
+**5. Iterate with feedback.** I ask specific questions, not "what do you think?" Vague feedback gets vague revisions.
+
+This chatbot is a perfect example — I anticipated hundreds of questions, built responses, tested them, caught gaps, refined. Same muscle, different medium.`;
       }
 
       // Resume request
