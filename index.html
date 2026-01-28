@@ -824,6 +824,272 @@ The Ph.D. means I bring more rigor to the work, not that I'm biding my time unti
 If anything, you're getting a bargain: philosophical training at speechwriter rates.`;
       }
 
+      // Work outside normal hours / overtime / weekends (early placement to avoid role-description catch)
+      if (q.includes('weekend') || q.includes('after hours') || q.includes('overtime') || q.includes('evenings') || q.includes('nights') || (q.includes('outside') && q.includes('hours')) || (q.includes('hours') && q.includes('work')) || (q.includes('comfortable') && (q.includes('hours') || q.includes('time')))) {
+        return `Comes with the territory. Exec comms doesn't stop because it's 6 PM — if the CEO needs a last-minute script change before tomorrow's keynote, that's the job.
+
+That said, availability should justify the value a company puts on my skills. If you're expecting nights and weekends, you might want to ask me about salary expectations. 😉`;
+      }
+
+      // Small talk / casual greetings
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('hows it going') || q.includes('what\'s up') || q.includes('whats up') || q.includes('how ya doing') || q.includes('how you doing') || q.includes('you doing ok') || q.includes('doing ok') || q.includes('you good') || q.includes('all good') || q.includes('how\'s everything') || q.includes('what\'s going on') || (q === 'sup') || (q === 'hey') || (q === 'hi') || (q === 'hello')) {
+        const smallTalkResponses = [
+          `Doing well! I'm a chatbot, so I don't get tired or have bad days. Silver lining of not being human.\n\nWhat can I help you with?`,
+          `Can't complain — though I literally can't, I'm just code. How can I help?`,
+          `Living the dream. Well, executing the JavaScript. Same thing.\n\nWhat would you like to know about Justin?`,
+          `I'm great! Ready to answer your questions. What's on your mind?`,
+          `All good here. I've been waiting for someone to talk to. What can I tell you?`
+        ];
+        return smallTalkResponses[Math.floor(Math.random() * smallTalkResponses.length)];
+      }
+
+      // Weather small talk
+      if (q.includes('weather')) {
+        return `I live in a browser, so the weather is always a comfortable 72°F with zero chance of precipitation.\n\nBut if you're asking about Justin — he's in Columbus, Ohio. It's probably either too hot, too cold, or "at least it's not raining." Midwest life.\n\nAnything else I can help with?`;
+      }
+
+      // "Tell me something surprising" / fun fact
+      if (q.includes('surprise') || q.includes('surprising') || q.includes('fun fact') || q.includes('something interesting') || q.includes('didn\'t know') || q.includes('random fact')) {
+        return `I wake up at 4 AM to go to the gym. And no, I'm not a "morning person" — there's no such thing. There are just people who've learned that discipline weighs ounces and regret weighs tons.
+
+It's the same reason I finished my dissertation while working full-time. Motivation is unreliable. Systems aren't.
+
+...You asked for surprising, not inspirational. But there it is.`;
+      }
+
+      // "Why are you looking to leave?" / "Why leave Insight?"
+      if ((q.includes('why') && (q.includes('leave') || q.includes('leaving') || q.includes('looking'))) || q.includes('why insight') || q.includes('what\'s wrong') || q.includes('unhappy')) {
+        return `Nothing's wrong. Insight's been great — I've had a front-row seat to executive communications at the highest level, and Joyce Mullen has been an incredible leader to write for.
+
+But I'm always open to the right opportunity. Growth doesn't always mean climbing a ladder at one company. Sometimes it means finding the place where your skills have the most impact.
+
+If you're asking whether I'm running *from* something: no. I'm open to running *toward* something compelling.`;
+      }
+
+      // "Where do you see yourself in 5 years?"
+      if (q.includes('5 year') || q.includes('five year') || q.includes('see yourself') || q.includes('long term') || q.includes('long-term') || q.includes('career goal')) {
+        return `Doing work that matters, for people who care about getting it right.
+
+The specifics depend on the opportunity. If it's exec comms, I want to be the person leaders call when the message really matters. If it's a mission-driven org, I want to help translate purpose into language that moves people. If it's building a team, I want to create a function that punches above its weight.
+
+I'm less attached to the title than to the impact. Five years from now, I want to look back at a body of work I'm proud of — not a rung on a ladder.`;
+      }
+
+      // "Do you have references?"
+      if (q.includes('reference')) {
+        return `Yes. Happy to provide references once we're further along in the process.
+
+I can connect you with people who've worked with me directly — colleagues, stakeholders, and executives I've supported. Just let me know when you're ready.
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+      }
+
+      // "Tell me about a failure" / "Tell me about a mistake"
+      if (q.includes('fail') || q.includes('mistake') || q.includes('wrong') || q.includes('screwed up') || q.includes('learned the hard way')) {
+        return `Early in my exec comms role, I wrote a keynote section that I loved — great rhythm, strong message, clever callback. The executive I was writing for hated it.
+
+My mistake wasn't the writing. It was that I hadn't listened closely enough in the prep conversations. I wrote what *I* thought was good instead of what *they* needed to say.
+
+**What I learned:** My job isn't to write speeches I'm proud of. It's to write speeches that make the speaker proud. Now I start every project with deeper discovery — not just "what do you want to say?" but "how do you want to feel when you say it?"
+
+The ego check was painful. The lesson was permanent.`;
+      }
+
+      // "What questions do you have for us?"
+      if ((q.includes('question') && (q.includes('for us') || q.includes('for me') || q.includes('do you have'))) || q.includes('ask us') || q.includes('ask me')) {
+        return `A few things I'd want to understand:
+
+• **Who would I be writing for?** And how much direct access would I have to them?
+• **What does success look like in year one?** Is there a specific gap you're trying to fill?
+• **Where does this role sit in the org?** Who are the key stakeholders?
+• **What's the review process like?** Heavy committee, or trusted autonomy?
+
+I'm also curious what drew you to my profile — that usually tells me a lot about what you're looking for.`;
+      }
+
+      // "Have you managed people?" / Management experience
+      if (q.includes('manage') && (q.includes('people') || q.includes('team') || q.includes('direct report')) || q.includes('management experience') || q.includes('led a team') || q.includes('leadership experience')) {
+        return `Not in a formal "direct reports" sense — but I've led without the title.
+
+At Insight, I coordinate across 24+ executives, align with Events, Marketing, and external agencies, and often serve as the de facto project lead on major deliverables. When you're managing a CEO keynote, you're managing a lot of moving parts even if none of them report to you.
+
+I've also supervised TAs during my teaching days and mentored junior writers informally. I'm comfortable giving feedback, setting direction, and holding people accountable.
+
+Would I want to build and lead a team? Absolutely. I just haven't had the org chart to match the work yet.`;
+      }
+
+      // "Are you interviewing elsewhere?"
+      if (q.includes('interviewing elsewhere') || q.includes('other opportunities') || q.includes('other companies') || q.includes('other offers') || q.includes('talking to anyone else')) {
+        return `I'm selectively exploring. I'm not carpet-bombing applications — I'm being intentional about finding the right fit.
+
+If you're asking whether there's urgency: I'm not in a rush, but I'm also not waiting around forever. The right opportunity gets my full attention.`;
+      }
+
+      // "What's your writing process?"
+      if (q.includes('writing process') || q.includes('how do you write') || q.includes('approach to writing') || (q.includes('process') && q.includes('write'))) {
+        return `**1. Discovery first.** I don't touch a keyboard until I understand the audience, the goal, and how the speaker wants to feel delivering it. Half the work happens before any writing.
+
+**2. Ugly first draft.** I get ideas down fast without editing. Perfectionism kills momentum.
+
+**3. Read it out loud.** Especially for speeches. If it doesn't sound like something a human would say, it gets rewritten.
+
+**4. Structured feedback.** I ask specific questions: "Does this opening land?" "Is this section too long?" Vague feedback gets vague revisions.
+
+**5. Polish and stress-test.** Final pass for rhythm, clarity, and anything that could be misread or taken out of context.
+
+The goal is a draft that feels inevitable — like it couldn't have been written any other way.`;
+      }
+
+      // "How do you handle conflict?"
+      if (q.includes('conflict') || q.includes('disagreement') || q.includes('difficult conversation') || q.includes('pushback') || (q.includes('handle') && q.includes('difficult'))) {
+        return `Directly, but without drama.
+
+If I disagree with feedback, I'll say so — but I'll explain *why* and offer an alternative. "I hear you, but I think this approach might backfire because X. What if we tried Y instead?" Usually that opens a conversation instead of a standoff.
+
+If the stakeholder still wants it their way, I execute. My job is to advise, not to win arguments. Ego has no place in the room when someone else is delivering the words.
+
+The only time I dig in is when something crosses an ethical line or could genuinely damage the speaker's credibility. That's rare — but when it happens, I speak up clearly.`;
+      }
+
+      // "What are you passionate about?"
+      if (q.includes('passionate') || q.includes('passion') || (q.includes('what') && q.includes('excite') && q.includes('you')) || q.includes('what drives you')) {
+        return `Finding creativity in spaces where it's not expected.
+
+I still remember a pizza box design I did years ago: a pizza slicer going across the pie with the caption "This is how you cut carbs." That's the stuff that sticks with me — anticipating all the ways your words will land, and making something memorable out of something mundane.
+
+There's also the satisfaction when a CEO reads a script and says, "This is exactly what I wanted to say but couldn't find the words for." That's the job done right.
+
+Outside of work: memorization systems, philosophy (obviously), and fitness. I wake up at 4 AM to go to the gym — not because I'm a morning person, but because discipline compounds.`;
+      }
+
+      // "How do you stay current / keep learning?"
+      if (q.includes('stay current') || q.includes('keep learning') || q.includes('keep up') || q.includes('professional development') || q.includes('stay sharp') || q.includes('continue learning')) {
+        return `I read constantly — not just about communications, but about the industries my executives operate in. If I'm writing for a tech CEO, I need to understand the technology. If it's a healthcare exec, I need to know the regulatory landscape.
+
+I also pay attention to how other leaders communicate. When a CEO gives a great interview or a founder's memo goes viral, I reverse-engineer it. What worked? What can I steal?
+
+And honestly? Reddit. I don't post or anything, but going deep into subreddits is where you find people with serious knowledge on even the most obscure topics. Industry insiders, former execs, subject matter experts who just love nerding out. It's underrated.
+
+Plus conversations like this one. Every time I explain my process or defend my approach, I sharpen my thinking. Teaching is learning.`;
+      }
+
+      // "What's your availability / when can you start?"
+      if (q.includes('availability') || q.includes('when can you start') || q.includes('start date') || q.includes('notice period') || q.includes('two week') || q.includes('2 week')) {
+        return `Standard two weeks upon acceptance of an offer. I believe in finishing what I started and leaving things in good shape for whoever picks up after me.
+
+That said, if there's flexibility needed on either end, I'm open to a conversation.`;
+      }
+
+      // "Remote / hybrid / in-office preferences?"
+      if (q.includes('remote') || q.includes('hybrid') || q.includes('in-office') || q.includes('in office') || q.includes('on-site') || q.includes('onsite') || q.includes('work from home') || q.includes('wfh') || (q.includes('where') && q.includes('work'))) {
+        return `Remote is my preference — and here's why: CEOs and executives are always on the move. Conferences, board meetings, investor visits. I've spent years supporting leaders who are rarely in the same building as me, and it works. If I can do it across time zones for a Fortune 500 CEO, I can do it for you.
+
+Hybrid works too, though the compensation should reflect the commute and the flexibility trade-off.
+
+Fully in-office? If it's Columbus, sure — I'm local. If you're asking me to relocate for a desk I'll sit at five days a week, that's a different conversation. One that involves multiplying my salary expectations significantly.`;
+      }
+
+      // "Tell me about yourself" / "Walk me through your background"
+      if ((q.includes('tell me about') && (q.includes('yourself') || q.includes('you'))) || q.includes('walk me through') || q.includes('your background') || q.includes('about yourself') || (q.includes('who') && q.includes('are you'))) {
+        return `Ph.D. in Philosophy turned B2B tech copywriter turned executive communications specialist.
+
+The short version: I spent years learning how to think clearly and argue precisely — then discovered I'd rather use those skills to help leaders communicate than to publish academic papers nobody reads.
+
+I've ghostwritten high-stakes keynotes, CEO presentations, and strategic messaging for major industry events. I translate complex tech capabilities — AI, cybersecurity, cloud — into narratives that move global audiences to action. My work reaches everyone from board members to data-center architects.
+
+Before exec comms, I was an award-winning B2B copywriter. "Storyteller of the Year" at Mercer-MacKay. Led campaigns that broke through competitive noise and exceeded KPIs.
+
+What ties it all together: I take complicated ideas and make them land. Whether that's a dissertation on human dignity or a CEO keynote on the future of AI.`;
+      }
+
+      // "Why this company?" / "Why are you interested in us?"
+      if ((q.includes('why') && (q.includes('this company') || q.includes('our company') || q.includes('interested in us') || q.includes('want to work here') || q.includes('join us'))) || q.includes('what attracted you') || q.includes('why us')) {
+        return `Let's be honest — you're the one who found me.
+
+And that's actually a good thing. You're not digging through hundreds of applicants, running them through an ATS scan, hoping something sticks. You clicked on a portfolio that caught your attention, and now you're having a conversation with someone who's already shown you how they think.
+
+That's a much better signal than a keyword-matched resume.
+
+So the real question isn't why I'm interested in you — it's what made you interested enough to ask. That usually tells me a lot about the fit.`;
+      }
+
+      // "What's your biggest accomplishment?"
+      if (q.includes('biggest accomplishment') || q.includes('greatest accomplishment') || q.includes('proudest moment') || q.includes('most proud of') || q.includes('greatest achievement') || q.includes('biggest achievement')) {
+        return `Not giving up on myself when giving up was the easiest thing to do.
+
+I walked away from academia after finishing a Ph.D. — which meant letting go of an identity I'd built for years. Then I reinvented myself as a copywriter, starting from zero. Then I pivoted again into executive communications.
+
+Each transition could've been the moment I settled for something safe. Instead, I kept betting on myself.
+
+The specific wins — the $19M deal, the CEO keynotes, the awards — those matter. But they only happened because I refused to stop when things got hard.`;
+      }
+
+      // "How do you handle tight deadlines?"
+      if (q.includes('tight deadline') || q.includes('short deadline') || q.includes('under pressure') || q.includes('last minute') || q.includes('quick turnaround') || q.includes('fast turnaround') || (q.includes('deadline') && q.includes('pressure'))) {
+        return `Triage, then execute.
+
+First question: what *actually* needs to happen, and by when? Not everything labeled "urgent" is urgent. Some things can ship at 80% and get refined later. Others are non-negotiable.
+
+Second: what can I control? I focus on the work, not the panic. Stress doesn't make drafts better — clarity does.
+
+Third: communicate early. If something's at risk, I flag it before it becomes a crisis. No one likes surprises at the eleventh hour.
+
+Exec comms is a pressure job by nature. CEOs don't schedule their crises around my calendar. I've learned to stay calm when everyone else is spinning.`;
+      }
+
+      // "How do you prioritize?"
+      if ((q.includes('how') && q.includes('prioritize')) || q.includes('prioritization') || (q.includes('manage') && q.includes('priorities')) || q.includes('competing priorities') || q.includes('multiple deadlines')) {
+        return `Rapid triage based on urgency and impact.
+
+Not all "urgent" requests are actually urgent. Not all important work is time-sensitive. I'm constantly recalibrating: What's the real deadline? Who's affected if this slips? What's the cost of "good enough" vs. perfect?
+
+When I'm supporting 24+ executives, I can't treat every request as top priority. So I ask questions early, set expectations clearly, and protect time for deep work. The system does the remembering — I do the thinking.
+
+If everything's on fire, I figure out which fire spreads fastest and start there.`;
+      }
+
+      // "What tools/software do you use?"
+      if (q.includes('tools') || q.includes('software') || q.includes('tech stack') || q.includes('what do you use') || q.includes('programs') || (q.includes('applications') && !q.includes('job application'))) {
+        return `Claude — obviously. I use AI for drafting, iteration, and thinking through structure. Built this chatbot with it.
+
+Beyond that: the full Microsoft and Google suites. Canva for quick visual work — background removal, basic layouts. Whatever the team is using for project management.
+
+But honestly? The most useful tool is my brain. I use that a lot. Tools change. The ability to think clearly, structure an argument, and write something that sounds human — that's the constant.`;
+      }
+
+      // "How do you handle ambiguity?"
+      if (q.includes('ambiguity') || q.includes('ambiguous') || q.includes('unclear') || q.includes('uncertainty') || q.includes('vague direction') || q.includes('not sure what')) {
+        return `I wrote a 300-page dissertation on how to make sense of a notoriously ambiguous concept — human dignity. So you could say I've got practice.
+
+My approach: context is the great revealer. Most ambiguity dissolves when you ask the right questions, look at adjacent examples, or pressure-test assumptions. And when context isn't enough, I ask directly. No one's ever been mad at me for seeking clarity before I start writing.
+
+I'd rather look dumb for five minutes asking questions than spend five hours building the wrong thing.`;
+      }
+
+      // "Describe your ideal work environment"
+      if (q.includes('ideal work environment') || q.includes('ideal environment') || q.includes('work environment') || q.includes('best environment') || q.includes('thrive in') || q.includes('type of environment')) {
+        return `One that lets me toggle between deep work and shallow work.
+
+Cal Newport's framing resonates: some tasks require uninterrupted focus — writing a keynote, building a narrative arc, thinking through strategy. Others are quick and reactive — Slack replies, small edits, status updates.
+
+The ideal environment respects both. Time blocked for deep concentration. Reasonable expectations about response times. Trust that I'll deliver without someone watching over my shoulder.
+
+Chaos I can handle. Constant interruption masquerading as "collaboration" — that's harder.`;
+      }
+
+      // "Why should we hire you?"
+      if ((q.includes('why') && (q.includes('hire you') || q.includes('hire justin'))) || q.includes('why you') || q.includes('what makes you') || q.includes('stand out') || q.includes('differentiate')) {
+        return `Because I've already done the job — and I have the receipts.
+
+127+ deliverables for a Fortune 500 CEO. Voice-matching methodology that gets new executives keynote-ready in 12 weeks. A $19M deal where the customer cited the CEO video as the deciding factor.
+
+But honestly? The real reason is fit. You're not just hiring a skill set — you're hiring someone who'll be in the room when the stakes are high. I stay calm under pressure, I don't get precious about my drafts, and I make executives look good without making it about me.
+
+The best way to know if that's true is to talk. I'm happy to do a writing exercise, a chemistry call, whatever you need.
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+      }
+
       // PUSHBACK DETECTION - check if they're skeptical about previous response
       // Note: "why should i" removed because it conflicts with "why should I hire/consider" questions
       if (q.includes('not convinced') || q.includes('not sure') || q.includes('prove it') || q.includes('sounds generic') || q.includes('everyone says') || q.includes('tell me more') || q.includes('dig deeper') || q.includes('be specific') || q.includes('give me an example') || q.includes('really?') || q.includes('hard to believe')) {
@@ -1372,13 +1638,6 @@ Best to discuss directly:
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
-      // "Work outside normal hours / overtime / after hours"
-      if (q.includes('outside') && q.includes('hours') || q.includes('after hours') || q.includes('overtime') || q.includes('weekends') || q.includes('evenings') || q.includes('nights') || (q.includes('hours') && q.includes('work'))) {
-        return `Comes with the territory. Exec comms doesn't stop because it's 6 PM — if the CEO needs a last-minute script change before tomorrow's keynote, that's the job.
-
-That said, availability should justify the value a company puts on my skills. If you're expecting nights and weekends, you might want to ask me about salary expectations. 😉`;
-      }
-
       // "Remote / hybrid / onsite / work arrangement"
       if (q.includes('remote') || q.includes('hybrid') || q.includes('onsite') || q.includes('office') || q.includes('work from home') || q.includes('location')) {
         return `I'm based in Columbus, Ohio and open to remote, hybrid, or onsite depending on the role.
@@ -1734,6 +1993,7 @@ Recent examples:
 • **PSA Speechwriting School 2025**: week-long intensive with White House speechwriters
 • **AI tools**: built this chatbot; use Claude for drafting and iteration
 • **Reading**: not just news, but how other writers solve problems in speeches, essays, brand copy
+• **Reddit**: I don't post, but going deep into subreddits is where you find people with serious knowledge on even the most obscure topics
 
 I also learn by doing. Keith Duffy's keynote was new territory, the first time building a voice from scratch for someone with no prior speeches. That taught me more than any course.
 
