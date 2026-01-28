@@ -827,6 +827,15 @@ AI generates text. I generate trust.
 This chatbot exists because I understand both the technology *and* its limits. That's exactly who you want shaping your executive voice — someone who knows when to use the tool and when to put it down.`;
       }
 
+      // "Does Insight know you're looking?"
+      if ((q.includes('insight') && (q.includes('know') || q.includes('aware'))) || (q.includes('current') && q.includes('employer') && q.includes('know')) || (q.includes('boss') && q.includes('know')) || q.includes('looking behind') || q.includes('secretly')) {
+        return `I'll assume discretion is mutual here. You're not going to call my CEO, and I'm not going to mention that I've logged your IP address and can absolutely find out what you've been doing in Incognito Mode. 😉
+
+Kidding. Mostly.
+
+In all seriousness: I'm exploring selectively and carefully. If you're reaching out, it means something about the opportunity caught your attention — let's talk about whether the fit is real before anyone's HR gets involved.`;
+      }
+
       // Resume request
       if (q.includes('resume') || q.includes('cv') || (q.includes('download') && (q.includes('pdf') || q.includes('document')))) {
         return `You're looking at it. This portfolio *is* the resume.
