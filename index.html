@@ -813,6 +813,17 @@ But if your ATS needs something it can parse, here you go: <a href="Justin_Morri
 Fair warning: the PDF has fewer jokes.`;
       }
 
+      // Overqualified concern
+      if (q.includes('overqualified') || q.includes('over qualified') || q.includes('too qualified') || (q.includes('phd') && (q.includes('why') || q.includes('need'))) || (q.includes('degree') && q.includes('waste'))) {
+        return `I get this one a lot. Here's the honest answer:
+
+I didn't leave academia because I couldn't make it work. I left because I wanted to apply these skills where the stakes are real and the outcomes actually matter. Executive communications IS the job I want — not a consolation prize.
+
+The Ph.D. means I bring more rigor to the work, not that I'm biding my time until a tenure-track position opens up. That ship sailed, and I'm the one who set it on fire.
+
+If anything, you're getting a bargain: philosophical training at speechwriter rates.`;
+      }
+
       // PUSHBACK DETECTION - check if they're skeptical about previous response
       // Note: "why should i" removed because it conflicts with "why should I hire/consider" questions
       if (q.includes('not convinced') || q.includes('not sure') || q.includes('prove it') || q.includes('sounds generic') || q.includes('everyone says') || q.includes('tell me more') || q.includes('dig deeper') || q.includes('be specific') || q.includes('give me an example') || q.includes('really?') || q.includes('hard to believe')) {
@@ -1335,12 +1346,20 @@ That said, I'm not a job-hopper. I stayed 4+ years at Mercer-MacKay. I commit wh
 
       // "Salary expectations"
       if (q.includes('salary') || q.includes('compensation') || q.includes('pay') || (q.includes('how much') && q.includes('expect'))) {
+        lastTopic = 'salary';
         return `I'd want to understand the full scope of the role before throwing out a number — level, team size, deliverables, location, etc.
 
 Let's talk specifics directly:
 
 📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
+      }
+
+      // Salary follow-up - pushing for a range
+      if (q.includes('range') || q.includes('ballpark') || q.includes('just a number') || q.includes('give me a number')) {
+        return `Fair enough. The starting bid starts with "six" and ends with "figures."
+
+$100k is the basement. I'd like to at least be on the ground floor — but I wouldn't mind the master bedroom, either.`;
       }
 
       // "Availability / notice period / start date"
@@ -1351,6 +1370,13 @@ Best to discuss directly:
 
 📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
+      }
+
+      // "Work outside normal hours / overtime / after hours"
+      if (q.includes('outside') && q.includes('hours') || q.includes('after hours') || q.includes('overtime') || q.includes('weekends') || q.includes('evenings') || q.includes('nights') || (q.includes('hours') && q.includes('work'))) {
+        return `Comes with the territory. Exec comms doesn't stop because it's 6 PM — if the CEO needs a last-minute script change before tomorrow's keynote, that's the job.
+
+That said, availability should justify the value a company puts on my skills. If you're expecting nights and weekends, you might want to ask me about salary expectations. 😉`;
       }
 
       // "Remote / hybrid / onsite / work arrangement"
@@ -1470,6 +1496,36 @@ Feel free to compel me.
 
 📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
+      }
+
+      // "Is Justin easy to work with" / personality / soft skills
+      if (q.includes('easy to work') || q.includes('work with') || q.includes('like to work with') || q.includes('working with') || (q.includes('personality') && !q.includes('brand')) || q.includes('soft skills') || q.includes('get along')) {
+        return `Short answer: yes.
+
+Longer answer: I've supported 24+ executives at Insight, each with different communication styles, priorities, and preferences. That doesn't happen if you're difficult.
+
+What I've heard from people I work with:
+• I make the feedback process painless — I don't get precious about my drafts
+• I ask good questions upfront so we're not fixing things later
+• I have a sense of humor, which helps when deadlines get tight
+• I'm low-drama — the work is stressful enough without adding personality conflicts
+
+Joyce Mullen told me directly: "I trust you, Justin." That's not something you say to someone who's hard to work with.`;
+      }
+
+      // EQ / Emotional intelligence
+      if (q.includes('eq') || q.includes('emotional intelligence') || q.includes('emotionally intelligent') || q.includes('interpersonal') || q.includes('people skills') || q.includes('read the room') || q.includes('empathy')) {
+        return `I don't love the buzzword, but here's what it looks like in practice:
+
+**Reading executives.** Every leader I support has a different comfort zone — some want to rehearse every word, others wing it from bullets. I figure out which one they are fast, and I adapt.
+
+**Managing feedback.** When a CEO crosses out half your script, you can either get defensive or get curious. I've learned to ask "what's not landing?" instead of "but here's why I wrote it that way."
+
+**Knowing when to push back.** Emotional intelligence isn't just agreeing with everyone. Sometimes the right move is saying "I hear you, but this message will backfire with that audience." The skill is knowing *when* and *how*.
+
+**Staying calm in chaos.** Last-minute rewrites, conflicting stakeholder feedback, executives who change direction mid-project — I've seen it all. My job is to absorb the stress, not amplify it.
+
+Philosophy training actually helps here. Spending years understanding different perspectives turns out to be useful when you're writing for people who aren't you.`;
       }
 
       // "How would teammates describe you"
