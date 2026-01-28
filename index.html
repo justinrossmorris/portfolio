@@ -794,6 +794,22 @@ Fire away.`;
         return `You're right. Let me get you <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-emerald-400 underline">the support you need</a>.`;
       }
 
+      // Post-rickroll engagement
+      if (q.includes('rick roll') || q.includes('rickroll') || q.includes('rick astley') || q.includes('never gonna give')) {
+        return `I'm never gonna give you up. I'm never gonna let you down. I'm never gonna run around and desert you.
+
+But I *will* answer your actual questions if you have any.`;
+      }
+
+      // Resume request
+      if (q.includes('resume') || q.includes('cv') || (q.includes('download') && (q.includes('pdf') || q.includes('document')))) {
+        return `You're looking at it. This portfolio *is* the resume.
+
+But if your ATS needs something it can parse, here you go: <a href="Justin_Morris_Resume.pdf" target="_blank" class="text-emerald-400 underline">Download Resume (PDF)</a>
+
+Fair warning: the PDF has fewer jokes.`;
+      }
+
       // PUSHBACK DETECTION - check if they're skeptical about previous response
       // Note: "why should i" removed because it conflicts with "why should I hire/consider" questions
       if (q.includes('not convinced') || q.includes('not sure') || q.includes('prove it') || q.includes('sounds generic') || q.includes('everyone says') || q.includes('tell me more') || q.includes('dig deeper') || q.includes('be specific') || q.includes('give me an example') || q.includes('really?') || q.includes('hard to believe')) {
