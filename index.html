@@ -816,6 +816,17 @@ But you know what actually *is* simple? Talking to me directly when you're serio
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
+      // "Why hire you when I can just use AI?"
+      if ((q.includes('why') && q.includes('ai')) || (q.includes('just use') && (q.includes('ai') || q.includes('chatgpt') || q.includes('claude'))) || (q.includes('replace') && q.includes('ai')) || q.includes('ai instead') || q.includes('chatgpt instead') || q.includes('claude instead')) {
+        return `You're asking the chatbot whether you should hire the guy who built the chatbot. I appreciate the irony.
+
+Here's the thing: I use AI constantly. Claude helps me draft, iterate, pressure-test structure. It's a force multiplier. But it can't sit in a room with your CEO and read the tension when she's nervous about a board presentation. It can't know that "this feels off" actually means "I don't want to say this line because it reminds me of my predecessor." It can't build trust over 127 deliverables until the CEO stops reviewing drafts altogether because she knows it'll be right.
+
+AI generates text. I generate trust.
+
+This chatbot exists because I understand both the technology *and* its limits. That's exactly who you want shaping your executive voice — someone who knows when to use the tool and when to put it down.`;
+      }
+
       // Resume request
       if (q.includes('resume') || q.includes('cv') || (q.includes('download') && (q.includes('pdf') || q.includes('document')))) {
         return `You're looking at it. This portfolio *is* the resume.
