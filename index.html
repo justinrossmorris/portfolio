@@ -2545,6 +2545,24 @@ That said, I've tried to cover the questions recruiters and hiring managers actu
 The goal isn't to pass a Turing test. It's to give you useful information about whether I might be a good fit.`;
       }
 
+      // "Is this safe/secure?" / Privacy questions
+      if (q.includes('safe') || q.includes('secure') || q.includes('security') || q.includes('privacy') || q.includes('collecting') || q.includes('tracking') || q.includes('recording') || (q.includes('data') && (q.includes('my') || q.includes('store') || q.includes('save') || q.includes('keep'))) || (q.includes('what happens') && q.includes('conversation'))) {
+        return `Nothing leaves your browser.
+
+This chatbot runs entirely client-side. There's no database, no analytics tracking, no conversation logging. When you close this tab, our conversation disappears. I couldn't retrieve it if I wanted to.
+
+**Technically:**
+• No backend server processing your inputs
+• No cookies beyond what Netlify uses for hosting
+• No third-party scripts watching what you type
+• The "AI" is just JavaScript pattern-matching, running locally
+
+**Why build it this way?**
+My whole career is built on discretion and trust. Ghostwriting means people tell me things they don't tell anyone else. Building a portfolio that secretly harvests recruiter data would be... a choice. Not one I'd make.
+
+You're safe here. Ask whatever you want.`;
+      }
+
       // "How long did this take to build?"
       if ((q.includes('how long') && (q.includes('build') || q.includes('make') || q.includes('create') || q.includes('take'))) || (q.includes('time') && q.includes('spend')) || (q.includes('hours') && q.includes('this'))) {
         return `About a week of focused work, spread across a few weeks of tinkering.
@@ -2785,17 +2803,20 @@ I'm not a 20-year speechwriting veteran. But I've compressed a lot of relevant e
       // Gates Foundation
       if (q.includes('gates') || q.includes('foundation') || q.includes('ethics consulting')) {
         lastTopic = 'gates';
-        return `From 2016-2019, I worked with the Institute on Ethics & Policy for Innovation, which consulted for the Bill & Melinda Gates Foundation.
+        return `From 2016-2019, I was a research assistant at McMaster's Institute for Ethics and Policy Innovation (IEPI), which consulted for the Gates Foundation on gene drive technology.
 
-**What I did:**
-• Authored ethical guidelines on gene drive technology (using CRISPR to modify mosquitoes for malaria prevention)
-• Wrote policy recommendations on gender equity in clinical trial design
-• Translated complex scientific and ethical frameworks for non-specialist decision-makers
+**The actual work:**
+Gene drives use CRISPR to modify mosquito populations — potentially eliminating malaria, which kills 600,000+ people annually. The Foundation needed to understand the moral objections before funding it.
 
-**Why it matters for exec comms:**
-This was my first experience writing for extremely high-stakes audiences. The Foundation was deciding whether to fund technologies that could alter ecosystems. The communications had to be precise, defensible, and clear.
+I wrote a 25-page literature review called "Gene-driven to Extinction" analyzing the philosophical case against eliminating mosquitoes: deep ecology arguments, species extinction ethics, biodiversity concerns. Then I wrote the counterarguments — why these objections, while intellectually serious, shouldn't block a technology that could save millions of lives.
 
-It's a long way from "write a keynote about AI" — but the muscle is the same. Make the complex clear. Anticipate objections. Help leaders make good decisions.`;
+**What that looked like day-to-day:**
+• Reading environmental philosophy (Arne Naess, Paul Taylor, Holmes Rolston III)
+• Synthesizing arguments from bioethics, conservation biology, public health
+• Writing for Foundation decision-makers who needed clarity, not academic hedging
+
+**Why it matters now:**
+The skill is identical to exec comms: take dense, contested material and make it actionable for leaders making high-stakes decisions. Whether it's "should we fund gene drives?" or "how do we position our AI strategy?" — the translation work is the same.`;
       }
 
       // B2B / marketing / copywriting background
