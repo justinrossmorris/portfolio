@@ -1051,6 +1051,13 @@ Plus conversations like this one. Every time I explain my process or defend my a
 That said, if there's flexibility needed on either end, I'm open to a conversation.`;
       }
 
+      // Work authorization / US citizenship / visa sponsorship
+      if (q.includes('citizen') || q.includes('visa') || q.includes('sponsorship') || q.includes('work authorization') || q.includes('authorized to work') || q.includes('eligible to work') || q.includes('green card') || q.includes('h1b') || q.includes('h-1b') || (q.includes('require') && q.includes('sponsor'))) {
+        return `US citizen. No sponsorship required.
+
+I lived in Canada for grad school, which might raise the question — but no, I'm American. Currently employed by a US-based Fortune 500 company.`;
+      }
+
       // "Remote / hybrid / in-office preferences?"
       if (q.includes('remote') || q.includes('hybrid') || q.includes('in-office') || q.includes('in office') || q.includes('on-site') || q.includes('onsite') || q.includes('work from home') || q.includes('wfh') || (q.includes('where') && q.includes('work'))) {
         return `Remote is my preference — and here's why: CEOs and executives are always on the move. Conferences, board meetings, investor visits. I've spent years supporting leaders who are rarely in the same building as me, and it works. If I can do it across time zones for a Fortune 500 CEO, I can do it for you.
