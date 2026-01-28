@@ -1412,8 +1412,8 @@ The result: a 25-minute keynote, a client fireside on stage, and a visual deck. 
 The challenge taught me that voice-building is as much listening as writing.`;
       }
 
-      // "Personal challenge / dissertation"
-      if ((q.includes('personal') && q.includes('challenge')) || q.includes('dissertation') || (q.includes('biggest') && q.includes('personal'))) {
+      // "Personal challenge" (dissertation alone goes to the PhD handler below)
+      if ((q.includes('personal') && q.includes('challenge')) || (q.includes('biggest') && q.includes('personal'))) {
         return `Finishing my dissertation. Look at how long it took — I started in 2014, defended in 2022. Eight years.
 
 But I did it. While teaching courses, working full-time, and building a career in a completely different field. Most people who leave academia mid-PhD don't go back. I went back.
@@ -1477,7 +1477,7 @@ The combination is rare. I write speeches that sound human AND hold up intellect
       if ((q.includes('leave') || q.includes('left') || q.includes('quit')) && (q.includes('academia') || q.includes('academic') || q.includes('professor') || q.includes('teaching'))) {
         return `There's an old joke: if you want to hate what you love, do a PhD in it.
 
-But really — I did what I needed to do. Taught a course. Published papers. Went to conferences. Defended a dissertation on the metaphysics of ordinary objects. (Yes, it's as niche as it sounds.)
+But really — I did what I needed to do. Taught a course. Published papers. Went to conferences. Defended a dissertation on whether "human dignity" is a philosophically meaningful concept. (Yes, it's as niche as it sounds.)
 
 Academia rewards specialization to the point of absurdity. You end up in a niche within a niche, talking to twelve people who care about the same obscure problem.
 
@@ -1541,6 +1541,11 @@ If that tells you anything about how I write, it should. Economy over excess. Ev
       // "What's the password?"
       if (q.includes('password')) {
         return `You already know it, or we wouldn't be talking.`;
+      }
+
+      // Snarky/negative comments - "this is dumb/stupid/useless"
+      if (q.includes('dumb') || q.includes('stupid') || q.includes('useless') || q.includes('pointless') || q.includes('waste of time') || q.includes('this sucks') || q.includes('this is bad')) {
+        return `You're right. Let me get you <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-emerald-400 underline">the support you need</a>.`;
       }
 
       // "Can you create/build an AI chatbot FOR ME"
