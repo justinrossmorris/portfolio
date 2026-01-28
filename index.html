@@ -838,6 +838,39 @@ But you know what actually *is* simple? Talking to me directly when you're serio
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
+      // COMPLIMENTS - positive statements that aren't questions
+      if ((q.includes('cool') || q.includes('awesome') || q.includes('amazing') || q.includes('impressive') || q.includes('love this') || q.includes('love it') || q.includes('this is great') || q.includes('so good') || q.includes('really good') || q.includes('well done') || q.includes('nice work') || q.includes('neat') || q.includes('slick') || q.includes('clever')) && !q.includes('?')) {
+        const complimentResponses = [
+          `Thanks — this thing took a while to build, so I appreciate that. Feel free to ask me anything about Justin's experience, skills, or fit.`,
+          `Appreciate it. I'm here to answer questions if you've got them.`,
+          `Glad it landed. Ask me anything — experience, work samples, fit, whatever you're curious about.`,
+          `Thanks! Built this myself (with some AI assist on the code). Happy to answer any questions you've got.`
+        ];
+        return complimentResponses[Math.floor(Math.random() * complimentResponses.length)];
+      }
+
+      // "What job is Justin looking for?"
+      if ((q.includes('what') && (q.includes('job') || q.includes('role') || q.includes('position')) && (q.includes('looking') || q.includes('seeking') || q.includes('want'))) || (q.includes('type of') && (q.includes('role') || q.includes('job') || q.includes('position'))) || (q.includes('what') && q.includes('looking for'))) {
+        return `Two lanes, both senior-level:
+
+**Executive Communications** — Speechwriting, CEO messaging, town halls, internal comms. The work I do now for Joyce Mullen at Insight. I'm good at becoming an exec's voice and building trust over time.
+
+**Senior Copywriting / Content Strategy** — B2B campaigns, e-books, demand gen, brand messaging. The work I did at Mercer-MacKay where campaigns hit 59,999,900% of target (not a typo).
+
+Either lane. Or something that blends both. I'm less interested in job titles than in doing high-stakes writing for people who care about getting it right.`;
+      }
+
+      // "Why go back to copywriting?" / "Why leave exec comms?"
+      if ((q.includes('why') && (q.includes('back to') || q.includes('go back') || q.includes('return to')) && (q.includes('copy') || q.includes('b2b') || q.includes('campaign'))) || (q.includes('why') && (q.includes('leave') || q.includes('leaving')) && (q.includes('exec') || q.includes('executive'))) || (q.includes('why') && q.includes('copywriting') && q.includes('exec'))) {
+        return `Honest answer: I'm not trying to escape exec comms. I'm keeping my options open.
+
+Exec comms is great—I love the trust, the high-stakes moments, the craft of capturing someone's voice. But it's also a narrow funnel. There are only so many CEO speechwriter roles, and they don't open often.
+
+Copywriting gives me range. Campaigns, brand strategy, demand gen—that's work I'm genuinely good at, and there's more of it. The NetApp/Microsoft sustainability campaign (180M trees) was some of the most satisfying work I've done.
+
+So it's not "going back." It's recognizing that my best opportunities might come from either lane—or from something that blends both.`;
+      }
+
       // "Why hire you when I can just use AI?"
       if ((q.includes('why') && q.includes('ai')) || (q.includes('just use') && (q.includes('ai') || q.includes('chatgpt') || q.includes('claude'))) || (q.includes('replace') && q.includes('ai')) || q.includes('ai instead') || q.includes('chatgpt instead') || q.includes('claude instead')) {
         return `You're asking the chatbot whether you should hire the guy who built the chatbot. I appreciate the irony.
