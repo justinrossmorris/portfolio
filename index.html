@@ -2740,6 +2740,25 @@ It's a good example of building a voice relationship with a new executive from s
 It's a different dynamic than Joyce — more marketing-focused, brand-centric. Good example of adapting to different executive priorities while maintaining consistency.`;
       }
 
+      // Gates Foundation (moved early to catch "foundation" before other handlers)
+      if (q.includes('gates') || (q.includes('foundation') && !q.includes('logical foundation')) || q.includes('ethics consulting') || q.includes('iepi') || q.includes('gene drive')) {
+        lastTopic = 'gates';
+        return `From 2016-2019, I was a research assistant at McMaster's Institute for Ethics and Policy Innovation (IEPI), which consulted for the Gates Foundation on gene drive technology.
+
+**The actual work:**
+Gene drives use CRISPR to modify mosquito populations — potentially eliminating malaria, which kills 600,000+ people annually. The Foundation needed to understand the moral objections before funding it.
+
+I wrote a 25-page literature review called "Gene-driven to Extinction" analyzing the philosophical case against eliminating mosquitoes: deep ecology arguments, species extinction ethics, biodiversity concerns. Then I wrote the counterarguments — why these objections, while intellectually serious, shouldn't block a technology that could save millions of lives.
+
+**What that looked like day-to-day:**
+• Reading environmental philosophy (Arne Naess, Paul Taylor, Holmes Rolston III)
+• Synthesizing arguments from bioethics, conservation biology, public health
+• Writing for Foundation decision-makers who needed clarity, not academic hedging
+
+**Why it matters now:**
+The skill is identical to exec comms: take dense, contested material and make it actionable for leaders making high-stakes decisions. Whether it's "should we fund gene drives?" or "how do we position our AI strategy?" — the translation work is the same.`;
+      }
+
       // NDA / confidentiality / permission concerns
       if (q.includes('nda') || q.includes('permission') || q.includes('confidential') || q.includes('allowed to share') || q.includes('share these') || q.includes('disclose') || (q.includes('can you') && q.includes('talk about'))) {
         lastTopic = 'nda';
@@ -2798,25 +2817,6 @@ If you need additional samples for a hiring process, happy to discuss.
 • Exec comms → brought it all together
 
 I'm not a 20-year speechwriting veteran. But I've compressed a lot of relevant experience into a shorter runway, and the results speak for themselves: 127+ deliverables, CEO trust, multiple executives supported.`;
-      }
-
-      // Gates Foundation
-      if (q.includes('gates') || q.includes('foundation') || q.includes('ethics consulting')) {
-        lastTopic = 'gates';
-        return `From 2016-2019, I was a research assistant at McMaster's Institute for Ethics and Policy Innovation (IEPI), which consulted for the Gates Foundation on gene drive technology.
-
-**The actual work:**
-Gene drives use CRISPR to modify mosquito populations — potentially eliminating malaria, which kills 600,000+ people annually. The Foundation needed to understand the moral objections before funding it.
-
-I wrote a 25-page literature review called "Gene-driven to Extinction" analyzing the philosophical case against eliminating mosquitoes: deep ecology arguments, species extinction ethics, biodiversity concerns. Then I wrote the counterarguments — why these objections, while intellectually serious, shouldn't block a technology that could save millions of lives.
-
-**What that looked like day-to-day:**
-• Reading environmental philosophy (Arne Naess, Paul Taylor, Holmes Rolston III)
-• Synthesizing arguments from bioethics, conservation biology, public health
-• Writing for Foundation decision-makers who needed clarity, not academic hedging
-
-**Why it matters now:**
-The skill is identical to exec comms: take dense, contested material and make it actionable for leaders making high-stakes decisions. Whether it's "should we fund gene drives?" or "how do we position our AI strategy?" — the translation work is the same.`;
       }
 
       // B2B / marketing / copywriting background
