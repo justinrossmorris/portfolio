@@ -1538,6 +1538,11 @@ Sparse prose. Dark humor. Writers who trust the reader to fill in the gaps.
 If that tells you anything about how I write, it should. Economy over excess. Every word earns its place.`;
       }
 
+      // "What's the password?"
+      if (q.includes('password')) {
+        return `You already know it, or we wouldn't be talking.`;
+      }
+
       // "Can you create/build an AI chatbot FOR ME"
       if ((q.includes('create') || q.includes('build') || q.includes('make')) && q.includes('chatbot') && (q.includes('for me') || q.includes('for us') || q.includes('can you'))) {
         return `*gestures at everything around you*
