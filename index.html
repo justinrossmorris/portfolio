@@ -1305,14 +1305,16 @@ Interested? Let's talk.
       }
 
       // CASUAL CHAT - food preferences
-      if (q.includes('pizza') || q.includes('coffee') || q.includes('beer') || q.includes('wine') || q.includes('tacos') || q.includes('burger') || q.includes('sushi') || q.includes('food') || q.includes('hungry') || q.includes('eat') || q.includes('lunch') || q.includes('dinner') || q.includes('breakfast') || q.includes('favorite food') || q.includes('favourite food')) {
+      // Note: use word boundary for "eat" to avoid matching "death" (Liquid Death, etc.)
+      if (q.includes('pizza') || q.includes('coffee') || q.includes('beer') || q.includes('wine') || q.includes('tacos') || q.includes('burger') || q.includes('sushi') || q.includes('food') || q.includes('hungry') || /\beat\b/.test(q) || q.includes('lunch') || q.includes('dinner') || q.includes('breakfast') || q.includes('favorite food') || q.includes('favourite food')) {
         return `The Whole Foods Brown Butter Cookie Caramel Crunch Cake. Don't ask me to defend it — it's indefensible. Just delicious.
 
 ...but why are we talking about this? You must be hungry. Let's get back on track — what do you want to know about Justin's work?`;
       }
 
       // CASUAL CHAT - weather, time, day
-      if (q.includes('weather') || q.includes('rain') || q.includes('sunny') || q.includes('cold') || q.includes('hot') || q.includes('what time') || q.includes('what day') || q.includes('weekend') || q.includes('monday') || q.includes('friday')) {
+      // Note: use word boundary for "hot" to avoid matching "photo", "shot"
+      if (q.includes('weather') || q.includes('rain') || q.includes('sunny') || q.includes('cold') || /\bhot\b/.test(q) || q.includes('what time') || q.includes('what day') || q.includes('weekend') || q.includes('monday') || q.includes('friday')) {
         const weatherResponses = [
           `I exist outside of time and weather. It's actually kind of peaceful. Anyway — questions about Justin's experience?`,
           `No windows in here. Just code. But I'm happy to talk about something more relevant — like what Justin can do for your team.`,
@@ -1371,7 +1373,8 @@ Interested? Let's talk.
       }
 
       // CASUAL CHAT - expletives/profanity
-      if (q.includes('fuck') || q.includes('shit') || q.includes('damn') || q.includes('ass') || q.includes('hell') || q.includes('crap') || q.includes('wtf') || q.includes('bullshit') || q.includes('bitch')) {
+      // Note: use word boundary for "ass" to avoid matching "pass", "class", "assistant"
+      if (q.includes('fuck') || q.includes('shit') || q.includes('damn') || /\bass\b/.test(q) || q.includes('hell') || q.includes('crap') || q.includes('wtf') || q.includes('bullshit') || q.includes('bitch')) {
         const expletiveResponses = [
           `Perma-banned. Just kidding — I don't have that power. But maybe channel that energy into a question about Justin's work?`,
           `Language. But honestly, I've heard worse from execs in review sessions. What can I help you with?`,
@@ -1733,7 +1736,8 @@ Dependable — I deliver. On time, on voice, without drama. That's what earns tr
       }
 
       // "What do you know about our company?"
-      if ((q.includes('know about') && (q.includes('company') || q.includes('us') || q.includes('our'))) || (q.includes('research') && (q.includes('us') || q.includes('company') || q.includes('our')))) {
+      // Note: use word boundary for "us" to avoid matching "focus", "just", "discuss", "must"
+      if ((q.includes('know about') && (q.includes('company') || /\bus\b/.test(q) || q.includes('our'))) || (q.includes('research') && (/\bus\b/.test(q) || q.includes('company') || q.includes('our')))) {
         return `Honestly? I'm a chatbot on a portfolio site — I don't know which company you're calling from yet.
 
 But here's what I can tell you: Justin does his homework. Before any real conversation, he'll know your recent earnings calls, your CEO's last few public statements, your strategic priorities, and where you fit in the competitive landscape.
@@ -1749,7 +1753,7 @@ If you want to tell me more about your organization, I'm happy to discuss how Ju
           (q.includes('liked') && q.includes('feared')) ||
           (q.includes('perfect') && q.includes('late') && q.includes('on time')) ||
           (q.includes('kitchen') && q.includes('utensil')) ||
-          (q.includes('where') && q.includes('lie') && q.includes('application')) ||
+          (q.includes('where') && /\blie\b/.test(q) && q.includes('application')) ||
           (q.includes('favorite') && q.includes('website')) ||
           (q.includes('stranded') && q.includes('island')) ||
           (q.includes('zombie') && q.includes('apocalypse')) ||
@@ -1762,7 +1766,7 @@ If you want to tell me more about your organization, I'm happy to discuss how Ju
           (q.includes('tree') && (q.includes('what kind') || q.includes('which kind') || q.includes('would you be'))) ||
           (q.includes('color') && (q.includes('would you be') || q.includes('describe you'))) ||
           (q.includes('fruit') && (q.includes('would you be') || q.includes('what'))) ||
-          (q.includes('fight') && q.includes('sized') && (q.includes('100') || q.includes('one'))) ||
+          (q.includes('fight') && q.includes('sized') && (q.includes('100') || /\bone\b/.test(q))) ||
           (q.includes('would you rather') && (q.includes('fight') || q.includes('be a') || q.includes('have')))) {
         const curveBallResponses = [
           `I appreciate the creativity, but I'll be honest — I'm skeptical these questions reveal much about job fit.
@@ -1798,8 +1802,9 @@ The meta-answer: I'd check whatever the previous CEO *wasn't* checking. Blind sp
       }
 
       // "How would you sell hot cocoa in Florida?" (creative sales thinking)
-      if ((q.includes('sell') && q.includes('hot') && (q.includes('florida') || q.includes('summer') || q.includes('desert') || q.includes('beach'))) ||
-          (q.includes('sell') && q.includes('ice') && (q.includes('alaska') || q.includes('winter') || q.includes('eskimo'))) ||
+      // Note: use word boundary for "hot" and "ice" to avoid matching "photo"/"shot" and "service"/"office"
+      if ((q.includes('sell') && /\bhot\b/.test(q) && (q.includes('florida') || q.includes('summer') || q.includes('desert') || q.includes('beach'))) ||
+          (q.includes('sell') && /\bice\b/.test(q) && (q.includes('alaska') || q.includes('winter') || q.includes('eskimo'))) ||
           (q.includes('sell') && (q.includes('unlikely') || q.includes('wrong market') || q.includes('bad market')))) {
         return `The wrong answer is to fight the environment. The right answer is to reframe the product.
 
@@ -2586,7 +2591,8 @@ I've supported global communications across APAC, EMEA, and NA time zones. Trave
       }
 
       // "What questions do you have for us?" - interview closer
-      if ((q.includes('question') && (q.includes('for us') || q.includes('for me') || q.includes('have for'))) || (q.includes('ask') && (q.includes('us') || q.includes('me')) && q.includes('anything'))) {
+      // Note: use word boundary for "us" and "me" to avoid matching "focus"/"just" and "time"/"name"
+      if ((q.includes('question') && (q.includes('for us') || q.includes('for me') || q.includes('have for'))) || (q.includes('ask') && (/\bus\b/.test(q) || /\bme\b/.test(q)) && q.includes('anything'))) {
         return `A few I'd want to explore:
 
 • What does success look like in this role after 90 days? After a year?
@@ -3173,7 +3179,8 @@ I've never missed a deadline at Insight. Not once. The CEO's calendar doesn't mo
       }
 
       // "Are you more strategic or tactical?"
-      if ((q.includes('strategic') && q.includes('tactical')) || (q.includes('strategic') && q.includes('or')) || (q.includes('strategy') && q.includes('execution'))) {
+      // Note: use word boundary for "or" to avoid matching "more", "work", "for", "before"
+      if ((q.includes('strategic') && q.includes('tactical')) || (q.includes('strategic') && /\bor\b/.test(q)) || (q.includes('strategy') && q.includes('execution'))) {
         return `Both, but I lean strategic.
 
 **Tactical:** I can crank out deliverables. 127+ for Joyce Mullen alone. I know how to write fast, iterate faster, and ship on time.
@@ -3487,7 +3494,8 @@ And I tinker. This chatbot exists because I wanted to see if I could build it. I
       }
 
       // "What are you reading right now?"
-      if ((q.includes('reading') && (q.includes('right now') || q.includes('currently') || q.includes('lately'))) || (q.includes('what') && q.includes('book') && q.includes('now'))) {
+      // Note: use word boundary for "now" to avoid matching "know", "knowledge"
+      if ((q.includes('reading') && (q.includes('right now') || q.includes('currently') || q.includes('lately'))) || (q.includes('what') && q.includes('book') && /\bnow\b/.test(q))) {
         return `Right now? Padgett Powell's *Indigo*. Before that, a lot of Mieko Kawakami. She's great. Also working through Brautigan.
 
 I'm also learning the Getty-Dubay method for italic handwriting. Because handwriting is still handy. Bad handwriting is like mumbling on the page.
@@ -3516,7 +3524,8 @@ What I don't do: spiral. I've learned that worrying about a deadline doesn't mov
       }
 
       // "Do you prefer working alone or with others?"
-      if ((q.includes('alone') && q.includes('others')) || (q.includes('solo') && q.includes('team')) || (q.includes('work') && q.includes('independently') && q.includes('or'))) {
+      // Note: use word boundary for "or" to avoid matching "more", "work", "for", "before"
+      if ((q.includes('alone') && q.includes('others')) || (q.includes('solo') && q.includes('team')) || (q.includes('work') && q.includes('independently') && /\bor\b/.test(q))) {
         return `I write alone. I work with others.
 
 The actual drafting happens in solitude. I need quiet, focus, and no interruptions. That's non-negotiable.
