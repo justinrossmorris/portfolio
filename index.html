@@ -850,6 +850,13 @@ But you know what actually *is* simple? Talking to me directly when you're serio
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
+      // BOREDOM / DISENGAGEMENT
+      if (q.includes('bored') || q.includes('boring') || q.includes('entertain me') || q.includes('meh') || q.includes('whatever') || q.includes('yawn')) {
+        return `I'm a chatbot. Entertainment isn't my core competency. (Though I *did* hide a rickroll in here somewhere.)
+
+If you're genuinely bored: ask me something weird. Or ask about the work. I've got responses for both.`;
+      }
+
       // COMPLIMENTS - positive statements that aren't questions
       if ((q.includes('cool') || q.includes('awesome') || q.includes('amazing') || q.includes('impressive') || q.includes('love this') || q.includes('love it') || q.includes('this is great') || q.includes('so good') || q.includes('really good') || q.includes('well done') || q.includes('nice work') || q.includes('neat') || q.includes('slick') || q.includes('clever') || q.includes('sweet') || q.includes('wow') || q.includes('fantastic') || q.includes('brilliant') || q.includes('this is nice') || q.includes('very nice') || q.includes('pretty cool') || q.includes('dope') || q.includes('sick')) && !q.includes('?')) {
         const complimentResponses = [
