@@ -2087,6 +2087,131 @@ Flexibility goes both ways. Happy to discuss what works for your team.`;
 I've supported global communications across APAC, EMEA, and NA time zones. Travel for key moments makes sense; I don't need to be on a plane every week.`;
       }
 
+      // "What questions do you have for us?" - interview closer
+      if ((q.includes('question') && (q.includes('for us') || q.includes('for me') || q.includes('have for'))) || (q.includes('ask') && (q.includes('us') || q.includes('me')) && q.includes('anything'))) {
+        return `A few I'd want to explore:
+
+• What does success look like in this role after 90 days? After a year?
+• Who are the key executives I'd be supporting, and what's their communication style?
+• How does the comms function collaborate with Marketing, HR, and Events?
+• What's the biggest communications challenge you're trying to solve right now?
+• How do you handle competing priorities when multiple leaders need support simultaneously?
+
+The meta-question behind all of these: Is this a role where I can do meaningful work, or am I filling a slot? I want to know if the words actually matter here.`;
+      }
+
+      // "Can we contact your references?"
+      if (q.includes('reference') || q.includes('referral') || (q.includes('contact') && (q.includes('employer') || q.includes('boss') || q.includes('manager')))) {
+        return `Yes — with appropriate timing.
+
+I can provide references from previous roles and colleagues who've worked with me directly. For my current position at Insight, I'd ask that we wait until we're at the offer stage, for obvious reasons.
+
+**Who you'd hear from:**
+• Former agency leads (Mercer-MacKay)
+• Colleagues from cross-functional work
+• Executives I've supported (with their permission)
+
+**What they'd say:** I deliver. I'm easy to work with. I get better over time. The work speaks, but so do the people who've seen it up close.`;
+      }
+
+      // "Walk me through a project start to finish"
+      if ((q.includes('walk') && q.includes('through')) || (q.includes('start to finish') || q.includes('start-to-finish')) || (q.includes('step by step') || q.includes('step-by-step')) || (q.includes('describe') && q.includes('project') && q.includes('process'))) {
+        return `Here's the Amplify 2024 keynote for CEO Joyce Mullen — from brief to stage.
+
+**Week 1-2: Discovery**
+Met with Joyce and the Events team. Goal: set the strategic narrative for the year. Insight's theme was "AI-first." My job was to make that feel human, not hype.
+
+**Week 3-4: Structure**
+Built the arc: open with stakes (AI is changing everything), move to proof points (Insight's actual differentiation), close with a call to action (how partners can lean in). Drafted the outline. Got buy-in.
+
+**Week 5-6: Drafting**
+Wrote the full script. 3,500 words for a 25-minute keynote. Every line tested against: "Would Joyce actually say this?" If not, cut it.
+
+**Week 7: Review cycles**
+Three rounds with Joyce. Two with Marketing. One legal pass. Real-time edits in the room. The opening changed four times.
+
+**Week 8: Delivery prep**
+Worked with Joyce on pacing, emphasis, and teleprompter comfort. Adjusted lines based on how they sounded out loud.
+
+**Result:** Standing ovation. Joyce later said it was the best keynote she'd delivered. The narrative became the foundation for Insight's partner messaging all year.`;
+      }
+
+      // "Creative disagreements with peers"
+      if ((q.includes('disagree') && (q.includes('peer') || q.includes('colleague') || q.includes('team') || q.includes('marketing') || q.includes('coworker'))) || (q.includes('conflict') && (q.includes('peer') || q.includes('creative') || q.includes('team')))) {
+        return `It happens. Here's how I handle it:
+
+**Real example:** Marketing wanted a town hall script that led with product announcements. I thought we should lead with employee recognition — the business context could come second. We disagreed.
+
+**What I did:**
+1. Asked why they wanted product first (turns out: Sales was pushing for it)
+2. Proposed a compromise: open with a 60-second employee spotlight, then transition to product news
+3. Framed it as "both/and" rather than "either/or"
+4. Let the executive (Joyce) make the final call with both options in front of her
+
+**The result:** We went with the hybrid. It landed better than either pure version would have.
+
+**My philosophy:** Creative disagreements aren't problems — they're how good work gets better. The goal isn't to win. It's to make the output stronger. I'll fight for what I believe, but I won't die on every hill.`;
+      }
+
+      // "What would your manager say about you?"
+      if ((q.includes('manager') && q.includes('say')) || (q.includes('boss') && q.includes('say')) || q.includes('back channel') || q.includes('backchannel')) {
+        return `I think Joyce would say: "He delivers. He gets it. I trust him."
+
+**More specifically:**
+• "I don't have to review his work anymore — it's right the first time."
+• "He anticipates what I need before I ask for it."
+• "He makes my job easier, not harder."
+
+**What she might flag:**
+• "He could speak up more in meetings." (Fair — I tend to process before I talk.)
+• "He's not a schmoozer." (Also fair — I build trust through output, not small talk.)
+
+**The honest version:** I'm not a high-maintenance employee. I don't need a lot of hand-holding or praise. I just want to do good work for someone who cares about getting it right. Joyce is that person. The next one could be too.`;
+      }
+
+      // "How quickly can you learn a new industry?"
+      if ((q.includes('learn') && (q.includes('industry') || q.includes('sector') || q.includes('domain'))) || (q.includes('new') && q.includes('industry')) || (q.includes('ramp') && q.includes('up'))) {
+        return `Fast — it's one of my strengths.
+
+**Track record:**
+• Joined Insight (IT solutions) with no tech background. Within 3 months, I was writing keynotes on AI, cloud, and digital transformation.
+• At Mercer-MacKay, I wrote for NetApp, AWS, Splunk, Snowflake — each with different technical stacks. Learned enough to sound credible, fast.
+• My PhD trained me to learn deeply, quickly. I spent years reading dense material and translating it for different audiences.
+
+**My approach:**
+1. Immerse in the source material — earnings calls, analyst reports, internal docs
+2. Talk to SMEs early and often — ask dumb questions before they become expensive
+3. Focus on the *story*, not just the facts — what matters to the audience?
+4. Get reps — the first draft is always rougher than the fifth
+
+**What I can't do:** Fake expertise I don't have. But I can learn fast enough that the gap closes quickly. Usually by month two, I'm not the new guy anymore.`;
+      }
+
+      // "Relocation"
+      if (q.includes('relocate') || q.includes('relocation') || q.includes('move to') || q.includes('willing to move')) {
+        return `It depends on the opportunity.
+
+**Columbus, OH:** I'm here now. No relocation needed.
+
+**Remote:** Preferred for day-to-day work. I've proven I can deliver high-stakes exec comms without being in the building.
+
+**Hybrid (commutable):** Open to it, especially during ramp-up or around major events.
+
+**Full relocation:** For the right role, yes — but "right" means senior-level, high-impact, and compensated accordingly. I'm not moving across the country for a lateral move.
+
+**The honest answer:** I'm flexible, but I'm not desperate. If relocation is required, let's talk about why it's essential and what the package looks like.`;
+      }
+
+      // "Schedule a call / book time / calendar"
+      if (q.includes('schedule') || q.includes('calendar') || q.includes('book time') || q.includes('set up a call') || q.includes('meet') || q.includes('chat') || q.includes('coffee')) {
+        return `I don't have a public calendar link, but I'm responsive on email. Reach out and we'll find a time:
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>
+
+I typically respond within 24 hours. If it's urgent, say so — I'll prioritize.`;
+      }
+
       // "Where do you see yourself in X years"
       if (q.includes('see yourself') || q.includes('career goal') || q.includes('long term') || (q.includes('where') && q.includes('years'))) {
         return `I want to keep growing in executive communications — ideally into a role where I'm shaping comms strategy, not just executing it.
@@ -2124,6 +2249,174 @@ I'm not going to pretend I've done it. But I'm ready to.`;
 • Global communications across APAC, EMEA, NA time zones
 
 **What I understand:** In crisis comms, the words matter more, not less. Precision. Tone. Stakeholder alignment. I've written for a CEO who can't afford to say the wrong thing — and she trusts me with those moments.`;
+      }
+
+      // "Board communications"
+      if (q.includes('board') || q.includes('board of directors') || q.includes('board meeting') || q.includes('board prep')) {
+        return `Yes — board prep is part of the work at Insight.
+
+**What I do:**
+• Support materials for CEO presentations to the board
+• Talking points and message framing for board-level conversations
+• Narrative alignment to ensure external and internal messaging stays consistent
+
+**What I don't do:**
+• I'm not in the room. I write the materials; the CEO delivers them.
+• I don't handle board minutes, governance docs, or investor relations directly.
+
+**The skill that transfers:** Board communications require precision and defensibility. Every word has to hold up under scrutiny. That discipline shapes everything I write — even when the audience is less demanding.`;
+      }
+
+      // "Investor relations / earnings calls"
+      if (q.includes('investor') || q.includes('earnings') || q.includes('shareholder') || q.includes('analyst call') || q.includes('ir ')) {
+        return `Limited direct experience, but adjacent exposure.
+
+**What I've done:**
+• Written CEO messaging that aligns with earnings narratives
+• Supported quarterly communications that reference financial performance
+• Worked in a publicly traded company (Insight is Fortune 500) where IR alignment matters
+
+**What I haven't done:**
+• Written earnings call scripts directly
+• Drafted shareholder letters or investor presentations
+• Worked embedded in an IR function
+
+**Honest take:** If you need a dedicated IR writer, that's not my primary lane. But I understand how CEO messaging needs to align with what IR is saying — and I've operated in that ecosystem.`;
+      }
+
+      // "AI tools for writing" (practical, not philosophical)
+      if ((q.includes('ai') && (q.includes('tool') || q.includes('use') || q.includes('workflow') || q.includes('write'))) || q.includes('chatgpt') || q.includes('claude') || (q.includes('how') && q.includes('ai'))) {
+        return `I use AI constantly. It's a force multiplier, not a replacement.
+
+**My actual workflow:**
+• **Drafting:** I use Claude to brainstorm angles, pressure-test arguments, and iterate on structure. First drafts often happen in conversation with AI.
+• **Research:** Summarizing long documents, pulling out key themes, identifying gaps in my thinking.
+• **Editing:** "What's the weakest part of this argument?" "How could this be misread?" AI is a good sparring partner.
+
+**What AI can't do:**
+• Build trust with a CEO over months of deliverables
+• Read the room when Joyce hesitates on a line
+• Know that "this feels off" means something specific and personal
+
+**My philosophy:** The writers who thrive will be the ones who use AI well — not the ones who pretend it doesn't exist or the ones who outsource their thinking entirely. I'm trying to be in the first camp.
+
+This chatbot exists because I understand both the technology and its limits.`;
+      }
+
+      // "Ghostwriting ethics / authenticity"
+      if (q.includes('ghostwrit') || q.includes('authentic') || (q.includes('words') && q.includes('mouth')) || (q.includes('ethics') && q.includes('writing')) || q.includes('put words')) {
+        return `It's a fair question. How do I reconcile putting words in someone's mouth?
+
+**My view:** Ghostwriting isn't deception — it's collaboration. The CEO provides the ideas, the priorities, the strategic intent. I provide the craft: the structure, the phrasing, the rhythm that makes it land.
+
+**The test I use:** Would this person say this? Not "could they" — *would* they? If Joyce wouldn't say a line in real life, it doesn't survive the draft. Voice matching isn't about making her sound generic-executive. It's about making her sound like *her*, on her best day.
+
+**What makes it ethical:**
+• The ideas are genuinely theirs
+• They review and approve everything
+• The voice is theirs — I'm just the translator
+• There's no pretense; everyone knows how this works
+
+**Where I draw the line:** I won't write something the executive doesn't believe. If they want to say something I think is dishonest or harmful, I'll push back. The trust goes both ways.`;
+      }
+
+      // "DEI / belonging / inclusion messaging"
+      if (q.includes('dei') || q.includes('diversity') || q.includes('inclusion') || q.includes('belonging') || q.includes('equity')) {
+        return `I can write it. I have written it. It's part of the job in corporate comms.
+
+**What I've done:**
+• Internal messaging around belonging initiatives
+• Town hall segments acknowledging employee resource groups
+• Inclusive language reviews on executive communications
+
+**My honest take:** I approach DEI messaging the same way I approach any exec comms — what does the audience need to hear, and how do we say it authentically? The best belonging messaging I've seen focuses on specific actions and accountability. The worst is performative boilerplate that employees see through instantly.
+
+**Where I land:** I'm a professional writer. I'll craft messaging that reflects the executive's genuine commitments and the company's actual initiatives. I won't write empty gestures, and I'll push back on language that feels hollow.
+
+If you're looking for someone who'll evangelize, that's not me. If you're looking for someone who'll write honest, grounded communications on these topics — I can do that.
+
+For more on where I stand: <a href="https://www.compactmag.com/article/the-lost-generation/" target="_blank" class="text-emerald-400 underline">The Lost Generation</a> (Compact Magazine)`;
+      }
+
+      // "International / cross-cultural / global communications"
+      if (q.includes('international') || q.includes('global') || q.includes('cross-cultural') || q.includes('apac') || q.includes('emea') || q.includes('regional')) {
+        return `Yes — global communications are part of the job at Insight.
+
+**What I do:**
+• Write for audiences across APAC, EMEA, and NA time zones
+• Adapt messaging for regional contexts (what resonates in Australia vs. Germany vs. the US isn't always the same)
+• Support regional presidents and VPs with localized talking points
+
+**Real example:** After the Bondi Beach attack, I wrote Joyce's message to APAC teammates specifically. The tone had to acknowledge local grief while maintaining alignment with global company messaging.
+
+**What I've learned:**
+• Cultural context matters more than I initially assumed
+• "Global" doesn't mean "one-size-fits-all" — it means "adaptable"
+• Time zones are a logistical challenge, but the real challenge is relevance
+
+**Honest caveat:** I'm not a localization specialist. I don't speak other languages. But I've operated in a global comms environment and understand the coordination it requires.`;
+      }
+
+      // "Project killed / canceled"
+      if ((q.includes('project') && (q.includes('killed') || q.includes('cancel') || q.includes('cut') || q.includes('scrapped'))) || (q.includes('work') && q.includes('never') && q.includes('used'))) {
+        return `It happens. More often than people realize.
+
+**Example:** I once wrote a complete keynote for an executive event — 3,000+ words, multiple review rounds, fully approved. Two weeks before the event, strategy shifted. The entire narrative got scrapped. We rebuilt from zero.
+
+**How I handle it:**
+1. **Don't take it personally.** The work wasn't wasted — it clarified what *not* to say.
+2. **Salvage what you can.** Often the research, the structure, or the key phrases survive into the next version.
+3. **Focus on the new problem.** Mourning the old draft doesn't help anyone.
+
+**The mindset:** Executive comms is high-stakes and high-change. If you can't let go of work that got killed, you'll burn out. I've learned to hold my drafts loosely — the goal is the outcome, not the artifact.`;
+      }
+
+      // "Push back hard / fought for something"
+      if ((q.includes('push back') || q.includes('pushback')) || (q.includes('fought') && q.includes('for')) || (q.includes('stand') && q.includes('ground')) || (q.includes('disagree') && q.includes('exec'))) {
+        return `Yes — and it's part of the job.
+
+**Real example:** Joyce wanted to open a town hall with a product announcement. I thought the audience (employees, not customers) needed something more human first — recognition, context, connection. I pushed back.
+
+**What I said:** "The product news will land better if they feel seen first. Can we give them 90 seconds of acknowledgment before we pivot to business?"
+
+**What happened:** She agreed. We restructured the opening. The town hall feedback was stronger than usual.
+
+**My philosophy:** Pushing back isn't about ego — it's about serving the outcome. I'll fight for what I believe, but I fight with reasons, not just opinions. And if the executive still disagrees after hearing my case, I execute their vision fully. That's the job.
+
+**What I won't do:** Push back on everything. Pick your battles. If you fight every draft, you lose credibility for the fights that matter.`;
+      }
+
+      // "Greatest fear professionally"
+      if ((q.includes('fear') && (q.includes('professional') || q.includes('career') || q.includes('work'))) || (q.includes('what') && q.includes('scare') && q.includes('you')) || q.includes('worried about')) {
+        return `Becoming irrelevant.
+
+Not in the "AI will take my job" sense — I'm less worried about that than most. The writers who learn to use AI well will thrive. The ones who don't will struggle.
+
+What I actually fear: getting comfortable. Coasting. Doing the same thing for ten years and waking up to find the world moved on.
+
+**How I guard against it:**
+• Stay close to the technology (this chatbot is one example)
+• Keep learning — new industries, new formats, new tools
+• Seek feedback that actually stings, not just praise
+
+**The honest version:** I'd rather be challenged and growing than comfortable and stagnant. That fear is useful. It keeps me moving.`;
+      }
+
+      // "Regulated industries / healthcare / financial"
+      if (q.includes('regulated') || q.includes('healthcare') || q.includes('financial services') || q.includes('legal') || q.includes('compliance') || q.includes('pharma')) {
+        return `Limited direct experience in heavily regulated industries, but relevant adjacent work.
+
+**What I have:**
+• Ethics consulting for the Gates Foundation — clinical trial design and gene drive technology. High-stakes, highly scrutinized communications.
+• Working at a publicly traded company (Insight) where legal review is standard for executive communications.
+• PhD training in careful argumentation — every claim defensible, every word intentional.
+
+**What I don't have:**
+• Direct experience in pharma, financial services, or healthcare comms
+• MLR review cycles or FINRA compliance workflows
+• Industry-specific regulatory fluency
+
+**Honest take:** If you need someone who already knows the FDA submission process or SEC disclosure rules, that's not me. But I've written in high-stakes environments where precision and defensibility matter. The skill translates — the domain knowledge would need ramp-up time.`;
       }
 
       // "Team / independent work style"
