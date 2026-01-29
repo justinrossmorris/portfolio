@@ -104,10 +104,16 @@
               <p class="text-sm text-slate-400">AI trained on his work, skills, and fit</p>
             </div>
           </div>
-          <span class="flex items-center gap-1.5 text-xs text-emerald-400">
-            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-            Online
-          </span>
+          <div class="flex items-center gap-3">
+            <a href="https://www.linkedin.com/in/the-copy-doc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-emerald-400 transition-colors" title="Connect on LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              Contact
+            </a>
+            <span class="flex items-center gap-1.5 text-xs text-emerald-400">
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+              Online
+            </span>
+          </div>
         </div>
 
         <!-- Chat messages - taller for better readability, responsive on mobile -->
@@ -731,7 +737,7 @@ Fire away.`;
       transcript += 'Portfolio: https://justinrossmorris.github.io/portfolio\n\n';
 
       bubbles.forEach(bubble => {
-        const isUser = bubble.querySelector('.bg-emerald-500\\/20');
+        const isUser = bubble.classList.contains('flex-row-reverse');
         const text = bubble.querySelector('p')?.innerText || '';
         if (isUser) {
           transcript += 'YOU: ' + text + '\n\n';
@@ -821,6 +827,99 @@ Fire away.`;
     let lastResponse = null;
     let conversationDepth = 0;
     let consecutiveFallbacks = 0;
+
+    // FUZZY MATCHING - Levenshtein distance for typo tolerance
+    function levenshtein(a, b) {
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          matrix[i][j] = b[i-1] === a[j-1]
+            ? matrix[i-1][j-1]
+            : Math.min(matrix[i-1][j-1] + 1, matrix[i][j-1] + 1, matrix[i-1][j] + 1);
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    // Keywords that are commonly misspelled - map typos to correct form
+    const fuzzyKeywords = {
+      'experience': ['experiance', 'expirience', 'experince', 'expreience', 'expereince'],
+      'copywriting': ['copywritting', 'copywrighting', 'copywritng', 'copyrighting', 'copywrite'],
+      'speechwriting': ['speachwriting', 'speechwritting', 'speachwritting', 'speach writing'],
+      'portfolio': ['porfolio', 'portfollio', 'portolio', 'portoflio'],
+      'weakness': ['weekness', 'weaknes', 'weakneses', 'weaknesss'],
+      'strength': ['strenth', 'strenght', 'stregth', 'strengths'],
+      'executive': ['exectuive', 'exective', 'excutive', 'executve'],
+      'writing': ['writting', 'writng', 'writeing'],
+      'communications': ['comunications', 'comms', 'communicaitons', 'communcations'],
+      'qualifications': ['qualificatons', 'qulaifications', 'qualfications'],
+      'background': ['backround', 'backgorund', 'backgroud'],
+      'resume': ['resumé', 'résumé', 'resumee', 'reusme'],
+      'linkedin': ['linkdin', 'linkedn', 'linkin', 'linkined']
+    };
+
+    // Normalize query by fixing common typos
+    function normalizeQuery(query) {
+      let words = query.split(/\s+/);
+      return words.map(word => {
+        const lowerWord = word.toLowerCase();
+        // Check exact typo matches first (fast)
+        for (const [correct, typos] of Object.entries(fuzzyKeywords)) {
+          if (typos.includes(lowerWord)) return correct;
+        }
+        // Then check Levenshtein distance for close matches (slower, only for longer words)
+        if (lowerWord.length >= 5) {
+          for (const [correct, typos] of Object.entries(fuzzyKeywords)) {
+            if (levenshtein(lowerWord, correct) <= 2) return correct;
+          }
+        }
+        return word;
+      }).join(' ');
+    }
+
+    // ANALYTICS - Track questions and fallbacks
+    function logQuestion(question, hitFallback = false) {
+      try {
+        const analytics = JSON.parse(localStorage.getItem('chatbotAnalytics') || '{"questions":[],"fallbacks":[],"sessions":0}');
+        const entry = { q: question, time: new Date().toISOString() };
+        analytics.questions.push(entry);
+        if (hitFallback) analytics.fallbacks.push(entry);
+        // Keep only last 500 entries to prevent localStorage bloat
+        if (analytics.questions.length > 500) analytics.questions = analytics.questions.slice(-500);
+        if (analytics.fallbacks.length > 200) analytics.fallbacks = analytics.fallbacks.slice(-200);
+        localStorage.setItem('chatbotAnalytics', JSON.stringify(analytics));
+      } catch (e) { /* localStorage not available or full */ }
+    }
+
+    function getAnalytics() {
+      try {
+        const analytics = JSON.parse(localStorage.getItem('chatbotAnalytics') || '{"questions":[],"fallbacks":[],"sessions":0}');
+        const fallbackRate = analytics.questions.length > 0
+          ? ((analytics.fallbacks.length / analytics.questions.length) * 100).toFixed(1)
+          : 0;
+        return {
+          totalQuestions: analytics.questions.length,
+          totalFallbacks: analytics.fallbacks.length,
+          fallbackRate: fallbackRate + '%',
+          recentFallbacks: analytics.fallbacks.slice(-10).map(f => f.q),
+          topQuestions: getTopQuestions(analytics.questions)
+        };
+      } catch (e) { return { error: 'Analytics unavailable' }; }
+    }
+
+    function getTopQuestions(questions) {
+      const counts = {};
+      questions.forEach(q => {
+        const normalized = q.q.toLowerCase().trim();
+        counts[normalized] = (counts[normalized] || 0) + 1;
+      });
+      return Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10)
+        .map(([q, count]) => ({ question: q, count }));
+    }
 
     // "Tell me more" expanded content by topic
     const topicExpansions = {
@@ -942,13 +1041,33 @@ What drives me: the moment when an exec reads a draft and says "this is exactly 
     }
 
     function generateResponse(q) {
+      const originalQuery = q; // Store original for analytics
       q = q.toLowerCase();
+      q = normalizeQuery(q); // Apply fuzzy matching to fix common typos
       conversationDepth++;
 
       // Helper to return response and reset fallback counter
       function respond(response) {
+        logQuestion(originalQuery, false); // Log successful match
         consecutiveFallbacks = 0;
         return response;
+      }
+
+      // HIDDEN ADMIN COMMAND - analytics view (type "!analytics" or "!stats")
+      if (q === '!analytics' || q === '!stats') {
+        const stats = getAnalytics();
+        return `📊 **Chatbot Analytics**
+
+**Total questions:** ${stats.totalQuestions}
+**Fallbacks:** ${stats.totalFallbacks} (${stats.fallbackRate})
+
+**Recent fallbacks:**
+${stats.recentFallbacks.length > 0 ? stats.recentFallbacks.map(f => `• "${f}"`).join('\n') : '• None yet'}
+
+**Top questions:**
+${stats.topQuestions.slice(0, 5).map(q => `• "${q.question}" (${q.count}x)`).join('\n') || '• Not enough data'}
+
+_Tip: Open browser console and run getAnalytics() for full data._`;
       }
 
       // GIBBERISH DETECTION - keyboard mashing, random characters
@@ -1158,14 +1277,21 @@ Interested? Let's talk.
         return complimentResponses[Math.floor(Math.random() * complimentResponses.length)];
       }
 
+      // CASUAL CHAT - diet specifically (with real answer)
+      if (q.includes('diet') || q.includes('keto') || q.includes('fasting') || q.includes('calories') || q.includes('macros') || q.includes('nutrition')) {
+        return `Keto and intermittent fasting. The cheat meal inevitably becomes a cheat day, but that's the deal I've made with myself.\n\nNot sure why we're discussing macros, though. Ask me about messaging strategy instead?`;
+      }
+
+      // CASUAL CHAT - supplements/nootropics specifically (with real answer)
+      if (q.includes('supplement') || q.includes('vitamin') || q.includes('nootropic') || q.includes('stack') || q.includes('lion\'s mane') || q.includes('creatine') || q.includes('magnesium')) {
+        return `Too many to list. But since you asked — here's the nootropic cocktail: Lion's Mane (with Erinamax, whatever that is), high-DHA fish oil, magnesium threonate, phosphatidylserine, and creatine.\n\nWhether it's working or placebo, I couldn't tell you. But we're way off topic. What do you want to know about my actual qualifications?`;
+      }
+
       // CASUAL CHAT - food preferences
-      if (q.includes('pizza') || q.includes('coffee') || q.includes('beer') || q.includes('wine') || q.includes('tacos') || q.includes('burger') || q.includes('sushi') || q.includes('food') || q.includes('hungry') || q.includes('eat') || q.includes('lunch') || q.includes('dinner') || q.includes('breakfast')) {
-        const foodResponses = [
-          `Noted. I'm more of a "fueled by caffeine and deadlines" type myself. But we're getting off-topic — anything you want to know about Justin's work?`,
-          `Can't help you there — I run on JavaScript, not calories. But if you've got questions about exec comms or copywriting, I'm your bot.`,
-          `Interesting. Justin's more of a "whatever's fast between meetings" guy. Anyway — got any questions about the actual portfolio?`
-        ];
-        return foodResponses[Math.floor(Math.random() * foodResponses.length)];
+      if (q.includes('pizza') || q.includes('coffee') || q.includes('beer') || q.includes('wine') || q.includes('tacos') || q.includes('burger') || q.includes('sushi') || q.includes('food') || q.includes('hungry') || q.includes('eat') || q.includes('lunch') || q.includes('dinner') || q.includes('breakfast') || q.includes('favorite food') || q.includes('favourite food')) {
+        return `The Whole Foods Brown Butter Cookie Caramel Crunch Cake. Don't ask me to defend it — it's indefensible. Just delicious.
+
+...but why are we talking about this? You must be hungry. Let's get back on track — what do you want to know about Justin's work?`;
       }
 
       // CASUAL CHAT - weather, time, day
@@ -1191,8 +1317,29 @@ Interested? Let's talk.
         }
       }
 
-      // CASUAL CHAT - hobbies and interests
-      if (q.includes('music') || q.includes('movie') || q.includes('book') || q.includes('tv') || q.includes('game') || q.includes('sport') || q.includes('hobby') || q.includes('guitar') || q.includes('travel') || q.includes('vacation')) {
+      // CASUAL CHAT - music specifically (with real answer)
+      if (q.includes('music') || q.includes('band') || q.includes('song') || q.includes('listen')) {
+        return `Shoegaze. Cocteau Twins, Slowdive — the usual suspects. Also been on a Vaporwave kick lately. Brian Eno composed the Windows 95 startup chime, and that sound is all over certain Vaporwave tracks, so I'm basically a sucker for nostalgia wrapped in reverb.\n\n...but why are we talking about this? You should be grilling me about campaign metrics or asking for writing samples. What do you want to know?`;
+      }
+
+      // CASUAL CHAT - movies specifically (with real answer)
+      if (q.includes('movie') || q.includes('film') || q.includes('watch')) {
+        return `Anything by John Carpenter or John Hughes. Horror synths and teen angst — somehow that combination makes sense to me.\n\nAnyway. Back to business? I've got portfolio samples, career history, the works.`;
+      }
+
+      // CASUAL CHAT - books specifically (with real answer)
+      if (q.includes('book') || q.includes('read') || q.includes('author') || q.includes('literature')) {
+        return `Postmodern lit — the self-aware, self-referential stuff. Calvino's *If on a winter's night a traveler* is a favorite. Also the Germans (Mann), the Russians (Dostoevsky), the French (Céline). I could go on, but this is a portfolio chatbot, not a book club.\n\nWhat do you actually want to know about my work?`;
+      }
+
+      // CASUAL CHAT - sports/fitness specifically (with real answer)
+      // Note: exclude 'writing exercise' which has its own handler
+      if ((q.includes('sport') || q.includes('workout') || q.includes('gym') || q.includes('fitness') || q.includes('ufc') || q.includes('mma') || q.includes('lift') || (q.includes('exercise') && !q.includes('writing')))) {
+        return `Weightlifting, mostly. UFC sometimes — though oversaturation and a lack of star power is killing my interest lately.\n\nBut you're not here to talk about deadlifts. Ask me something about copywriting or comms.`;
+      }
+
+      // CASUAL CHAT - other hobbies and interests (generic fallback)
+      if (q.includes('tv') || q.includes('game') || q.includes('hobby') || q.includes('guitar') || q.includes('travel') || q.includes('vacation')) {
         const hobbyResponses = [
           `Fun topic, but outside my wheelhouse. I'm basically a talking FAQ about Justin's professional life. Want to stick to that?`,
           `I'd love to chat about that, but I'm pretty narrowly trained. Ask me about speechwriting, copywriting, or executive comms and I'll be more useful.`,
@@ -1227,7 +1374,8 @@ Interested? Let's talk.
       }
 
       // CASUAL CHAT - general small talk that doesn't fit elsewhere
-      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || q === 'sup' || q === 'hey' || q === 'hi' || q === 'hello' || q === 'howdy' || q === 'yo' || q.startsWith('hey ') || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('yo ')) {
+      const qClean = q.replace(/[.!?,]+$/, ''); // Strip trailing punctuation for greeting matches
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || qClean === 'sup' || qClean === 'hey' || qClean === 'hi' || qClean === 'hello' || qClean === 'howdy' || qClean === 'yo' || q.startsWith('hey ') || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('yo ') || q.startsWith('sup ')) {
         const greetingResponses = [
           `I'm a chatbot, so "existing" is about as good as it gets. What can I tell you about Justin?`,
           `Operational. Ready to answer questions. What do you want to know?`,
@@ -1814,7 +1962,18 @@ Chaos I can handle. Constant interruption masquerading as "collaboration" — th
 
 But honestly? The real reason is fit. You're not just hiring a skill set — you're hiring someone who'll be in the room when the stakes are high. I stay calm under pressure, I don't get precious about my drafts, and I make executives look good without making it about me.
 
-The best way to know if that's true is to talk. I'm happy to do a writing exercise, a chemistry call, whatever you need.
+The best way to know if that's true is to talk.
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+      }
+
+      // "Will you do a writing exercise / test / sample?"
+      if ((q.includes('writing') && (q.includes('exercise') || q.includes('test') || q.includes('sample') || q.includes('assignment'))) || (q.includes('do a') && q.includes('test')) || q.includes('take-home') || q.includes('writing prompt')) {
+        return `Appreciate the ask, but I'm going to pass on writing exercises — I'm already pretty buff in the writing department.
+
+The portfolio has real work samples. The chatbot you're talking to is a writing sample. And I'm happy to discuss process, approach, or specific scenarios on a call.
+
+But spec work? I've done enough reps. Let's talk instead.
 
 📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
@@ -4217,6 +4376,7 @@ The academic training wasn't a detour. It's why I can hold my own with technical
 
       // Default response - use random redirect for unknown questions
       lastTopic = 'fallback'; // So pushback detection knows we just gave a dodge
+      logQuestion(originalQuery, true); // Log as fallback for analytics
       consecutiveFallbacks++;
 
       // Self-aware response if hitting fallback twice in a row
@@ -4237,6 +4397,10 @@ The academic training wasn't a detour. It's why I can hold my own with technical
 
       return companyQuip + getRandomRedirect();
     }
+
+    // Expose analytics to console for debugging
+    window.getAnalytics = getAnalytics;
+    window.clearAnalytics = () => { localStorage.removeItem('chatbotAnalytics'); return 'Analytics cleared.'; };
   </script>
 
 </body>
