@@ -1523,7 +1523,8 @@ Just tell me which, or say "both" if you want to compare.`;
       }
 
       // "Is he smart?" / intelligence questions
-      if (q.includes('smart') || q.includes('intelligent') || q.includes('genius') || q.includes('iq') || q.includes('clever') || q.includes('bright')) {
+      // Note: use word boundary for "iq" to avoid matching "liquid"
+      if (q.includes('smart') || q.includes('intelligent') || q.includes('genius') || /\biq\b/.test(q) || q.includes('clever') || q.includes('bright')) {
         return `Ph.D. in philosophy, so... academically credentialed, at least. But "smart" is a weird metric for hiring.
 
 What matters more: Can I learn your business fast? (Yes — I've onboarded at Fortune 500 pace.) Can I translate complex ideas into clear language? (That's literally the job.) Can I anticipate what an exec needs before they ask? (127+ CEO deliverables says yes.)
