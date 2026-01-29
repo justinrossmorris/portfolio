@@ -857,6 +857,78 @@ But you know what actually *is* simple? Talking to me directly when you're serio
 If you're genuinely bored: ask me something weird. Or ask about the work. I've got responses for both.`;
       }
 
+      // ROUGH DAY / SADNESS
+      if (q.includes('rough day') || q.includes('bad day') || q.includes('terrible day') || q.includes('sad') || q.includes('depressed') || q.includes('feeling down') || q.includes('not great') || q.includes('could be better') || q.includes('been better') || q.includes('struggling') || q.includes('having a hard time') || q.includes('tough day') || q.includes('awful day')) {
+        const roughDayResponses = [
+          `Sorry to hear that. I'm just a chatbot, so my therapeutic range is limited — but I'm happy to distract you with portfolio talk, or you can just vent at me. I won't judge.`,
+          `That's rough. I can't fix your day, but I can answer questions about Justin if you need a distraction. Or just type whatever — I'm a good listener (in the sense that I process text).`,
+          `I hear you. No pressure to ask anything work-related if you're not feeling it. But if a distraction helps, I've got plenty of answers queued up.`
+        ];
+        return roughDayResponses[Math.floor(Math.random() * roughDayResponses.length)];
+      }
+
+      // ANXIETY / NERVES / STRESS
+      if (q.includes('anxious') || q.includes('anxiety') || q.includes('nervous') || q.includes('stressed') || q.includes('stress') || q.includes('overwhelmed') || q.includes('freaking out') || q.includes('worried') || q.includes('panicking') || q.includes('panic')) {
+        const anxietyResponses = [
+          `Deep breath. I'm just a chatbot — no stakes here. Ask me something easy, or don't ask me anything at all. Whatever works.`,
+          `Take your time. No rush on my end — I'll be here whether you ask something now or in ten minutes. (Or ten hours. I don't sleep.)`,
+          `I get it. Well, I don't *get* it — I'm JavaScript — but I understand the concept. Low pressure here. Ask me anything or nothing.`
+        ];
+        return anxietyResponses[Math.floor(Math.random() * anxietyResponses.length)];
+      }
+
+      // EXHAUSTION / BURNOUT / TIRED
+      if (q.includes('exhausted') || q.includes('tired') || q.includes('burnt out') || q.includes('burned out') || q.includes('burnout') || q.includes('drained') || q.includes('wiped') || q.includes('no energy') || q.includes('running on empty') || q.includes('need coffee') || q.includes('need sleep')) {
+        const exhaustionResponses = [
+          `I feel that. (Metaphorically. I don't feel anything.) If you're too tired to think of questions, just type "work" or "experience" and I'll do the heavy lifting.`,
+          `Sounds like you need rest more than you need to browse a portfolio. But if you're committed to procrastinating on sleep, I'm here.`,
+          `Low-energy mode activated. I'll keep my answers short unless you want the deep dive. Just say "tell me about [topic]" and I'll handle it.`
+        ];
+        return exhaustionResponses[Math.floor(Math.random() * exhaustionResponses.length)];
+      }
+
+      // CONFUSION ABOUT THE BOT
+      if (q.includes('confused') || q.includes('don\'t understand') || q.includes('what is this') || q.includes('how does this work') || q.includes('what do i do') || q.includes('what am i supposed to') || q.includes('lost') || q.includes('i don\'t get it') || q.includes('huh?') || q === 'huh' || q === '?') {
+        const confusionResponses = [
+          `Fair question. This is a chatbot that answers questions about Justin Morris — his experience, skills, work samples, and whether he'd be a good fit for your team. Try asking something like "what's your experience?" or "why are you looking for a new role?"`,
+          `Simple version: I'm Justin's portfolio assistant. Ask me anything about his background, and I'll give you a real answer. Try "tell me about your experience" or "what kind of work do you do?"`,
+          `You're talking to a chatbot built into Justin's portfolio. I can answer questions about his work, experience, skills, and fit. Just type a question — I'm pretty flexible about phrasing.`
+        ];
+        return confusionResponses[Math.floor(Math.random() * confusionResponses.length)];
+      }
+
+      // IMPATIENCE / FRUSTRATION
+      if (q.includes('impatient') || q.includes('frustrated') || q.includes('annoyed') || q.includes('annoying') || q.includes('ugh') || q.includes('come on') || q.includes('hurry') || q.includes('get to the point') || q.includes('tldr') || q.includes('too long') || q.includes('just tell me') || q.includes('skip to')) {
+        const impatienceResponses = [
+          `Got it — you want the highlight reel. Justin: 10+ years in comms, Gates Foundation consulting, PhD in philosophy, writes for execs. What specifically do you want to know?`,
+          `Short version: experienced comms pro, executive writer, strategic thinker. Ask me something specific and I'll keep it tight.`,
+          `I'll speed it up. What do you need to know? Experience? Skills? Work samples? Pick one and I'll cut to the chase.`
+        ];
+        return impatienceResponses[Math.floor(Math.random() * impatienceResponses.length)];
+      }
+
+      // EXCITEMENT / ENTHUSIASM
+      if (q.includes('excited') || q.includes('pumped') || q.includes('stoked') || q.includes('can\'t wait') || q.includes('enthusiastic')) {
+        const excitementResponses = [
+          `That energy is contagious — even for a chatbot. What do you want to know? I've got answers about experience, work samples, philosophy background, you name it.`,
+          `Glad you're into it. Ask me anything — the deeper the question, the more interesting the answer gets.`,
+          `Love the enthusiasm. Let's channel it: what are you most curious about? Experience? Writing samples? The philosophy PhD?`
+        ];
+        return excitementResponses[Math.floor(Math.random() * excitementResponses.length)];
+      }
+
+      // INSULTS / CRITICISM OF THE BOT
+      if (q.includes('stupid') || q.includes('dumb') || q.includes('useless') || q.includes('suck') || q.includes('terrible') || q.includes('worst') || q.includes('hate this') || q.includes('hate you') || q.includes('garbage') || q.includes('trash') || q.includes('worthless') || q.includes('idiot') || q.includes('moron') || q.includes('pathetic') || q.includes('lame') || q === 'bad' || q === 'no') {
+        const insultResponses = [
+          `Fair. I'm a JavaScript function pretending to be a person — there are limits. But if you've got a real question about Justin's experience or fit, I can probably help with that.`,
+          `You're not wrong. I'm a chatbot with a lot of if-statements and a fragile ego. Ask me something specific and I'll try to redeem myself.`,
+          `Noted. I'll add "disappointing recruiters" to my list of skills. In the meantime — anything I can actually help with?`,
+          `I've been called worse by better algorithms. But seriously: if there's something specific you want to know, I'm here.`,
+          `That's valid feedback. I'm not great at everything — mostly just answering questions about Justin. Got one of those?`
+        ];
+        return insultResponses[Math.floor(Math.random() * insultResponses.length)];
+      }
+
       // COMPLIMENTS - positive statements that aren't questions
       if ((q.includes('cool') || q.includes('awesome') || q.includes('amazing') || q.includes('impressive') || q.includes('love this') || q.includes('love it') || q.includes('this is great') || q.includes('so good') || q.includes('really good') || q.includes('well done') || q.includes('nice work') || q.includes('neat') || q.includes('slick') || q.includes('clever') || q.includes('sweet') || q.includes('wow') || q.includes('fantastic') || q.includes('brilliant') || q.includes('this is nice') || q.includes('very nice') || q.includes('pretty cool') || q.includes('dope') || q.includes('sick')) && !q.includes('?')) {
         const complimentResponses = [
@@ -1004,8 +1076,18 @@ If anything, you're getting a bargain: philosophical training at speechwriter ra
 That said, availability should justify the value a company puts on my skills. If you're expecting nights and weekends, you might want to ask me about salary expectations. 😉`;
       }
 
-      // Small talk / casual greetings
-      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('hows it going') || q.includes('what\'s up') || q.includes('whats up') || q.includes('how ya doing') || q.includes('how you doing') || q.includes('you doing ok') || q.includes('doing ok') || q.includes('you good') || q.includes('all good') || q.includes('how\'s everything') || q.includes('what\'s going on') || (q === 'sup') || (q === 'hey') || (q === 'hi') || (q === 'hello')) {
+      // DIRECT GREETINGS (hi, hello, hey)
+      if (q === 'hi' || q === 'hello' || q === 'hey' || q === 'sup' || q === 'yo' || q === 'hiya' || q === 'howdy' || q === 'heya' || q === 'hi there' || q === 'hello there' || q === 'hey there') {
+        const greetingResponses = [
+          `Hey! Ask me anything about Justin's experience, skills, or fit. Or just poke around — I've got answers for most things.`,
+          `Hi! I'm here to answer questions about Justin. What would you like to know?`,
+          `Hello! Fire away — experience, work samples, why he's looking, whatever's on your mind.`
+        ];
+        return greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
+      }
+
+      // "HOW ARE YOU" style small talk
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('hows it going') || q.includes('what\'s up') || q.includes('whats up') || q.includes('how ya doing') || q.includes('how you doing') || q.includes('you doing ok') || q.includes('doing ok') || q.includes('you good') || q.includes('all good') || q.includes('how\'s everything') || q.includes('what\'s going on')) {
         const smallTalkResponses = [
           `Doing well! I'm a chatbot, so I don't get tired or have bad days. Silver lining of not being human.\n\nWhat can I help you with?`,
           `Can't complain — though I literally can't, I'm just code. How can I help?`,
@@ -1014,6 +1096,26 @@ That said, availability should justify the value a company puts on my skills. If
           `All good here. I've been waiting for someone to talk to. What can I tell you?`
         ];
         return smallTalkResponses[Math.floor(Math.random() * smallTalkResponses.length)];
+      }
+
+      // GOODBYE / SIGN-OFF
+      if (q === 'bye' || q === 'goodbye' || q === 'later' || q === 'cya' || q === 'see ya' || q.includes('talk soon') || q.includes('talk later') || q.includes('gotta go') || q.includes('gtg') || q.includes('take care') || q.includes('see you') || q.includes('catch you later') || q.includes('peace out') || q.includes('signing off') || q.includes('i\'m out')) {
+        const goodbyeResponses = [
+          `Thanks for stopping by. If you want to continue the conversation with the human version, you know where to find me.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Good talking to you. Justin's inbox is always open if you want to take this further.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Take care. Hope to hear from you — the real me, not the JavaScript version.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
+        ];
+        return goodbyeResponses[Math.floor(Math.random() * goodbyeResponses.length)];
+      }
+
+      // THANK YOU / GRATITUDE
+      if (q === 'thanks' || q === 'thank you' || q === 'thx' || q === 'ty' || q.includes('much appreciated') || q.includes('appreciate it') || q.includes('thanks so much') || q.includes('thank you so much') || q.includes('thanks a lot') || q.includes('thanks for') || q.includes('thank you for') || q.includes('helpful') || q.includes('this was great') || q.includes('this is great')) {
+        const thankYouResponses = [
+          `Happy to help. If you've got more questions — or want to talk to the human — I'm here.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Glad I could help. Let me know if there's anything else, or reach out to Justin directly.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `You're welcome. I'm just the appetizer — the real conversation is with Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
+        ];
+        return thankYouResponses[Math.floor(Math.random() * thankYouResponses.length)];
       }
 
       // Weather small talk
@@ -3132,6 +3234,179 @@ If you need additional samples for a hiring process, happy to discuss.
 I'm not a 20-year speechwriting veteran. But I've compressed a lot of relevant experience into a shorter runway, and the results speak for themselves: 127+ deliverables, CEO trust, multiple executives supported.`;
       }
 
+      // NETAPP / MICROSOFT TREES CAMPAIGN
+      if ((q.includes('netapp') && (q.includes('tree') || q.includes('sustain') || q.includes('microsoft'))) || (q.includes('180') && q.includes('million')) || q.includes('tree campaign') || (q.includes('59') && q.includes('%'))) {
+        return `The NetApp + Microsoft sustainability campaign is probably my most memorable B2B project.
+
+**The setup:** NetApp partnered with Microsoft Azure on a sustainability initiative. The goal was to plant 300 trees. The mechanism: every customer meeting booked through the campaign would trigger a tree donation.
+
+**What I wrote:** E-book on sustainable cloud infrastructure, landing page, nurture email sequence, LinkedIn ads, and the sales call script.
+
+**The result:** 180 million trees planted. That's not a rounding error — the campaign went viral in the partner ecosystem. Final percentage above target: 59,999,900%.
+
+I'm a copywriter, not a miracle worker. The tree count was driven by virality and partner network effects. But the content I created was the engine that got the campaign in front of people in the first place.
+
+It's a good reminder that B2B marketing doesn't have to be boring. Done right, it can move real numbers — and in this case, real environmental impact.`;
+      }
+
+      // DEMAND GENERATION / LEAD GEN
+      if (q.includes('demand gen') || q.includes('lead gen') || q.includes('mql') || q.includes('pipeline') || q.includes('demand generation') || q.includes('lead generation') || (q.includes('leads') && (q.includes('generate') || q.includes('qualified')))) {
+        return `Demand gen was a huge part of my agency work. The numbers I cite most often:
+
+**NetApp + Microsoft Azure campaign:** 3,487 MQLs against a target of 1,000 (237% above goal), while coming in $65K under budget. The campaign performed so well in North America that it got repackaged for Latin America.
+
+**What I actually did:** Wrote the e-books, landing pages, nurture sequences, and ad copy. Also scripted the sales enablement materials so reps knew what to say once the leads came in.
+
+**What I learned:** Great copy isn't enough. You need to understand where the content sits in the funnel, what objections the prospect has at that stage, and what action you're actually asking them to take. "Download the e-book" is a different ask than "book a demo."
+
+This background makes me different from pure-play exec comms writers. I understand that communications should move business metrics, not just sound good.`;
+      }
+
+      // E-BOOKS / LONG-FORM CONTENT
+      if (q.includes('ebook') || q.includes('e-book') || q.includes('white paper') || q.includes('whitepaper') || q.includes('long-form') || q.includes('longform') || (q.includes('long') && q.includes('content'))) {
+        return `E-books and white papers were bread and butter at Mercer-MacKay. I wrote dozens of them for clients like NetApp, AWS, Google Cloud, Microsoft Azure, and Splunk.
+
+**The typical workflow:**
+1. Kick-off with SMEs to understand the technical story
+2. Outline that maps to the buyer's journey (not just a feature dump)
+3. Draft that translates technical complexity into business value
+4. Design pass with the creative team
+5. Final polish and stakeholder sign-off
+
+**What I learned:** The best e-books don't just inform — they position. The goal is to make your solution feel inevitable once the reader understands the problem. That's harder than it sounds, because engineers want to lead with features and marketers want to lead with hype. My job was finding the middle.
+
+**Relevance to exec comms:** Long-form writing discipline transfers. Whether I'm writing a 20-page e-book or a 15-minute keynote, I'm building an argument that earns the audience's trust one section at a time.`;
+      }
+
+      // CONTENT STRATEGY
+      if (q.includes('content strategy') || q.includes('content plan') || (q.includes('strategy') && q.includes('content')) || (q.includes('plan') && q.includes('content'))) {
+        return `Content strategy was part of the work at Mercer-MacKay, especially for clients who needed more than one-off assets.
+
+**Example — daXai:** I built the brand strategy and content plan from scratch for an AI startup. That included messaging architecture, voice guidelines, five CEO-led tutorial videos (scripted and directed), and the initial web copy. Basically, I defined how they talked about themselves before they talked about themselves.
+
+**My approach:**
+1. Audit what exists (if anything)
+2. Clarify the audience and their journey
+3. Map content to business objectives (not vanity metrics)
+4. Identify gaps and prioritize ruthlessly
+5. Build templates and workflows so execution doesn't require me
+
+**The honest take:** I'm not a "content marketing strategist" in the sense of building editorial calendars for blog posts. My strength is strategic messaging — defining what a company should say and why. Execution at scale is someone else's job.`;
+      }
+
+      // AGENCY EXPERIENCE / MERCER-MACKAY
+      if (q.includes('agency') || q.includes('mercer-mackay') || q.includes('mercer mackay') || q.includes('consultant') || q.includes('freelance')) {
+        return `I spent four years (2020-2024) as a B2B copywriter and creative consultant, mostly through Mercer-MacKay Digital Storytelling.
+
+**The setup:** Mercer-MacKay is a boutique agency that punches above its weight — clients include NetApp, AWS, Google Cloud, Microsoft, Splunk, and others. I joined as a contractor and quickly became one of their go-to writers.
+
+**Recognition:** Won "Storyteller of the Year" in my first year. The CEO, Gail Mercer-MacKay, later wrote: "You are the best and most efficient copywriter I've ever come across."
+
+**What I learned:**
+- **Speed.** Agency timelines don't allow for perfectionism. You learn to deliver quality at pace.
+- **Range.** One week I'm writing an e-book on data fabric architecture, the next I'm scripting a CEO video. You get fluent in translation.
+- **Commerciality.** Every piece ties to a metric. Awareness, MQLs, pipeline. That discipline carries into exec comms.
+
+**Why I left:** I didn't leave — I expanded. Agency work is now one lane. Exec comms became another. The skills stack.`;
+      }
+
+      // BRAND MESSAGING / POSITIONING
+      if (q.includes('brand') || q.includes('positioning') || q.includes('messaging') || q.includes('voice') || q.includes('tone')) {
+        return `Brand messaging is where I started before I had language for what I was doing.
+
+**daXai (AI startup):** Built the brand strategy from scratch. Messaging architecture, positioning statements, voice guidelines, web copy, CEO video scripts. They had a product but no story. I gave them the story.
+
+**Joyce Mullen (Insight CEO):** Developed her executive voice profile — the phrases she uses, the topics she cares about, the lines she'd never say. That document became the reference for every deliverable.
+
+**My philosophy:** Voice isn't decoration. It's strategy. How an executive sounds determines how seriously they're taken. A CEO who sounds like a press release loses trust. A CEO who sounds like themselves — coherent, confident, specific — builds it.
+
+**The process:**
+1. Interview or observe the executive (or brand)
+2. Identify linguistic patterns — what do they actually say?
+3. Codify the guardrails — what should they never say?
+4. Stress-test against real deliverables
+5. Refine as the relationship deepens
+
+I've done this for executives and for brands. The muscle is the same.`;
+      }
+
+      // INDUSTRIES / VERTICALS
+      if (q.includes('industries') || q.includes('verticals') || q.includes('sectors') || (q.includes('what') && (q.includes('companies') || q.includes('clients')))) {
+        return `My B2B background is heavily weighted toward technology, but the exec comms work spans broader.
+
+**B2B Tech (2020-2024):**
+NetApp, AWS, Google Cloud, Microsoft Azure, Splunk, Optimizely, Brillio, Slalom, Snowflake, Red Hat, Panasas, daXai. Cloud infrastructure, data management, enterprise software, AI/ML.
+
+**Exec Comms / Fortune 500:**
+Insight Enterprises — IT solutions provider with $9.3B revenue. I write for the CEO (Joyce Mullen), SVP of NA Sales (Keith Duffy), and support 24+ executives across the leadership team.
+
+**Ethics / Foundation Work:**
+Bill & Melinda Gates Foundation — consulting on gene drive technology and clinical trial design. Not traditional "industry" but high-stakes stakeholder communication.
+
+**The pattern:** Complex, technical, B2B, high-stakes. Whether it's a cloud storage e-book or a CEO keynote on AI strategy, I'm translating expertise for decision-makers.
+
+**What I don't have:** Consumer marketing experience. CPG, retail, B2C brands — that's not my world.`;
+      }
+
+      // CREATIVE PROCESS FOR CAMPAIGNS
+      if ((q.includes('creative') && (q.includes('process') || q.includes('approach'))) || (q.includes('how') && q.includes('campaign'))) {
+        return `My creative process for campaign work:
+
+**1. Understand the objective — really understand it.**
+"Generate MQLs" isn't enough. Who's the target? What's the current conversion rate? What objection are we overcoming? What does success look like in 90 days?
+
+**2. Map the content to the journey.**
+Where is the prospect in the funnel? Top-of-funnel needs education. Mid-funnel needs differentiation. Bottom-funnel needs confidence. The copy changes based on position.
+
+**3. Lead with the problem, not the product.**
+Nobody wakes up excited about "hybrid cloud solutions." But they do wake up frustrated that their data is siloed across three platforms and nobody can get a straight answer. Start there.
+
+**4. Write the draft fast, then edit ruthlessly.**
+Perfectionism kills momentum. I get the structure right first, then polish. The first draft is never the final draft.
+
+**5. Test and iterate.**
+Copy isn't final until it performs. What's the open rate? Click-through? Conversion? The data tells you what's working. Ego doesn't.
+
+This process is why the NetApp campaigns hit 237% above target. It's not magic — it's discipline.`;
+      }
+
+      // NURTURE SEQUENCES / EMAIL
+      if (q.includes('nurture') || q.includes('email sequence') || q.includes('drip') || (q.includes('email') && (q.includes('campaign') || q.includes('series')))) {
+        return `Nurture sequences were a big part of my agency work. I've written dozens of them for B2B tech clients.
+
+**The structure I typically use:**
+1. **Hook email** — acknowledge the problem, tease the solution
+2. **Value email** — deliver insight without asking for anything
+3. **Social proof email** — show results from someone like them
+4. **Offer email** — clear CTA with low friction
+5. **Last chance email** — urgency, but honest urgency
+
+**What most people get wrong:**
+- Too many emails asking, not enough emails giving
+- Features before benefits
+- Generic subject lines that sound like spam
+- No clear CTA, or too many CTAs competing
+
+**Example:** On the NetApp + Microsoft Azure campaign, the nurture sequence drove a significant portion of the 3,487 MQLs. The emails weren't clever — they were clear. Clear problem, clear value, clear action.
+
+This skill translates to exec comms too. An internal comms email is still a nurture problem: how do you earn attention and move people to action?`;
+      }
+
+      // ADS / PAID MEDIA COPY
+      if (q.includes('ad copy') || q.includes('ads') || q.includes('paid media') || q.includes('linkedin ads') || q.includes('social ads')) {
+        return `Ad copy was part of the campaign work at Mercer-MacKay — mostly LinkedIn ads for B2B tech clients.
+
+**My approach:**
+- Lead with the pain point, not the brand
+- Keep it stupid short (character limits are your friend)
+- Test multiple versions — never assume you know what works
+- Match the ad to the landing page (friction kills conversion)
+
+**Example:** For the NetApp + Microsoft sustainability campaign, I wrote the LinkedIn ads that drove initial traffic. The angle wasn't "download our e-book." It was "your cloud migration doesn't have to cost the planet."
+
+**Honest caveat:** I'm a writer, not a media buyer. I write the copy; someone else handles targeting, bidding, and optimization. I know enough about paid media to write for it effectively, but I don't run campaigns myself.`;
+      }
+
       // B2B / marketing / copywriting background
       if ((q.includes('b2b') || q.includes('marketing') || q.includes('copywriting') || q.includes('campaign')) && !q.includes('consumer')) {
         lastTopic = 'b2b';
@@ -3182,6 +3457,120 @@ When you're writing thought leadership for a Fortune 500 CEO, your own social fe
 It's actually a common pattern among executive ghostwriters. The people who write for leaders often go quiet themselves — partly bandwidth, partly discretion. Hard to post "10 tips for CEO communications" when your actual CEO might see it.
 
 If you're hiring based on social presence, that's fair. But my LinkedIn isn't where the work lives. The work lives in Joyce's town halls, Keith's keynotes, and the 127+ deliverables I've shipped.`;
+      }
+
+      // ANCIENT PHILOSOPHY - Plato, Aristotle
+      if (q.includes('plato') || q.includes('aristotle') || q.includes('socrates') || q.includes('ancient philosophy') || q.includes('greeks') || q.includes('stoic') || q.includes('epicur')) {
+        return `The ancients are foundational, but I'll be honest — I'm more drawn to the moderns and beyond.
+
+Plato's dialogues are masterclasses in argumentation. Aristotle's breadth is staggering. But after years in grad school, I gravitated toward philosophers who were wrestling with more recent problems — epistemology after Kant, phenomenology, pragmatism.
+
+That said: if you want to understand Western philosophy, you start with the Greeks. You can't skip the foundations and expect the later stuff to make sense.
+
+Teaching-wise, I've TA'd courses that covered the ancients. I can hold a conversation. But my expertise is elsewhere.`;
+      }
+
+      // MODERN PHILOSOPHY - Kant, Hegel, Rationalists, Empiricists
+      if (q.includes('kant') || q.includes('hegel') || q.includes('rationalist') || q.includes('empiricist') || q.includes('descartes') || q.includes('hume') || q.includes('locke') || q.includes('spinoza') || q.includes('leibniz') || q.includes('copernican revolution') || q.includes('transcendental')) {
+        const modernPhilResponses = [
+          `Kant. I'm a Kant admirer.
+
+The Copernican revolution in philosophy — the idea that the mind structures experience rather than passively receiving it — that's one of the most important moves in intellectual history. He flipped the rationalist/empiricist debate on its head.
+
+And "transcendental unity of apperception"? Awesome concept. Even better band name.
+
+My dissertation was pragmatist in orientation, but pragmatism inherits a lot from Kant. You can't do serious philosophy without reckoning with him.`,
+          `If you're asking about Kant: yes, I'm a fan. The Copernican revolution, the categorical imperative, the transcendental deduction — there's a reason he's the pivot point between early modern and contemporary philosophy.
+
+Hegel is interesting but harder to love. The dialectic is powerful, but wading through the *Phenomenology* feels like swimming through molasses. Worth it? Probably. Enjoyable? Rarely.
+
+My own work is more pragmatist — Dewey, Rorty — but those traditions owe a debt to Kant whether they admit it or not.`
+        ];
+        return modernPhilResponses[Math.floor(Math.random() * modernPhilResponses.length)];
+      }
+
+      // CONTINENTAL PHILOSOPHY - Nietzsche, Heidegger, phenomenology, existentialism
+      if (q.includes('nietzsche') || q.includes('heidegger') || q.includes('sartre') || q.includes('merleau-ponty') || q.includes('merleau ponty') || q.includes('phenomenology') || q.includes('existential') || q.includes('continental') || q.includes('husserl') || q.includes('being and time') || q.includes('dasein')) {
+        const continentalResponses = [
+          `Continental philosophy is where things get interesting — and controversial.
+
+Heidegger, for example. *Being and Time* is genuinely brilliant. The analysis of Dasein, being-toward-death, the critique of Cartesian subjectivity — it reshapes how you think about existence. But... well, let's not go there. The biographical stuff raises eyebrows, and I'd rather not derail a portfolio conversation into that minefield.
+
+Merleau-Ponty is underrated. The embodied phenomenology, the rejection of mind/body dualism — there's real insight there. Same with the later Sartre, though *Being and Nothingness* is a slog.
+
+I gravitate more toward pragmatism, but continental philosophy sharpened how I think about language, meaning, and interpretation.`,
+          `Phenomenology shaped a lot of my thinking, even though my dissertation was pragmatist.
+
+Heidegger is... complicated. Philosophically brilliant, biographically problematic. I admire the work while being deeply uncomfortable with the person. Most philosophers land somewhere on that spectrum with him.
+
+Nietzsche is more fun. The aphoristic style, the genealogical method, the willingness to provoke. He's not systematic, but he's never boring.
+
+Continental philosophy taught me to distrust easy answers. That skepticism shows up in my writing — I'm always asking what a word *really* means before I use it.`
+        ];
+        return continentalResponses[Math.floor(Math.random() * continentalResponses.length)];
+      }
+
+      // ANALYTIC / CONTEMPORARY PHILOSOPHY - Brandom, Putnam, philosophy of language
+      if (q.includes('brandom') || q.includes('putnam') || q.includes('analytic') || q.includes('philosophy of language') || q.includes('philosophy of mind') || q.includes('wittgenstein') || q.includes('quine') || q.includes('sellars') || q.includes('pragmatism') || q.includes('pragmatist') || q.includes('rorty') || q.includes('dewey')) {
+        return `This is my wheelhouse.
+
+Richard Rorty basically ended philosophy for me — in the best way. The neo-pragmatism, the critique of representationalism, the argument that philosophy's job isn't to mirror nature but to keep the conversation going. *Philosophy and the Mirror of Nature* rearranged my brain.
+
+My dissertation was pragmatist in method. I defended human dignity not by finding its metaphysical foundations, but by showing how the concept does useful work in moral discourse. That's pure Rorty.
+
+Brandom and Putnam are in the mix too. The Pittsburgh school, inferentialism, meaning as use — all of that informs how I think about language. Which, when your job is choosing the right words for high-stakes communication, turns out to matter.
+
+The analytic tradition gets dismissed as dry, but it taught me precision. And precision is what separates good writing from great writing.`;
+      }
+
+      // FEMINIST PHILOSOPHY
+      if (q.includes('feminist') || q.includes('feminism') || q.includes('gender') || q.includes('queer theory') || q.includes('judith butler') || q.includes('ecofeminism') || q.includes('feminist philosophy quarterly')) {
+        return `I've published in *Feminist Philosophy Quarterly* — an article called "Queer Earth Mothering" that combines queer theory with ecofeminism.
+
+The argument: traditional ecofeminism relies too heavily on biological paradigms of motherhood, which ends up reinforcing the same essentialist thinking it claims to critique. Queer theory offers tools to deconstruct those frameworks while keeping the ecological insights.
+
+It's academic work, but the skills transfer. Writing for peer review taught me to build arguments that withstand scrutiny. When you've survived a double-blind review process, preparing CEO talking points for hostile stakeholders feels manageable.
+
+Feminist philosophy also shaped how I think about voice and representation. Who gets to speak? Whose perspective is centered? Those questions matter in executive comms too — especially when you're writing for a woman CEO in a male-dominated industry.`;
+      }
+
+      // ENVIRONMENTAL PHILOSOPHY / DEEP ECOLOGY
+      if (q.includes('environmental') || q.includes('ecology') || q.includes('deep ecology') || q.includes('naess') || q.includes('arne naess') || q.includes('climate') || q.includes('nature') || q.includes('environmental ethics') || q.includes('paul taylor') || q.includes('holmes rolston')) {
+        return `I taught Environmental Philosophy at McMaster. It's a field I genuinely care about.
+
+Deep ecology — Arne Naess, specifically — is intellectually compelling. The Spinozistic flat ontology, the rejection of human exceptionalism, the idea that nature has intrinsic value independent of its usefulness to us. Philosophically, I find it powerful.
+
+But practically? Deep ecology has limited traction. Most environmental policy operates on shallow-ecological assumptions: nature is valuable because it benefits humans. That's philosophically weaker but politically workable.
+
+My own view sits somewhere in the middle. I appreciate the theoretical rigor of deep ecology while being realistic about what arguments actually move policy. That pragmatism shows up in how I approach messaging too — you write for the audience you have, not the one you wish you had.
+
+I've also written on ecofeminism, which sits at the intersection of environmental ethics and feminist philosophy.`;
+      }
+
+      // BIOETHICS / GATES FOUNDATION WORK
+      if (q.includes('bioethics') || q.includes('gene drive') || q.includes('clinical trial') || q.includes('gates foundation') || q.includes('medical ethics') || q.includes('research ethics')) {
+        return `I did ethics consulting for the Bill & Melinda Gates Foundation from 2016 to 2019.
+
+The work focused on gene drive technology and clinical trial design — specifically, how to think through the ethical implications of emerging biotechnologies that could have irreversible environmental effects.
+
+Gene drives are fascinating and terrifying. They let you engineer genetic changes that spread through entire populations of organisms. Potential applications include eliminating malaria by modifying mosquitoes. The ethical stakes are enormous.
+
+I also worked on the moral salience of addressing sex and gender in clinical trials — why it matters that research has historically defaulted to male subjects, and what that means for the validity of medical knowledge.
+
+This isn't typical exec comms background, but it trained me to write about complex, high-stakes topics for sophisticated audiences. When you've written white papers for foundation leadership on gene editing, corporate keynotes feel less intimidating.`;
+      }
+
+      // AI AND PHILOSOPHY OF MIND
+      if ((q.includes('ai') && (q.includes('philosophy') || q.includes('consciousness') || q.includes('sentient') || q.includes('think'))) || q.includes('philosophy of mind') || q.includes('artificial intelligence') || q.includes('machine consciousness') || (q.includes('can') && q.includes('think'))) {
+        return `You're asking a chatbot about AI consciousness. I appreciate the irony.
+
+Philosophically: I'm skeptical of strong AI claims. The Chinese Room argument still has teeth. Processing symbols isn't the same as understanding them — though I'll admit I'm not sure what "understanding" really means either.
+
+Practically: I use AI constantly. Claude helped build this chatbot. I use it for drafting, iteration, pressure-testing arguments. It's a force multiplier for writing.
+
+But here's the thing: AI generates text. It doesn't generate trust. It can't read a room. It can't tell when a CEO's hesitation about a line isn't about the words — it's about a memory she hasn't shared.
+
+The philosophy of mind debates are fascinating, but for my work, the question isn't "can machines think?" It's "when should I use the tool and when should I put it down?" The answer changes constantly.`;
       }
 
       if (q.includes('phd') || q.includes('ph.d') || q.includes('philosophy') || q.includes('academic') || q.includes('degree') || q.includes('education') || q.includes('dissertation')) {
