@@ -851,7 +851,7 @@ But you know what actually *is* simple? Talking to me directly when you're serio
       }
 
       // COMPLIMENTS - positive statements that aren't questions
-      if ((q.includes('cool') || q.includes('awesome') || q.includes('amazing') || q.includes('impressive') || q.includes('love this') || q.includes('love it') || q.includes('this is great') || q.includes('so good') || q.includes('really good') || q.includes('well done') || q.includes('nice work') || q.includes('neat') || q.includes('slick') || q.includes('clever')) && !q.includes('?')) {
+      if ((q.includes('cool') || q.includes('awesome') || q.includes('amazing') || q.includes('impressive') || q.includes('love this') || q.includes('love it') || q.includes('this is great') || q.includes('so good') || q.includes('really good') || q.includes('well done') || q.includes('nice work') || q.includes('neat') || q.includes('slick') || q.includes('clever') || q.includes('sweet') || q.includes('wow') || q.includes('fantastic') || q.includes('brilliant') || q.includes('this is nice') || q.includes('very nice') || q.includes('pretty cool') || q.includes('dope') || q.includes('sick')) && !q.includes('?')) {
         const complimentResponses = [
           `Thanks — this thing took a while to build, so I appreciate that. Feel free to ask me anything about Justin's experience, skills, or fit.`,
           `Appreciate it. I'm here to answer questions if you've got them.`,
@@ -1137,6 +1137,157 @@ I also pay attention to how other leaders communicate. When a CEO gives a great 
 And honestly? Reddit. I don't post or anything, but going deep into subreddits is where you find people with serious knowledge on even the most obscure topics. Industry insiders, former execs, subject matter experts who just love nerding out. It's underrated.
 
 Plus conversations like this one. Every time I explain my process or defend my approach, I sharpen my thinking. Teaching is learning.`;
+      }
+
+      // "Describe yourself in 3 words"
+      if ((q.includes('3 word') || q.includes('three word') || q.includes('3word') || q.includes('threeword')) && (q.includes('describe') || q.includes('yourself'))) {
+        return `**Curious. Precise. Dependable.**
+
+Curious — I ask questions until I understand. Whether it's a CEO's speaking style or a gene drive debate, I go deep.
+
+Precise — word choice matters. The difference between "excited" and "confident" can change how a message lands.
+
+Dependable — I deliver. On time, on voice, without drama. That's what earns trust.
+
+(Also, I'm suspicious of anyone who's *good* at these questions. But you asked.)`;
+      }
+
+      // "What do you know about our company?"
+      if ((q.includes('know about') && (q.includes('company') || q.includes('us') || q.includes('our'))) || (q.includes('research') && (q.includes('us') || q.includes('company') || q.includes('our')))) {
+        return `Honestly? I'm a chatbot on a portfolio site — I don't know which company you're calling from yet.
+
+But here's what I can tell you: Justin does his homework. Before any real conversation, he'll know your recent earnings calls, your CEO's last few public statements, your strategic priorities, and where you fit in the competitive landscape.
+
+If you want to tell me more about your organization, I'm happy to discuss how Justin's experience might fit. Or just reach out directly:
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+      }
+
+      // Curveball / quirky interview questions
+      if ((q.includes('animal') && (q.includes('would you be') || q.includes('what') || q.includes('which'))) ||
+          (q.includes('superpower') && (q.includes('would') || q.includes('what') || q.includes('choose'))) ||
+          (q.includes('liked') && q.includes('feared')) ||
+          (q.includes('perfect') && q.includes('late') && q.includes('on time')) ||
+          (q.includes('kitchen') && q.includes('utensil')) ||
+          (q.includes('where') && q.includes('lie') && q.includes('application')) ||
+          (q.includes('favorite') && q.includes('website')) ||
+          (q.includes('stranded') && q.includes('island')) ||
+          (q.includes('zombie') && q.includes('apocalypse')) ||
+          (q.includes('dinner') && q.includes('anyone') && (q.includes('dead') || q.includes('alive') || q.includes('history'))) ||
+          (q.includes('hot dog') && (q.includes('split') || q.includes('expand') || q.includes('direction'))) ||
+          (q.includes('horse') && q.includes('duck') && (q.includes('fight') || q.includes('sized') || q.includes('rather'))) ||
+          (q.includes('penguin') && q.includes('freezer')) ||
+          (q.includes('debut') && q.includes('album')) ||
+          (q.includes('album') && q.includes('name') && (q.includes('your') || q.includes('would'))) ||
+          (q.includes('tree') && (q.includes('what kind') || q.includes('which kind') || q.includes('would you be'))) ||
+          (q.includes('color') && (q.includes('would you be') || q.includes('describe you'))) ||
+          (q.includes('fruit') && (q.includes('would you be') || q.includes('what'))) ||
+          (q.includes('fight') && q.includes('sized') && (q.includes('100') || q.includes('one'))) ||
+          (q.includes('would you rather') && (q.includes('fight') || q.includes('be a') || q.includes('have')))) {
+        const curveBallResponses = [
+          `I appreciate the creativity, but I'll be honest — I'm skeptical these questions reveal much about job fit.
+
+What I *can* tell you: I think clearly under pressure, I don't take myself too seriously, and I'm more interested in doing good work than playing interview games.
+
+If you want to know how I'd handle a real curveball, ask me about the time a CEO rewrote half a keynote 30 minutes before going on stage. That's the kind of pressure that actually matters.`,
+          `Fair warning: I'm bad at these. Not because I can't play along, but because I don't think they tell you much.
+
+What would tell you something: how I handled a comms crisis, how I give feedback to executives, or what happens when I disagree with a stakeholder.
+
+Want me to answer one of those instead?`,
+          `I'll give you a real answer: I'm more worried about candidates who are *good* at these questions. Polished quirky answers are a skill, but not one that predicts job performance.
+
+Here's what I'd rather talk about: the work. My portfolio has real examples of high-stakes writing. That's where the signal is.`
+        ];
+        return curveBallResponses[Math.floor(Math.random() * curveBallResponses.length)];
+      }
+
+      // "If you were CEO, what are the first 3 things you check?" (Dropbox-style)
+      if ((q.includes('ceo') && (q.includes('first') || q.includes('three') || q.includes('3')) && (q.includes('check') || q.includes('look') || q.includes('do'))) ||
+          (q.includes('wake up') && q.includes('ceo')) ||
+          (q.includes('run') && q.includes('company') && q.includes('first'))) {
+        return `Good question — this one actually reveals thinking.
+
+**1. Pipeline and forecast accuracy.** Not just "are we hitting numbers" but "do we understand why." A surprise miss is worse than a miss you saw coming.
+
+**2. Customer signal.** What are the top 3 customer complaints right now? What's the NPS trend? Revenue is a lagging indicator — customer sentiment is leading.
+
+**3. Team health.** Who's at risk of leaving? Where's morale flagging? A CEO's job is to see around corners, and people problems become business problems fast.
+
+The meta-answer: I'd check whatever the previous CEO *wasn't* checking. Blind spots compound.`;
+      }
+
+      // "How would you sell hot cocoa in Florida?" (creative sales thinking)
+      if ((q.includes('sell') && q.includes('hot') && (q.includes('florida') || q.includes('summer') || q.includes('desert') || q.includes('beach'))) ||
+          (q.includes('sell') && q.includes('ice') && (q.includes('alaska') || q.includes('winter') || q.includes('eskimo'))) ||
+          (q.includes('sell') && (q.includes('unlikely') || q.includes('wrong market') || q.includes('bad market')))) {
+        return `The wrong answer is to fight the environment. The right answer is to reframe the product.
+
+**Option 1: Reposition.** Hot cocoa isn't a warming drink — it's a comfort ritual. Market it for air-conditioned offices, movie nights, or "cozy despite the chaos" moments.
+
+**Option 2: Find the niche.** Florida has tourists from cold places who miss winter. Florida has December. Florida has hospitals and senior centers where people run cold.
+
+**Option 3: Change the form factor.** Frozen hot cocoa. Hot cocoa flavored iced coffee. The essence without the temperature.
+
+The point of this question isn't the answer — it's whether I give up or get creative. I get creative.`;
+      }
+
+      // "$40k to start a business" (entrepreneurship/priorities)
+      if ((q.includes('$40') || q.includes('40,000') || q.includes('40k') || q.includes('forty thousand')) && (q.includes('start') || q.includes('business') || q.includes('company'))) {
+        return `A content studio for executive communications.
+
+Not an agency — a studio. Small team, high touch, premium positioning. The market is full of agencies that assign your CEO to a junior writer. I'd be the alternative: senior talent only, deep partnerships, work that actually sounds like the person delivering it.
+
+**Why $40k works:** Low overhead. No office needed. Investment goes to one great designer, legal/accounting setup, and runway for the first few clients. I'd start with my network — execs I've worked with who've moved to new companies.
+
+**Why I'd win:** The trust I've built is portable. "I trust you, Justin" translates to referrals.
+
+(Also, this is basically the business I'd build if I weren't looking for the right in-house role.)`;
+      }
+
+      // "If you were a brand, what would be your motto?" (personal branding)
+      if ((q.includes('brand') && (q.includes('motto') || q.includes('slogan') || q.includes('tagline'))) ||
+          (q.includes('personal') && (q.includes('motto') || q.includes('slogan') || q.includes('tagline'))) ||
+          (q.includes('your') && q.includes('motto'))) {
+        return `**"Make them sound like themselves — only sharper."**
+
+That's the job. I don't impose my voice on executives. I find *their* voice and remove the friction. The best compliment isn't "great writing" — it's "that's exactly what I wanted to say."
+
+If I needed a second one: **"Clear over clever."** I'd rather be understood than admired.`;
+      }
+
+      // "How many basketballs fit in this room?" (Fermi estimation)
+      if ((q.includes('basketball') && (q.includes('fit') || q.includes('room') || q.includes('how many'))) ||
+          (q.includes('golf ball') && (q.includes('fit') || q.includes('bus') || q.includes('how many'))) ||
+          (q.includes('ping pong') && (q.includes('fit') || q.includes('how many'))) ||
+          (q.includes('how many') && (q.includes('piano tuner') || q.includes('gas station') || q.includes('window'))) ||
+          (q.includes('estimate') && (q.includes('how many') || q.includes('number of')))) {
+        return `I'll walk through my thinking — that's what these questions actually test.
+
+**Assumptions for a standard conference room (20' x 15' x 10'):**
+- Room volume: ~3,000 cubic feet → ~5.2 million cubic inches
+- Basketball diameter: ~9.5 inches → volume ≈ 450 cubic inches
+- Packing efficiency for spheres: ~64% (random packing)
+
+**Math:** 5,200,000 × 0.64 ÷ 450 ≈ **7,400 basketballs**
+
+The actual number doesn't matter. What matters: I break the problem into components, state my assumptions explicitly, and show my work. That's how I approach any ambiguous problem — including "how do we message this acquisition?" or "what's the CEO's take on AI?"`;
+      }
+
+      // "How would you double $2,000 in 24 hours?" (creative/risk thinking)
+      if ((q.includes('double') && (q.includes('money') || q.includes('$') || q.includes('2000') || q.includes('2,000'))) ||
+          (q.includes('double') && q.includes('24 hour'))) {
+        return `Legally and reliably? You probably can't. That's the honest answer, and I'm suspicious of anyone who pretends otherwise.
+
+But if we're testing creative thinking:
+
+**Low risk:** Offer a service I can deliver immediately. $2,000 buys supplies and ads for a one-day pressure washing or moving help operation. Hard work, not magic.
+
+**Medium risk:** Find an arbitrage. Buy underpriced items locally, sell online where demand is higher. Requires knowing a market cold.
+
+**High risk:** Sports betting or options trading. This is gambling dressed up as strategy.
+
+The real answer to this question is recognizing what it's actually asking: am I honest about uncertainty, or do I BS? I don't BS.`;
       }
 
       // "What's your availability / when can you start?"
@@ -2135,6 +2286,57 @@ There's a moment in a keynote when the audience leans in. When a line hits. When
 Beyond that: trust. Joyce telling me "I trust you, Justin" isn't just nice to hear. It's proof that the work matters. That I've earned something.
 
 I'm motivated by doing work that requires trust to exist.`;
+      }
+
+      // "What question do you wish I had asked?"
+      if ((q.includes('wish') && q.includes('asked')) || (q.includes('question') && q.includes('wish')) || (q.includes('should') && q.includes('have asked')) || (q.includes('anything else') && q.includes('want') && q.includes('know'))) {
+        return `"What's a project that didn't work — and what did you learn from it?"
+
+Most candidates rehearse their wins. Fewer can talk honestly about something that flopped. I wrote a keynote section early in my Insight tenure that I loved — the executive hated it. The lesson: I wasn't listening closely enough in discovery. Now I start every project asking not just "what do you want to say?" but "how do you want to feel saying it?"
+
+The other question I'd welcome: "Can you show me a before-and-after of your revision process?" That's where the craft lives.`;
+      }
+
+      // "Tell me something not on your resume" / "What's interesting about you that's not on your resume?"
+      if ((q.includes('not on') && q.includes('resume')) || (q.includes('something') && q.includes('resume') && (q.includes('interesting') || q.includes('know'))) || (q.includes('tell me something') && !q.includes('about yourself') && !q.includes('surprising'))) {
+        return `I'm training to become a competitive memorizer.
+
+Memory palaces, the PAO system, random digit strings. My best so far is 120 digits. It's a weird hobby, but it trains the same muscle I use in writing: holding complex structures in your head while manipulating the details.
+
+Also not on the resume: I have a Ph.D. in philosophy. It's listed as a credential, but what it actually taught me — how to take a 10,000-word argument and make it hold together — that's harder to put in a bullet point.`;
+      }
+
+      // "How do you define success?"
+      if ((q.includes('define') && q.includes('success')) || (q.includes('what') && q.includes('success') && q.includes('mean')) || (q.includes('what') && q.includes('success') && q.includes('look like'))) {
+        return `Doing work that requires trust, for people who care about getting it right.
+
+In exec comms specifically: success is when the CEO delivers the speech and it sounds like *her*, not like a speechwriter. When the message lands and nobody thinks about the words — just the meaning.
+
+Longer term: I want to look back at a body of work I'm proud of. Not a title, not a rung on a ladder. A portfolio of moments where the words actually mattered.`;
+      }
+
+      // "What would your boss/manager say about you?"
+      if ((q.includes('boss') && q.includes('say')) || (q.includes('manager') && q.includes('say')) || (q.includes('supervisor') && q.includes('say')) || (q.includes('coworker') && q.includes('say')) || (q.includes('colleague') && q.includes('say')) || (q.includes('describe you') && (q.includes('boss') || q.includes('manager') || q.includes('coworker')))) {
+        return `I'll give you a direct quote from Joyce Mullen, the CEO: "I trust you, Justin."
+
+That came up in a feedback session. Not "good job" or "nice draft" — trust. In exec comms, that's the currency that matters.
+
+From colleagues, I think they'd say I'm reliable and low-drama. I hit deadlines, I don't make things harder than they need to be, and I'm easy to collaborate with even when the pressure is high.
+
+Keith Duffy (SVP, Infrastructure) told me after his keynote that he was nervous going in and confident by the time we finished prep. That's the goal.`;
+      }
+
+      // "What makes you unique?" / "What sets you apart?"
+      if ((q.includes('what makes you') && (q.includes('unique') || q.includes('different') || q.includes('special'))) || (q.includes('set') && q.includes('apart')) || (q.includes('distinguish') && q.includes('you')) || (q.includes('stand out') && !q.includes('resume'))) {
+        return `I'll be honest — "what makes you unique" questions always feel a bit performative. Everyone positions themselves as one-of-a-kind.
+
+What I'd actually point to:
+
+**Range with depth.** Ph.D. in philosophy + B2B campaign work + CEO speechwriting. Most people specialize. I've gone deep in multiple domains.
+
+**I built this chatbot.** Not because I'm a coder (I'm not), but because I think differently about how to communicate. This is a proof of concept for how I approach problems.
+
+**I've earned real trust.** "I trust you, Justin" isn't a line I wrote — it's a direct quote from the CEO. That kind of trust takes time, and it's what I'd bring to your organization.`;
       }
 
       // "What frustrates you at work?"
