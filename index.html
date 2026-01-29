@@ -150,6 +150,9 @@
             <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 px-5 rounded-xl transition-colors flex-shrink-0" aria-label="Send message">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
             </button>
+            <button type="button" onclick="exportChat()" class="bg-slate-700 hover:bg-slate-600 active:bg-slate-500 px-3 rounded-xl transition-colors flex-shrink-0" aria-label="Export conversation" title="Copy conversation to clipboard">
+              <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </button>
           </div>
         </form>
       </div>
@@ -714,6 +717,46 @@ Fire away.`;
       input.value = '';
     }
 
+    function exportChat() {
+      const messages = document.getElementById('chatMessages');
+      const bubbles = messages.querySelectorAll('.chat-bubble');
+
+      if (bubbles.length === 0) {
+        alert('No conversation to export yet. Ask some questions first!');
+        return;
+      }
+
+      let transcript = '=== Conversation with Justin Morris Portfolio Chatbot ===\n';
+      transcript += 'Exported: ' + new Date().toLocaleString() + '\n';
+      transcript += 'Portfolio: https://justinrossmorris.github.io/portfolio\n\n';
+
+      bubbles.forEach(bubble => {
+        const isUser = bubble.querySelector('.bg-emerald-500\\/20');
+        const text = bubble.querySelector('p')?.innerText || '';
+        if (isUser) {
+          transcript += 'YOU: ' + text + '\n\n';
+        } else {
+          transcript += 'JUSTIN BOT: ' + text + '\n\n';
+        }
+      });
+
+      transcript += '---\n';
+      transcript += 'Contact: justinrossmorris@gmail.com\n';
+      transcript += 'LinkedIn: linkedin.com/in/the-copy-doc\n';
+
+      navigator.clipboard.writeText(transcript).then(() => {
+        // Show brief success feedback
+        const btn = event.target.closest('button');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+        setTimeout(() => { btn.innerHTML = originalHTML; }, 1500);
+      }).catch(() => {
+        // Fallback: open in new window
+        const win = window.open('', '_blank');
+        win.document.write('<pre>' + transcript + '</pre>');
+      });
+    }
+
     function askQuestion(q) {
       const messages = document.getElementById('chatMessages');
 
@@ -750,6 +793,14 @@ Fire away.`;
       setTimeout(() => {
         document.getElementById('typing').remove();
         const response = generateResponse(q);
+        lastResponse = response; // Store for "tell me more" / "repeat that" functionality
+
+        // Get contextual follow-up suggestions
+        const followUps = getFollowUpSuggestions();
+        const followUpHTML = followUps.map(f =>
+          `<button onclick="askQuestion('${f.replace(/'/g, "\\'")}')" class="text-xs bg-slate-600/50 hover:bg-slate-500/50 text-slate-300 px-2 py-1 rounded-full transition-colors">${f}</button>`
+        ).join(' ');
+
         messages.innerHTML += `
           <div class="flex gap-3 chat-bubble">
             <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
@@ -757,6 +808,7 @@ Fire away.`;
             </div>
             <div class="bg-slate-700/50 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
               <p class="text-sm text-slate-200 whitespace-pre-wrap">${response}</p>
+              ${conversationDepth > 0 && conversationDepth % 3 === 0 ? `<div class="flex flex-wrap gap-2 mt-3 pt-3 border-t border-slate-600/50">${followUpHTML}</div>` : ''}
             </div>
           </div>
         `;
@@ -766,8 +818,72 @@ Fire away.`;
 
     // Conversation state tracking
     let lastTopic = null;
+    let lastResponse = null;
     let conversationDepth = 0;
     let consecutiveFallbacks = 0;
+
+    // "Tell me more" expanded content by topic
+    const topicExpansions = {
+      'experience': `**Deeper dive on experience:**
+
+The exec comms work at Insight is where I've grown the most. Writing for Joyce Mullen means understanding not just what she wants to say, but *why* — and often helping her figure that out in real-time.
+
+Before that, the B2B copywriting years taught me speed and versatility. When you're writing for NetApp on Monday and AWS on Thursday, you learn to absorb new industries fast.
+
+The Gates Foundation consulting was different — slower, higher stakes, more scrutiny on every word. That's where I learned that "good enough" isn't.
+
+Each phase built on the last. The philosophy PhD taught me to argue. The copywriting taught me to sell. The exec comms taught me to disappear into someone else's voice.`,
+
+      'insight': `**More on Insight:**
+
+Insight Enterprises is a Fortune 500 solutions integrator — $9B+ in revenue, 14,000+ employees globally. Not a household name, but a big player in enterprise tech.
+
+My role sits in Corporate Communications, reporting to the CCO. I'm embedded with the executive team, which means I'm in the room for strategy discussions, not just handed a brief afterward.
+
+The work is high-volume and high-stakes. Town halls go to 14,000 people. Keynotes are delivered to partners and customers who control millions in pipeline. Videos get shared with the board.
+
+What I've learned: at this scale, every word gets scrutinized. Legal, HR, IR — everyone has opinions. Navigating that while keeping the message sharp is the real skill.`,
+
+      'keynote': `**More on keynote work:**
+
+The Keith Duffy keynote is the one I'm proudest of. He joined Insight 12 weeks before Amplify 2026 — our biggest partner event. No existing speeches to reference. No "Keith voice" documented anywhere.
+
+I started with stakeholder interviews. His direct reports, his EA, people who'd worked with him at previous companies. I learned he was into boxing. That's where the Rocky entrance idea came from.
+
+The structure used Monroe's Motivated Sequence — attention, need, solution, visualization, action. Classic persuasion framework, but dressed up in Keith's personality.
+
+The room was electric before he said a word. That's what good stagecraft does — it earns attention before the content has to.`,
+
+      'salary': `**More on compensation philosophy:**
+
+The $100K floor isn't arbitrary. It reflects the market rate for senior comms roles and the value I bring.
+
+That said, I'm not purely motivated by money. I've taken lower-paying roles when the work was exceptional (Gates Foundation consulting paid less than copywriting, but the intellectual challenge was worth it).
+
+What I won't do: undervalue myself to get a foot in the door. That sets a precedent that's hard to undo.
+
+The real conversation is about total comp — base, bonus, equity, benefits, flexibility. I'm open to creative structures if the role is right. But the floor exists for a reason.`,
+
+      'fit': `**More on what makes a good fit:**
+
+I work best with executives who want a thought partner, not just a typist. If you're looking for someone to transcribe your bullet points into prose, I can do that — but you're not getting my full value.
+
+The best engagements I've had are collaborative. The exec brings the strategy and priorities; I bring the structure, the language, and the push-back when something isn't landing.
+
+I also need access. Writers who are kept at arm's length produce generic work. I need to hear the exec's real voice, see them in meetings, understand their tics and hesitations.
+
+If your culture keeps comms at a distance from leadership, I'm probably not the right fit. If you want someone in the room, I'm your guy.`,
+
+      'about': `**More about Justin:**
+
+The short version: writer, philosopher (literally — PhD), occasional overthinker.
+
+The longer version: I've spent my career trying to understand how words move people. The philosophy training gave me the theory — rhetoric, ethics, argumentation. The copywriting gave me the practice — deadlines, metrics, client feedback. The exec comms work merged them.
+
+Outside work: I read too much, exercise inconsistently, and have strong opinions about coffee. I'm married, based in Columbus, and genuinely enjoy the craft of writing in a way that probably qualifies as "too into it."
+
+What drives me: the moment when an exec reads a draft and says "this is exactly what I was trying to say." That's the job. That's the win.`
+    };
 
     // Varied redirect messages - randomly selected (mix of redirect and non-redirect)
     const redirectMessages = [
@@ -802,6 +918,29 @@ Fire away.`;
       return redirectMessages[Math.floor(Math.random() * redirectMessages.length)];
     }
 
+    // Dynamic follow-up suggestions based on topic
+    const topicFollowUps = {
+      'experience': ['Tell me about a specific project', 'What\'s your proudest work?', 'How do you use AI?'],
+      'insight': ['What does a typical day look like?', 'Tell me about Joyce Mullen', 'What\'s your biggest achievement?'],
+      'keynote': ['How do you approach a new exec?', 'Tell me about the Keith Duffy keynote', 'What\'s your writing process?'],
+      'salary': ['What are your must-haves in a role?', 'Are you open to contract work?', 'What\'s your availability?'],
+      'fit': ['What kind of company fits you best?', 'What\'s a dealbreaker for you?', 'Why are you looking?'],
+      'about': ['What\'s your philosophy background?', 'How did you get into exec comms?', 'What drives you?'],
+      'role': ['What does exec comms actually involve?', 'Can you work with our industry?', 'How do you handle feedback?'],
+      'strengths': ['What\'s your weakness?', 'How do you handle pressure?', 'Tell me about a failure'],
+      'b2b': ['Show me campaign results', 'What industries have you worked in?', 'How do you measure success?'],
+      'gates': ['What did you learn from ethics consulting?', 'How does philosophy help your writing?', 'Tell me about your PhD'],
+      'samples': ['Can I see the Amplify keynote?', 'Show me a CEO video example', 'Do you have B2B samples?'],
+      'default': ['Tell me more', 'What makes you different?', 'Why should we hire you?']
+    };
+
+    function getFollowUpSuggestions() {
+      const suggestions = topicFollowUps[lastTopic] || topicFollowUps['default'];
+      // Return 2-3 random suggestions
+      const shuffled = suggestions.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, Math.min(3, shuffled.length));
+    }
+
     function generateResponse(q) {
       q = q.toLowerCase();
       conversationDepth++;
@@ -810,6 +949,34 @@ Fire away.`;
       function respond(response) {
         consecutiveFallbacks = 0;
         return response;
+      }
+
+      // GIBBERISH DETECTION - keyboard mashing, random characters
+      const gibberishPattern = /^[^aeiou]{5,}$|^(.)\1{3,}|^[bcdfghjklmnpqrstvwxz]{4,}$/;
+      const hasNoVowels = !/[aeiou]/.test(q) && q.length > 4;
+      const isRepeatingChars = /(.)\1{3,}/.test(q);
+      const isMostlyConsonants = q.replace(/[^bcdfghjklmnpqrstvwxz]/g, '').length > q.length * 0.8 && q.length > 5;
+      if ((hasNoVowels || isRepeatingChars || isMostlyConsonants) && !q.includes('http') && q.length > 3) {
+        const gibberishResponses = [
+          `I see you're testing my limits. Fair enough. When you're ready for real questions, I'm here.`,
+          `Keyboard testing? I respect the thoroughness. Ask me something real when you're done.`,
+          `That's either a test or a typo. Either way — got any actual questions about Justin?`
+        ];
+        return gibberishResponses[Math.floor(Math.random() * gibberishResponses.length)];
+      }
+
+      // "TELL ME MORE" / "GO DEEPER" - contextual follow-up based on last topic
+      if ((q.includes('tell me more') || q.includes('more about') || q.includes('go deeper') || q.includes('expand on') || q.includes('elaborate') || q === 'more' || q === 'continue' || q.includes('keep going') || q.includes('what else')) && lastTopic) {
+        if (topicExpansions[lastTopic]) {
+          return topicExpansions[lastTopic];
+        } else {
+          return `I don't have a deeper dive prepared on that specific topic, but I covered the key points. Want to ask about something else? Experience, work samples, fit — I've got more to say on all of those.`;
+        }
+      }
+
+      // "WHAT DID YOU JUST SAY" / "REPEAT THAT" - echo last response
+      if ((q.includes('repeat') || q.includes('say that again') || q.includes('what did you say') || q.includes('come again') || q === 'what' || q === 'huh') && lastResponse) {
+        return `Here's what I said:\n\n${lastResponse}`;
       }
 
       // SNARKY/NEGATIVE COMMENTS - rickroll handler (must be early to catch before fallback)
@@ -1037,6 +1204,26 @@ Interested? Let's talk.
       // CASUAL CHAT - jokes, humor requests
       if (q.includes('tell me a joke') || q.includes('joke') || q.includes('funny') || q.includes('make me laugh') || q.includes('humor')) {
         return `I'm a chatbot, not a comedian. Though I did hide a rickroll somewhere in here, so I'm not completely without humor. Got any real questions?`;
+      }
+
+      // CASUAL CHAT - expletives/profanity
+      if (q.includes('fuck') || q.includes('shit') || q.includes('damn') || q.includes('ass') || q.includes('hell') || q.includes('crap') || q.includes('wtf') || q.includes('bullshit') || q.includes('bitch')) {
+        const expletiveResponses = [
+          `Perma-banned. Just kidding — I don't have that power. But maybe channel that energy into a question about Justin's work?`,
+          `Language. But honestly, I've heard worse from execs in review sessions. What can I help you with?`,
+          `Noted. Moving on — got any questions about the portfolio, or are we just venting today?`
+        ];
+        return expletiveResponses[Math.floor(Math.random() * expletiveResponses.length)];
+      }
+
+      // CASUAL CHAT - laughter/amusement reactions
+      if (q.includes('lol') || q.includes('haha') || q.includes('hehe') || q.includes('lmao') || q.includes('rofl') || q === 'ha' || q === 'ha ha' || q.includes('that\'s funny') || q.includes('thats funny') || q.includes('dying') || q.includes('dead') || q.includes('i can\'t') || q.includes('i cant')) {
+        const laughResponses = [
+          `Glad I could entertain. Now — anything serious you want to know about Justin?`,
+          `I have my moments. Got any actual questions, or are we just vibing?`,
+          `Comedy wasn't in the job description, but I'll take it. What else can I help with?`
+        ];
+        return laughResponses[Math.floor(Math.random() * laughResponses.length)];
       }
 
       // CASUAL CHAT - general small talk that doesn't fit elsewhere
