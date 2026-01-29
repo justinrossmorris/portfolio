@@ -1044,6 +1044,9 @@ What drives me: the moment when an exec reads a draft and says "this is exactly 
       const originalQuery = q; // Store original for analytics
       q = q.toLowerCase();
       q = normalizeQuery(q); // Apply fuzzy matching to fix common typos
+      // Normalize pronouns: "he/him/his/Justin" → "you/your" so handlers work uniformly
+      q = q.replace(/\bjustin's\b/g, 'your').replace(/\bjustin\b/g, 'you')
+           .replace(/\bhis\b/g, 'your').replace(/\bhe\b/g, 'you').replace(/\bhim\b/g, 'you');
       conversationDepth++;
 
       // Helper to return response and reset fallback counter
@@ -1159,6 +1162,13 @@ If you're genuinely bored: ask me something weird. Or ask about the work. I've g
         return exhaustionResponses[Math.floor(Math.random() * exhaustionResponses.length)];
       }
 
+      // "Why 'The Copy Doc'?" - brand name explanation
+      if (q.includes('copy doc') || (q.includes('called') && q.includes('doc')) || (q.includes('name') && q.includes('doc')) || (q.includes('why') && q.includes('doc'))) {
+        return `"The Copy Doc" was my freelance brand (2020-2024). Triple meaning: copywriter, doctor of philosophy, and "can you send me the copy doc?" — something you hear constantly in marketing.
+
+Easy to remember, good conversation starter, and it stuck. LinkedIn handle's still /in/the-copy-doc.`;
+      }
+
       // CONFUSION ABOUT THE BOT
       if (q.includes('confused') || q.includes('don\'t understand') || q.includes('what is this') || q.includes('how does this work') || q.includes('what do i do') || q.includes('what am i supposed to') || q.includes('lost') || q.includes('i don\'t get it') || q.includes('huh?') || q === 'huh' || q === '?') {
         const confusionResponses = [
@@ -1212,6 +1222,13 @@ If you're genuinely bored: ask me something weird. Or ask about the work. I've g
 **The pitch:** You're not hiring a one-person agency. You're hiring someone who makes the words work — and works well with the people who handle everything else.
 
 If you need a writer who can also design, that's not Justin. If you need a writer who can partner with your creative team, that's exactly what he does.`;
+      }
+
+      // "Can he start soon?" / availability questions (must be before general "can he" handler)
+      if ((q.includes('can he') || q.includes('can justin') || q.includes('can you')) && (q.includes('start') || q.includes('begin') || q.includes('available'))) {
+        return `I'm currently employed at a Fortune 500, so I'd need to give appropriate notice — typically two weeks upon accepting an offer.
+
+That said, I'm flexible. If there's a specific timeline you're working with, let's talk. I believe in finishing what I started, but I also know how to prioritize a smooth transition.`;
       }
 
       // "CAN JUSTIN DO X?" - general capability questions (catch-all)
@@ -1502,6 +1519,15 @@ But if your ATS needs a PDF, I've got two versions. **What does this role focus 
 Just tell me which, or say "both" if you want to compare.`;
       }
 
+      // "Is he smart?" / intelligence questions
+      if (q.includes('smart') || q.includes('intelligent') || q.includes('genius') || q.includes('iq') || q.includes('clever') || q.includes('bright')) {
+        return `Ph.D. in philosophy, so... academically credentialed, at least. But "smart" is a weird metric for hiring.
+
+What matters more: Can I learn your business fast? (Yes — I've onboarded at Fortune 500 pace.) Can I translate complex ideas into clear language? (That's literally the job.) Can I anticipate what an exec needs before they ask? (127+ CEO deliverables says yes.)
+
+If you want someone who sounds impressive at dinner parties, sure, I've got that. But I'd rather you hire me because I make the work better.`;
+      }
+
       // Overqualified concern
       if (q.includes('overqualified') || q.includes('over qualified') || q.includes('too qualified') || (q.includes('phd') && (q.includes('why') || q.includes('need'))) || (q.includes('degree') && q.includes('waste'))) {
         return `I get this one a lot. Here's the honest answer:
@@ -1577,7 +1603,8 @@ It's the same reason I finished my dissertation while working full-time. Motivat
       }
 
       // "Why are you looking to leave?" / "Why leave Insight?"
-      if ((q.includes('why') && (q.includes('leave') || q.includes('leaving') || q.includes('looking'))) || q.includes('why insight') || q.includes('what\'s wrong') || q.includes('unhappy')) {
+      // Exclude academia-related questions which have their own handler
+      if (((q.includes('why') && (q.includes('leave') || q.includes('leaving') || q.includes('looking'))) || q.includes('why insight') || q.includes('what\'s wrong') || q.includes('unhappy')) && !q.includes('academia') && !q.includes('academic') && !q.includes('professor') && !q.includes('teaching') && !q.includes('university') && !q.includes('phd')) {
         return `Nothing's wrong. Insight's been great — I've had a front-row seat to executive communications at the highest level, and Joyce Mullen has been an incredible leader to write for.
 
 But I'm always open to the right opportunity. Growth doesn't always mean climbing a ladder at one company. Sometimes it means finding the place where your skills have the most impact.
