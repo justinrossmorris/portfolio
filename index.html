@@ -1040,7 +1040,7 @@ Interested? Let's talk.
       }
 
       // CASUAL CHAT - general small talk that doesn't fit elsewhere
-      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || q.includes('sup') || q.includes('hey') || q.includes('hi') || q.includes('hello') || q.includes('howdy') || q.includes('yo')) {
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || q === 'sup' || q === 'hey' || q === 'hi' || q === 'hello' || q === 'howdy' || q === 'yo' || q.startsWith('hey ') || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('yo ')) {
         const greetingResponses = [
           `I'm a chatbot, so "existing" is about as good as it gets. What can I tell you about Justin?`,
           `Operational. Ready to answer questions. What do you want to know?`,
