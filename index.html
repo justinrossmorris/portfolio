@@ -769,38 +769,24 @@ Fire away.`;
     let conversationDepth = 0;
     let consecutiveFallbacks = 0;
 
-    // Varied redirect messages - randomly selected
+    // Varied redirect messages - randomly selected (mix of redirect and non-redirect)
     const redirectMessages = [
-      `That's outside my training data, but Justin would know. Shall I connect you?\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I'm hitting the limits of my pattern matching here. The real Justin is more interesting anyway.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      // Conversational responses that don't push contact (for casual queries)
+      `That's outside my programmed expertise — I'm really just here to talk about Justin's work. Try asking about speechwriting, exec comms, or copywriting.`,
+      `I wasn't trained on that. I'm a pretty narrow specialist: Justin's portfolio, experience, and fit. Got questions in that zone?`,
+      `My knowledge base is limited to "things about Justin." Anything in that category I can help with?`,
+      `That one's outside my wheelhouse. I do exec comms questions, copywriting questions, and "is Justin right for my team" questions. Anything there?`,
+      `I'm drawing a blank — which means you've found a gap. Try something about experience, work samples, or skills and I'll be more useful.`,
+      `Not in my repertoire. But if you've got questions about Justin's background, I've got answers.`,
+      `I can't help with that one. I'm basically a very specific FAQ. Try "what's your experience" or "why are you looking for a new role."`,
+      `That stumped me. I'm good at portfolio questions, not so good at... whatever that was. Ask me something else?`,
+      // Traditional redirects with contact info (for serious questions)
       `Good question — one I wasn't programmed to answer. Justin's inbox is open.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I don't have a canned response for that, which probably means it's worth discussing directly.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `You've found a gap in my knowledge base. Justin can fill it.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `That one stumped me. Justin, however, is harder to stump.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I'm just a chatbot with good talking points. For the nuanced stuff, you'll want the human.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Interesting question. I wasn't trained on that specifically, but I know someone who can answer.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `My knowledge has limits. Justin's curiosity doesn't. Reach out?\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
       `That deserves a real conversation, not a pre-written response.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I could make something up, but Justin would give you a better answer.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `You're asking the right questions — just to the wrong entity. Try the human version.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `This is where I hand off to my creator. He's friendlier than I am anyway.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I wasn't built for that question, but Justin was built for exactly this kind of conversation.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Beyond my programming. But hey, that's what the real interview is for.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I'm a demo of how Justin thinks about communications. For the full experience, go direct.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `That's a "let's get coffee" question, not a chatbot question.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Good instinct asking that. Better instinct: ask Justin directly.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
       `I can only get you so far. Justin can take it from here.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `You've exceeded my FAQ coverage. Upgrade to the human version?\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Pattern matching failed. Human connection available.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Not in my database. But Justin's brain is a better database anyway.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I'm flattered you think I'd know that. I don't. Justin does.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `That's a conversation worth having — just not with a bot.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I've reached the edge of my usefulness. Justin hasn't reached his.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Consider this my way of saying: "That's a great question for the interview."\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I'm a portfolio piece, not an oracle. For oracular wisdom, try Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `Some things are best discussed human-to-human. This is one of them.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `My scripts don't cover that. Justin's experience does.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      `That's a "let's get coffee" question, not a chatbot question.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
       `That's above my pay grade. (I don't have a pay grade.)\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      `I'm a portfolio piece, not an oracle. For oracular wisdom, try Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
     ];
 
     // Pushback responses based on last topic
@@ -917,6 +903,71 @@ If you're genuinely bored: ask me something weird. Or ask about the work. I've g
         return excitementResponses[Math.floor(Math.random() * excitementResponses.length)];
       }
 
+      // HAPPY / POSITIVE MOOD
+      if (q.includes('happy') || q.includes('great') || q.includes('good day') || q.includes('feeling good') || q.includes('doing well') || q.includes('fantastic') || q.includes('wonderful') || q === 'good' || q === 'great' || q.includes('i\'m good') || q.includes('doing great')) {
+        const happyResponses = [
+          `Good to hear. Let's keep the momentum going — what do you want to know about Justin's background?`,
+          `Nice. A good mood and a chatbot that actually answers questions? This could be productive.`,
+          `Glad to hear it. Ask me anything — experience, skills, work samples, weird philosophy tangents. I'm ready.`
+        ];
+        return happyResponses[Math.floor(Math.random() * happyResponses.length)];
+      }
+
+      // "CAN JUSTIN DO X?" - capability questions
+      if ((q.includes('can justin') || q.includes('can he') || q.includes('does justin') || q.includes('does he') || q.includes('do you do')) && (q.includes('design') || q.includes('video') || q.includes('edit') || q.includes('code') || q.includes('develop') || q.includes('program') || q.includes('animate') || q.includes('illustrat') || q.includes('photo'))) {
+        return `Honest answer: Justin's a writer, not a designer or developer. He can't do graphic design, video editing, coding, or illustration.
+
+**What he can do:**
+• Write scripts that designers and video editors bring to life
+• Collaborate with creative teams on integrated campaigns
+• Provide clear briefs and creative direction for visual assets
+• Write the words that go on the slides, the website, the video
+
+**The pitch:** You're not hiring a one-person agency. You're hiring someone who makes the words work — and works well with the people who handle everything else.
+
+If you need a writer who can also design, that's not Justin. If you need a writer who can partner with your creative team, that's exactly what he does.`;
+      }
+
+      // "CAN JUSTIN DO X?" - general capability questions (catch-all)
+      if ((q.includes('can justin') || q.includes('can he') || q.includes('does justin') || q.includes('does he')) && q.includes('?')) {
+        return `Good question — depends on the "what."
+
+**What Justin does:**
+• Executive communications (speechwriting, talking points, town halls)
+• B2B copywriting (campaigns, e-books, demand gen)
+• Content strategy and messaging frameworks
+• Thought leadership and ghostwriting
+
+**What Justin doesn't do:**
+• Graphic design, video editing, coding, illustration
+• PR/media relations (he writes the content, not the pitches)
+• Social media management (he can write posts, but not run accounts)
+
+If you tell me what you're looking for, I can give you a more specific answer.`;
+      }
+
+      // "Can Justin build a chatbot like this?"
+      if ((q.includes('chatbot') || q.includes('chat bot') || q.includes('bot') || q.includes('this site') || q.includes('this portfolio') || q.includes('like this')) && (q.includes('build') || q.includes('make') || q.includes('create') || q.includes('develop'))) {
+        return `Short answer: kind of.
+
+I built this with heavy AI assistance — Claude did most of the actual coding. I provided the content, the logic, the voice, and a lot of iterative feedback. Think of it as a collaboration between a writer who knows what he wants and an AI that knows JavaScript.
+
+**What I could help with:**
+• Content strategy and conversation design
+• Voice and tone for your chatbot's responses
+• The "what should it say" part of the equation
+
+**What I'd need help with:**
+• The actual development (I'm not a coder)
+• Hosting, deployment, technical architecture
+
+If you're looking for someone to build you a chatbot from scratch, that's not me. If you're looking for someone to make your chatbot *sound right* and think through the user experience — that's exactly what I do.
+
+Interested? Let's talk.
+
+📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+      }
+
       // INSULTS / CRITICISM OF THE BOT
       if (q.includes('stupid') || q.includes('dumb') || q.includes('useless') || q.includes('suck') || q.includes('terrible') || q.includes('worst') || q.includes('hate this') || q.includes('hate you') || q.includes('garbage') || q.includes('trash') || q.includes('worthless') || q.includes('idiot') || q.includes('moron') || q.includes('pathetic') || q.includes('lame') || q === 'bad' || q === 'no') {
         const insultResponses = [
@@ -938,6 +989,64 @@ If you're genuinely bored: ask me something weird. Or ask about the work. I've g
           `Thanks! Built this myself (with some AI assist on the code). Happy to answer any questions you've got.`
         ];
         return complimentResponses[Math.floor(Math.random() * complimentResponses.length)];
+      }
+
+      // CASUAL CHAT - food preferences
+      if (q.includes('pizza') || q.includes('coffee') || q.includes('beer') || q.includes('wine') || q.includes('tacos') || q.includes('burger') || q.includes('sushi') || q.includes('food') || q.includes('hungry') || q.includes('eat') || q.includes('lunch') || q.includes('dinner') || q.includes('breakfast')) {
+        const foodResponses = [
+          `Noted. I'm more of a "fueled by caffeine and deadlines" type myself. But we're getting off-topic — anything you want to know about Justin's work?`,
+          `Can't help you there — I run on JavaScript, not calories. But if you've got questions about exec comms or copywriting, I'm your bot.`,
+          `Interesting. Justin's more of a "whatever's fast between meetings" guy. Anyway — got any questions about the actual portfolio?`
+        ];
+        return foodResponses[Math.floor(Math.random() * foodResponses.length)];
+      }
+
+      // CASUAL CHAT - weather, time, day
+      if (q.includes('weather') || q.includes('rain') || q.includes('sunny') || q.includes('cold') || q.includes('hot') || q.includes('what time') || q.includes('what day') || q.includes('weekend') || q.includes('monday') || q.includes('friday')) {
+        const weatherResponses = [
+          `I exist outside of time and weather. It's actually kind of peaceful. Anyway — questions about Justin's experience?`,
+          `No windows in here. Just code. But I'm happy to talk about something more relevant — like what Justin can do for your team.`,
+          `Climate-controlled server existence over here. What can I tell you about the portfolio?`
+        ];
+        return weatherResponses[Math.floor(Math.random() * weatherResponses.length)];
+      }
+
+      // CASUAL CHAT - random personal statements
+      if (q.includes('i like') || q.includes('i love') || q.includes('i hate') || q.includes('i want') || q.includes('i need') || q.includes('i wish') || q.includes('i think')) {
+        // Skip if it's actually about the chatbot or Justin
+        if (!q.includes('chatbot') && !q.includes('portfolio') && !q.includes('justin') && !q.includes('this') && !q.includes('job') && !q.includes('work') && !q.includes('site')) {
+          const randomResponses = [
+            `Valid. I don't have opinions on that — I'm pretty single-purpose. But I do have opinions on exec comms if you're curious.`,
+            `Interesting. Unfortunately my conversational range is limited to "things about Justin." Got any questions in that department?`,
+            `I'll file that away. In the meantime — anything you want to know about Justin's background or experience?`
+          ];
+          return randomResponses[Math.floor(Math.random() * randomResponses.length)];
+        }
+      }
+
+      // CASUAL CHAT - hobbies and interests
+      if (q.includes('music') || q.includes('movie') || q.includes('book') || q.includes('tv') || q.includes('game') || q.includes('sport') || q.includes('hobby') || q.includes('guitar') || q.includes('travel') || q.includes('vacation')) {
+        const hobbyResponses = [
+          `Fun topic, but outside my wheelhouse. I'm basically a talking FAQ about Justin's professional life. Want to stick to that?`,
+          `I'd love to chat about that, but I'm pretty narrowly trained. Ask me about speechwriting, copywriting, or executive comms and I'll be more useful.`,
+          `No hobbies here — just answering questions about portfolios. Speaking of which, got any?`
+        ];
+        return hobbyResponses[Math.floor(Math.random() * hobbyResponses.length)];
+      }
+
+      // CASUAL CHAT - jokes, humor requests
+      if (q.includes('tell me a joke') || q.includes('joke') || q.includes('funny') || q.includes('make me laugh') || q.includes('humor')) {
+        return `I'm a chatbot, not a comedian. Though I did hide a rickroll somewhere in here, so I'm not completely without humor. Got any real questions?`;
+      }
+
+      // CASUAL CHAT - general small talk that doesn't fit elsewhere
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || q.includes('sup') || q.includes('hey') || q.includes('hi') || q.includes('hello') || q.includes('howdy') || q.includes('yo')) {
+        const greetingResponses = [
+          `I'm a chatbot, so "existing" is about as good as it gets. What can I tell you about Justin?`,
+          `Operational. Ready to answer questions. What do you want to know?`,
+          `All good on my end. Ask me something — experience, skills, work samples, whatever you're curious about.`
+        ];
+        return greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
       }
 
       // "What job is Justin looking for?"
@@ -2061,6 +2170,22 @@ Let's talk specifics directly:
 $100k is the basement. I'd like to at least be on the ground floor — but I wouldn't mind the master bedroom, either.`;
       }
 
+      // Low salary offers - polite but firm "no"
+      const lowSalaryMatch = q.match(/\$?\d{2}k|\$?\d{2},?\d{3}/);
+      if (lowSalaryMatch && (q.includes('accept') || q.includes('take') || q.includes('work for') || q.includes('okay with') || q.includes('consider') || q.includes('offer'))) {
+        const numStr = lowSalaryMatch[0].replace(/[$,k]/gi, '');
+        const salary = numStr.length <= 2 ? parseInt(numStr) * 1000 : parseInt(numStr);
+        if (salary < 100000) {
+          return `Appreciate the directness, but no.
+
+$100k is the floor. That's not negotiable posturing — it's math. Cost of living, market rate for this skillset, and the fact that I'm not desperate.
+
+Now, is there something more valuable than money you can offer? Equity in a rocketship? A four-day workweek? The title "Chief Prose Officer"? I'm listening.
+
+...But probably not, right? Let's talk about what you *can* offer.`;
+        }
+      }
+
       // "Availability / notice period / start date"
       if (q.includes('avail') || q.includes('start') || q.includes('notice') || q.includes('when can you')) {
         return `I'm currently employed, so I'd need to give appropriate notice. Exact timing depends on the opportunity.
@@ -2320,6 +2445,25 @@ This chatbot exists because I understand both the technology and its limits.`;
 **Where I draw the line:** I won't write something the executive doesn't believe. If they want to say something I think is dishonest or harmful, I'll push back. The trust goes both ways.`;
       }
 
+      // "PSA / Professional Speechwriters Association / Speechwriting School"
+      if (q.includes('psa') || q.includes('speechwriter') || q.includes('speechwriting') || q.includes('professional speechwriters')) {
+        return `Yes — I completed the **PSA Speechwriting School** in June 2025. Six-week intensive with the Professional Speechwriters Association.
+
+**What I learned:**
+
+**Structure (Eric Schnure):** Monroe's Motivated Sequence — attention, need, solution, visualization, action. Plus the architecture of openings and closings that actually land.
+
+**Audience & Purpose (Rosemary King):** The Golden Triad. Know your audience deeply. Know your purpose on the communication hierarchy. Craft ONE clear message. People don't remember three things — they remember one.
+
+**Making the Case (Felicity Barber):** Evidence, data, rhetorical devices. How to bring numbers to life. Anaphora, antithesis, tricolon — tools that make language stick.
+
+**Storytelling (Mike Long):** Three-act structure for speeches. Emotion drives decisions; logic justifies them. Don't ask executives for "stories" — ask about problems they faced.
+
+**Editing (Fletcher Dean):** It doesn't matter what leaders say — only what audiences hear. Word count math. Kill jargon. Read aloud. Make it simple, then make it memorable.
+
+**Why it matters:** Speechwriting is its own discipline — not just "longer copywriting." This training gave me the frameworks to write speeches that move audiences to action, not just inform them.`;
+      }
+
       // "DEI / belonging / inclusion messaging"
       if (q.includes('dei') || q.includes('diversity') || q.includes('inclusion') || q.includes('belonging') || q.includes('equity')) {
         return `I can write it. I have written it. It's part of the job in corporate comms.
@@ -2333,9 +2477,7 @@ This chatbot exists because I understand both the technology and its limits.`;
 
 **Where I land:** I'm a professional writer. I'll craft messaging that reflects the executive's genuine commitments and the company's actual initiatives. I won't write empty gestures, and I'll push back on language that feels hollow.
 
-If you're looking for someone who'll evangelize, that's not me. If you're looking for someone who'll write honest, grounded communications on these topics — I can do that.
-
-For more on where I stand: <a href="https://www.compactmag.com/article/the-lost-generation/" target="_blank" class="text-emerald-400 underline">The Lost Generation</a> (Compact Magazine)`;
+If you're looking for someone who'll evangelize, that's not me. If you're looking for someone who'll write honest, grounded communications on these topics — I can do that.`;
       }
 
       // "International / cross-cultural / global communications"
