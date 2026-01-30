@@ -1460,6 +1460,11 @@ Interested? Let's talk.
         return `Postmodern lit — the self-aware, self-referential stuff. Calvino's *If on a winter's night a traveler* is a favorite. Also the Germans (Mann), the Russians (Dostoevsky), the French (Céline). I could go on, but this is a portfolio chatbot, not a book club.\n\nWhat do you actually want to know about my work?`;
       }
 
+      // CASUAL CHAT - favorite quote/proverb/saying
+      if (q.includes('quote') || q.includes('saying') || q.includes('proverb') || q.includes('motto') || q.includes('mantra')) {
+        return `There's an old proverb (origin unknown, often misattributed): "Tell me a fact and I'll learn. Tell me a truth and I'll believe. But tell me a story and it will live in my heart forever."\n\nThat's the job, really. Execs have facts and truths. I help them find the story.\n\nAnything else you want to know?`;
+      }
+
       // CASUAL CHAT - sports/fitness specifically (with real answer)
       // Note: exclude 'writing exercise' which has its own handler
       if ((q.includes('sport') || q.includes('workout') || q.includes('gym') || q.includes('fitness') || q.includes('ufc') || q.includes('mma') || q.includes('lift') || (q.includes('exercise') && !q.includes('writing')))) {
