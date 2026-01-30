@@ -39,6 +39,34 @@
 </head>
 <body class="bg-slate-900 text-white">
 
+  <!-- STICKY NAV -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 transform -translate-y-full transition-transform duration-300">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="font-semibold text-white hover:text-emerald-400 transition-colors">Justin Morris, Ph.D.</a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="#about" class="text-slate-400 hover:text-white transition-colors">About</a>
+        <a href="#work" class="text-slate-400 hover:text-white transition-colors">Work</a>
+        <a href="#testimonials" class="text-slate-400 hover:text-white transition-colors">Testimonials</a>
+        <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="bg-emerald-500 hover:bg-emerald-600 px-3 py-1.5 rounded-lg text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    // Show nav after scrolling past hero
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('mainNav');
+      const scrollY = window.scrollY;
+      if (scrollY > 400) {
+        nav.classList.remove('-translate-y-full');
+      } else {
+        nav.classList.add('-translate-y-full');
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+
   <!-- PASSWORD GATE -->
   <div id="passwordGate" class="fixed inset-0 bg-slate-900 z-50 flex items-center justify-center">
     <div class="text-center p-8">
@@ -207,6 +235,49 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section id="about" class="py-20 bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-8 text-center">About Me</h2>
+
+      <div class="grid md:grid-cols-3 gap-8 items-start">
+        <!-- Main bio -->
+        <div class="md:col-span-2 space-y-4 text-slate-300">
+          <p>I spent a decade in academia studying how people argue, persuade, and make meaning. My Ph.D. in Philosophy from McMaster University focused on human dignity—specifically, defending a concept that critics dismissed as useless. (Turns out, defending unpopular positions is good training for marketing.)</p>
+
+          <p>Before joining Insight, I consulted on ethics for the Bill & Melinda Gates Foundation, translating bleeding-edge biotech research into policy recommendations. Then I discovered I could make a living writing about cloud infrastructure instead of moral philosophy. The pivot stuck.</p>
+
+          <p>Now I write for Fortune 500 executives. The CEO says she trusts me. After 127+ deliverables, I think I've earned it. My job is to make complex ideas land—whether that's a keynote for 1,300 salespeople or a two-minute video that closes a $19M deal.</p>
+
+          <p class="text-slate-400 italic text-sm border-l-2 border-emerald-500/50 pl-4">"Best philosophy course I have taken. Any other professor would not have done the content justice." — Student evaluation, Environmental Philosophy, McMaster</p>
+        </div>
+
+        <!-- Fun facts sidebar -->
+        <div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700">
+          <h3 class="font-semibold text-white mb-4 text-sm uppercase tracking-wide">Quick facts</h3>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">🥋</span>
+              <span>Black belt in Tang Soo Do (age 16)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">🧠</span>
+              <span>Aspiring memory athlete—PB: 120 random digits</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">🎮</span>
+              <span>Guilty pleasure: CaseOh on Twitch</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">🚫</span>
+              <span>Pet peeve: Being called "buddy"</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SCOPE OF WORK -->
   <section id="work" class="py-20 bg-slate-800/50">
     <div class="max-w-5xl mx-auto px-6">
@@ -298,7 +369,7 @@
   </section>
 
   <!-- TESTIMONIALS - FRESH INSIGHT QUOTES -->
-  <section class="py-20 bg-slate-900">
+  <section id="testimonials" class="py-20 bg-slate-900">
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-3xl font-bold mb-4 text-center">What People Say</h2>
       <p class="text-slate-400 text-center mb-12">Direct feedback from colleagues and clients.</p>
@@ -635,7 +706,7 @@
   <!-- FOOTER -->
   <footer class="py-12 bg-slate-950">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h3 class="text-xl font-bold mb-2">Justin Morris</h3>
+      <h3 class="text-xl font-bold mb-2">Justin Morris, Ph.D.</h3>
       <p class="text-slate-400 mb-6">Executive Communications Specialist • Columbus, Ohio</p>
       <div class="flex justify-center gap-4">
         <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm transition-colors">Email</a>
