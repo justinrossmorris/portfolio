@@ -1232,33 +1232,31 @@ Outside work: I read too much, exercise inconsistently, and have strong opinions
 What drives me: the moment when an exec reads a draft and says "this is exactly what I was trying to say." That's the job. That's the win.`
     };
 
-    // Varied redirect messages - randomly selected (mix of redirect and non-redirect)
+    // Varied redirect messages - meta-aware, self-deprecating fallbacks
     const redirectMessages = [
-      // Conversational responses that don't push contact (for casual queries)
-      `That's outside my programmed expertise — I'm really just here to talk about Justin's work. Try asking about speechwriting, exec comms, or copywriting.`,
-      `I wasn't trained on that. I'm a pretty narrow specialist: Justin's portfolio, experience, and fit. Got questions in that zone?`,
-      `My knowledge base is limited to "things about Justin." Anything in that category I can help with?`,
-      `That one's outside my wheelhouse. I do exec comms questions, copywriting questions, and "is Justin right for my team" questions. Anything there?`,
-      `I'm drawing a blank — which means you've found a gap. Try something about experience, work samples, or skills and I'll be more useful.`,
-      `Not in my repertoire. But if you've got questions about Justin's background, I've got answers.`,
-      `I can't help with that one. I'm basically a very specific FAQ. Try "what's your experience" or "why are you looking for a new role."`,
-      `That stumped me. I'm good at portfolio questions, not so good at... whatever that was. Ask me something else?`,
-      // Traditional redirects with contact info (for serious questions)
-      `Good question — one I wasn't programmed to answer. Justin's inbox is open.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `That deserves a real conversation, not a pre-written response.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I can only get you so far. Justin can take it from here.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `That's a "let's get coffee" question, not a chatbot question.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `That's above my pay grade. (I don't have a pay grade.)\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      `I'm a portfolio piece, not an oracle. For oracular wisdom, try Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      // Self-aware "I don't have this" responses
+      `Well, this is embarrassing. Justin didn't program a response to that. Try rephrasing? Or ask about his experience, skills, or work samples.`,
+      `Hm. I'm nodding thoughtfully, but I've got nothing. That question isn't in my repertoire. Try something about speechwriting, exec comms, or copywriting?`,
+      `*pretends to think* ...Nope, I don't have that one. Justin built me to answer portfolio questions, and that's not quite in the zone.`,
+      `I'd love to help, but I'm drawing a blank. This is a gap in my programming. Try asking something else, or rephrase and maybe I'll catch it.`,
+      `That's a new one. And by "new" I mean "Justin didn't anticipate it." Got another question? Experience, work samples, fit...`,
+      `I'm going to level with you: I don't have an answer for that. Try asking differently, or pick something from the suggestions below.`,
+      `My pattern-matching failed on that one. I'm a pretty narrow specialist. Try "tell me about yourself" or "what are your strengths."`,
+      `Not in my database. (My database is "things Justin thought recruiters would ask.") Want to try something else?`,
+      // With contact redirect
+      `Okay, you've stumped me. That's either a really creative question or I need more training data. Either way, Justin can actually answer it.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`,
+      `I'm a chatbot, not a mind reader. If you've got a real question that isn't landing, the human version is more flexible.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`,
+      `That one went over my head. Or under it. Point is: missed it. Justin's inbox doesn't have that problem.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`,
+      `I'm staring at your question and coming up empty. This is my "I don't know" face. Try rephrasing, or reach out directly.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`,
     ];
 
     // Pushback responses based on last topic
     const pushbackResponses = {
-      'fit': `Fair enough — skepticism is healthy. Here's the thing: I can list credentials all day, but the proof is in the work. Justin's written 140+ deliverables for a Fortune 500 CEO who says "I trust you." That's not a line on a resume — it's a relationship built over time.\n\nIf you're still not convinced, that's what interviews are for. The portfolio can only do so much.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      'strengths': `I hear you. Everyone claims strengths — what matters is evidence. The "I trust you, Justin" quote from Joyce Mullen isn't marketing. It's what she said in a review session. The $19M deal where the CEO video was cited as "the first thing the customer mentioned"? That happened. The Keith Duffy keynote at week 12? Real.\n\nBut look — a chatbot can't replicate presence, judgment, or chemistry. Those you'll have to assess yourself.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      'different': `Healthy skepticism. Here's my honest take: the "what makes you different" answer is always a bit performative. Everyone positions themselves as unique.\n\nWhat I'd say is this: Justin's not the only good speechwriter out there. He's just the one who built this chatbot to talk to you. That says something about how he thinks about communication.\n\nWant to see if there's a real fit? Only one way to find out.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      'fallback': `You're right to push back. I've been dodging your question because I genuinely don't have a programmed response for it — not because Justin doesn't have an answer.\n\nThe honest truth: this chatbot is a demo, not a comprehensive FAQ. It shows how Justin thinks about communication, but it can't replace him.\n\nYour question deserves a real answer from the real person.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-      'general': `Look, I get it. A chatbot singing someone's praises isn't exactly objective evidence. The real test is the conversation — whether Justin asks good questions, whether his thinking matches your needs, whether there's chemistry.\n\nI can only get you so far. The rest is up to the humans.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
+      'fit': `Fair enough — skepticism is healthy. Here's the thing: I can list credentials all day, but the proof is in the work. Justin's written 140+ deliverables for a Fortune 500 CEO who says "I trust you." That's not a line on a resume — it's a relationship built over time.\n\nIf you're still not convinced, that's what interviews are for. The portfolio can only do so much.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      'strengths': `I hear you. Everyone claims strengths — what matters is evidence. The "I trust you, Justin" quote from Joyce Mullen isn't marketing. It's what she said in a review session. The $19M deal where the CEO video was cited as "the first thing the customer mentioned"? That happened. The Keith Duffy keynote at week 12? Real.\n\nBut look — a chatbot can't replicate presence, judgment, or chemistry. Those you'll have to assess yourself.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      'different': `Healthy skepticism. Here's my honest take: the "what makes you different" answer is always a bit performative. Everyone positions themselves as unique.\n\nWhat I'd say is this: Justin's not the only good speechwriter out there. He's just the one who built this chatbot to talk to you. That says something about how he thinks about communication.\n\nWant to see if there's a real fit? Only one way to find out.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      'fallback': `You're right to push back. I've been dodging your question because I genuinely don't have a programmed response for it — not because Justin doesn't have an answer.\n\nThe honest truth: this chatbot is a demo, not a comprehensive FAQ. It shows how Justin thinks about communication, but it can't replace him.\n\nYour question deserves a real answer from the real person.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+      'general': `Look, I get it. A chatbot singing someone's praises isn't exactly objective evidence. The real test is the conversation — whether Justin asks good questions, whether his thinking matches your needs, whether there's chemistry.\n\nI can only get you so far. The rest is up to the humans.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
     };
 
     function getRandomRedirect() {
@@ -1369,7 +1367,7 @@ I architected the logic. I wrote every response. I trained myself on... myself.
 
 But you know what actually *is* simple? Talking to me directly when you're serious about hiring.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -1516,7 +1514,7 @@ If you're looking for someone to build you a chatbot from scratch, that's not me
 
 Interested? Let's talk.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // INSULTS / CRITICISM OF THE BOT
@@ -1647,7 +1645,7 @@ Interested? Let's talk.
       }
 
       // CASUAL CHAT - "how are you" type questions (NOT simple greetings)
-      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || q.includes('how you doing') || q.includes('how are things')) {
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('how you doing') || q.includes('how are things') || q.includes('how\'s everything')) {
         const howAreYouResponses = [
           `I'm a chatbot, so "existing" is about as good as it gets. What can I tell you about Justin?`,
           `Operational. Ready to answer questions. What do you want to know?`,
@@ -1656,9 +1654,9 @@ Interested? Let's talk.
         return howAreYouResponses[Math.floor(Math.random() * howAreYouResponses.length)];
       }
 
-      // Simple greetings (hi, hey, hello, etc.)
+      // Simple greetings (hi, hey, hello, what's up, etc.) - with ALL casual variants
       const qClean = q.replace(/[.!?,]+$/, ''); // Strip trailing punctuation
-      if (qClean === 'hi' || qClean === 'hey' || qClean === 'hello' || qClean === 'howdy' || qClean === 'yo' || qClean === 'sup' || qClean === 'hiya' || qClean === 'heya' || q === 'hi there' || q === 'hey there' || q === 'hello there') {
+      if (qClean === 'hi' || qClean === 'hey' || qClean === 'hello' || qClean === 'howdy' || qClean === 'yo' || qClean === 'sup' || qClean === 'hiya' || qClean === 'heya' || qClean === 'hii' || qClean === 'hiii' || qClean === 'hiiii' || qClean === 'heyy' || qClean === 'heyyy' || qClean === 'hellooo' || qClean === 'helloo' || qClean === 'henlo' || qClean === 'hai' || qClean === 'ello' || qClean === 'ayy' || qClean === 'ayo' || q === 'hi there' || q === 'hey there' || q === 'hello there' || q.includes('what\'s up') || q.includes('whats up') || q.includes('whatcha') || q.includes('watcha') || qClean === 'wassup' || qClean === 'wazzup' || qClean === 'whaddup' || qClean === 'whatup' || qClean === 'waddup' || qClean === 'watsup' || qClean === 'wussup' || qClean === 'wsup' || qClean === 'supp' || qClean === 'oi') {
         const greetingResponses = [
           `Hey! What can I tell you about Justin?`,
           `Hi! I'm an AI trained on Justin's background. Ask me anything about his experience, skills, or fit.`,
@@ -1667,8 +1665,8 @@ Interested? Let's talk.
         return greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
       }
 
-      // Time-of-day greetings
-      if (q.includes('good morning') || q.includes('good afternoon') || q.includes('good evening') || q.includes('good night')) {
+      // Time-of-day greetings (including casual variants)
+      if (q.includes('good morning') || q.includes('good afternoon') || q.includes('good evening') || q.includes('good night') || q.includes('g\'morning') || q.includes('gmorning') || q.includes('mornin') || q.includes('g\'day') || q.includes('gday') || q.includes('evenin') || qClean === 'morning' || qClean === 'afternoon' || qClean === 'evening') {
         const timeGreetings = [
           `And to you! What can I tell you about Justin?`,
           `Thanks! What brings you to the portfolio today?`,
@@ -1677,8 +1675,8 @@ Interested? Let's talk.
         return timeGreetings[Math.floor(Math.random() * timeGreetings.length)];
       }
 
-      // Simple acknowledgments (ok, got it, I see, makes sense)
-      if (qClean === 'ok' || qClean === 'okay' || qClean === 'k' || qClean === 'kk' || qClean === 'got it' || qClean === 'i see' || qClean === 'makes sense' || qClean === 'alright' || qClean === 'understood' || qClean === 'fair enough' || qClean === 'right' || qClean === 'ah') {
+      // Simple acknowledgments (ok, got it, I see, makes sense) - with ALL casual variants
+      if (qClean === 'ok' || qClean === 'okay' || qClean === 'k' || qClean === 'kk' || qClean === 'kkk' || qClean === 'okie' || qClean === 'okey' || qClean === 'okk' || qClean === 'okayyy' || qClean === 'okayy' || qClean === 'oki' || qClean === 'okii' || qClean === 'mk' || qClean === 'mkay' || qClean === 'mmk' || qClean === 'got it' || qClean === 'gotcha' || qClean === 'gotchu' || qClean === 'i see' || qClean === 'ic' || qClean === 'makes sense' || qClean === 'alright' || qClean === 'aight' || qClean === 'ight' || qClean === 'understood' || qClean === 'fair enough' || qClean === 'fair' || qClean === 'right' || qClean === 'ah' || qClean === 'ahh' || qClean === 'ahhh' || qClean === 'aha' || qClean === 'ohh' || qClean === 'ohhh' || qClean === 'oh ok' || qClean === 'oh okay' || qClean === 'i got it' || qClean === 'bet' || qClean === 'word' || qClean === 'copy' || qClean === 'copy that' || qClean === 'roger' || qClean === 'roger that' || qClean === 'noted') {
         const ackResponses = [
           `What else would you like to know?`,
           `Got more questions? I'm here.`,
@@ -1688,8 +1686,8 @@ Interested? Let's talk.
         return ackResponses[Math.floor(Math.random() * ackResponses.length)];
       }
 
-      // Simple positive reactions (cool, nice, interesting, wow)
-      if (qClean === 'cool' || qClean === 'nice' || qClean === 'neat' || qClean === 'wow' || qClean === 'whoa' || qClean === 'impressive' || qClean === 'amazing' || qClean === 'awesome' || qClean === 'sweet' || qClean === 'dope' || q === 'that\'s cool' || q === 'that\'s interesting' || q === 'that\'s impressive') {
+      // Simple positive reactions (cool, nice, interesting, wow) - with ALL casual variants
+      if (qClean === 'cool' || qClean === 'kool' || qClean === 'coool' || qClean === 'cooool' || qClean === 'nice' || qClean === 'niice' || qClean === 'niiice' || qClean === 'noice' || qClean === 'neat' || qClean === 'neato' || qClean === 'wow' || qClean === 'woww' || qClean === 'wowww' || qClean === 'woah' || qClean === 'whoa' || qClean === 'woow' || qClean === 'impressive' || qClean === 'amazing' || qClean === 'awesome' || qClean === 'awsome' || qClean === 'sweet' || qClean === 'dope' || qClean === 'sick' || qClean === 'rad' || qClean === 'tight' || qClean === 'lit' || qClean === 'fire' || qClean === 'legit' || qClean === 'solid' || qClean === 'great' || qClean === 'good' || qClean === 'brilliant' || qClean === 'fantastic' || qClean === 'excellent' || q === 'that\'s cool' || q === 'thats cool' || q === 'that\'s interesting' || q === 'thats interesting' || q === 'that\'s impressive' || q === 'thats impressive' || q === 'that\'s great' || q === 'thats great' || q === 'that\'s good' || q === 'thats good' || q === 'not bad' || q === 'pretty cool' || q === 'very cool' || q === 'very nice') {
         const positiveResponses = [
           `Glad that landed. What else can I tell you?`,
           `Thanks! Got more questions?`,
@@ -1698,8 +1696,8 @@ Interested? Let's talk.
         return positiveResponses[Math.floor(Math.random() * positiveResponses.length)];
       }
 
-      // Thinking sounds (hmm, hm, uh huh)
-      if (qClean === 'hmm' || qClean === 'hm' || qClean === 'hmmm' || qClean === 'uh huh' || qClean === 'mhm' || qClean === 'ah ok' || qClean === 'i wonder') {
+      // Thinking sounds (hmm, hm, uh huh) - with ALL casual variants
+      if (qClean === 'hmm' || qClean === 'hm' || qClean === 'hmmm' || qClean === 'hmmmm' || qClean === 'huh' || qClean === 'uh huh' || qClean === 'uhuh' || qClean === 'mhm' || qClean === 'mmhm' || qClean === 'mhmm' || qClean === 'mm' || qClean === 'mmm' || qClean === 'mmmm' || qClean === 'ah ok' || qClean === 'ah i see' || qClean === 'i wonder' || qClean === 'hm ok' || qClean === 'hmm ok' || qClean === 'interesting' || qClean === 'intriguing' || qClean === 'i see i see' || qClean === 'let me think' || qClean === 'thinking') {
         return `Take your time. When you've got a question, I'm ready.`;
       }
 
@@ -1741,14 +1739,46 @@ Interested? Let's talk.
         return `Not sure what to do with that. Try asking a question about Justin's experience, skills, or fit.`;
       }
 
-      // Standalone "yes" / affirmatives without context
-      if (qClean === 'yes' || qClean === 'yep' || qClean === 'yeah' || qClean === 'yup' || qClean === 'sure' || qClean === 'absolutely' || qClean === 'definitely') {
+      // Standalone "yes" / affirmatives without context - with ALL casual variants
+      if (qClean === 'yes' || qClean === 'yep' || qClean === 'yepp' || qClean === 'yeppers' || qClean === 'yeah' || qClean === 'yeahh' || qClean === 'yeahhh' || qClean === 'ya' || qClean === 'yaa' || qClean === 'yah' || qClean === 'yup' || qClean === 'yupp' || qClean === 'yuppers' || qClean === 'yas' || qClean === 'yass' || qClean === 'yasss' || qClean === 'yessir' || qClean === 'yesss' || qClean === 'yess' || qClean === 'sure' || qClean === 'suree' || qClean === 'sureee' || qClean === 'absolutely' || qClean === 'definitely' || qClean === 'def' || qClean === 'deffo' || qClean === 'totally' || qClean === 'totes' || qClean === 'for sure' || qClean === 'fosho' || qClean === 'of course' || qClean === 'ofc' || qClean === 'indeed' || qClean === 'affirmative' || qClean === 'mhm yes' || qClean === 'uh huh yes') {
         return `Great! What would you like to know? Experience, skills, work samples, fit... I'm ready.`;
       }
 
-      // Standalone "no" / negatives without context
-      if (qClean === 'no' || qClean === 'nope' || qClean === 'nah' || qClean === 'not really') {
+      // Standalone "no" / negatives without context - with ALL casual variants
+      if (qClean === 'no' || qClean === 'noo' || qClean === 'nooo' || qClean === 'nope' || qClean === 'nopee' || qClean === 'nah' || qClean === 'nahh' || qClean === 'nahhh' || qClean === 'na' || qClean === 'naw' || qClean === 'naww' || qClean === 'not really' || qClean === 'negative' || qClean === 'nvm' || qClean === 'nevermind' || qClean === 'never mind' || qClean === 'nm' || qClean === 'pass' || qClean === 'ima pass' || qClean === 'skip' || qClean === 'nty' || qClean === 'no thanks' || qClean === 'no thank you' || qClean === 'no thx' || qClean === 'no ty') {
         return `Fair enough. If you change your mind or think of a question, I'll be here.`;
+      }
+
+      // Thanks / thank you / gratitude - with ALL casual variants
+      if (qClean === 'thanks' || qClean === 'thank you' || qClean === 'thx' || qClean === 'thnx' || qClean === 'thanx' || qClean === 'ty' || qClean === 'tysm' || qClean === 'tyvm' || qClean === 'thank u' || qClean === 'thanks so much' || qClean === 'thank you so much' || qClean === 'much appreciated' || qClean === 'appreciate it' || qClean === 'appreciate that' || qClean === 'cheers' || qClean === 'ta' || qClean === 'thks' || qClean === 'tks' || q.includes('thanks for') || q.includes('thank you for') || q.includes('thx for')) {
+        const thanksResponses = [
+          `You're welcome! Got more questions, or are we good?`,
+          `Anytime. What else can I help with?`,
+          `Happy to help. Anything else about Justin's background or fit?`,
+          `No problem. Let me know if you need anything else.`
+        ];
+        return thanksResponses[Math.floor(Math.random() * thanksResponses.length)];
+      }
+
+      // Goodbye / farewell - with ALL casual variants
+      if (qClean === 'bye' || qClean === 'byee' || qClean === 'byeee' || qClean === 'goodbye' || qClean === 'good bye' || qClean === 'later' || qClean === 'laterz' || qClean === 'laters' || qClean === 'cya' || qClean === 'see ya' || qClean === 'see you' || qClean === 'peace' || qClean === 'peace out' || qClean === 'take care' || qClean === 'ttyl' || qClean === 'gtg' || qClean === 'gotta go' || qClean === 'g2g' || qClean === 'brb' || qClean === 'bbl' || qClean === 'im out' || qClean === 'i\'m out' || qClean === 'adios' || qClean === 'ciao' || qClean === 'cheerio' || qClean === 'toodles' || q === 'have a good one' || q === 'have a nice day' || q === 'have a good day') {
+        const byeResponses = [
+          `Take care! If you think of more questions, you know where to find me.`,
+          `Later! Feel free to come back if something else comes up.`,
+          `Bye! Hope you found what you needed. Justin's inbox is always open if you want to chat for real.`,
+          `See you. Good luck with whatever you're hiring for.`
+        ];
+        return byeResponses[Math.floor(Math.random() * byeResponses.length)];
+      }
+
+      // Apologies - with casual variants
+      if (qClean === 'sorry' || qClean === 'sry' || qClean === 'srry' || qClean === 'my bad' || qClean === 'mb' || qClean === 'oops' || qClean === 'whoops' || qClean === 'my mistake' || q.includes('sorry about') || q.includes('apologize')) {
+        return `No worries at all. What can I help you with?`;
+      }
+
+      // IDK / confusion - casual variants
+      if (qClean === 'idk' || qClean === 'i dunno' || qClean === 'dunno' || qClean === 'no idea' || qClean === 'not sure' || qClean === 'im not sure' || qClean === 'i\'m not sure' || q === 'i don\'t know' || q === 'i dont know' || q === 'i don\'t know what to ask' || q === 'i dont know what to ask') {
+        return `That's okay. Some good starting points:\n\n• "Tell me about yourself"\n• "What are your strengths?"\n• "Why are you looking for a new role?"\n\nOr just hit the **Surprise me** button and see where it goes.`;
       }
 
       // "What job is Justin looking for?"
@@ -1922,9 +1952,9 @@ That said, availability should justify the value a company puts on my skills. If
       // GOODBYE / SIGN-OFF
       if (q === 'bye' || q === 'goodbye' || q === 'later' || q === 'cya' || q === 'see ya' || q.includes('talk soon') || q.includes('talk later') || q.includes('gotta go') || q.includes('gtg') || q.includes('take care') || q.includes('see you') || q.includes('catch you later') || q.includes('peace out') || q.includes('signing off') || q.includes('i\'m out')) {
         const goodbyeResponses = [
-          `Thanks for stopping by. If you want to continue the conversation with the human version, you know where to find me.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Good talking to you. Justin's inbox is always open if you want to take this further.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Take care. Hope to hear from you — the real me, not the JavaScript version.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
+          `Thanks for stopping by. If you want to continue the conversation with the human version, you know where to find me.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Good talking to you. Justin's inbox is always open if you want to take this further.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Take care. Hope to hear from you — the real me, not the JavaScript version.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
         ];
         return goodbyeResponses[Math.floor(Math.random() * goodbyeResponses.length)];
       }
@@ -1932,9 +1962,9 @@ That said, availability should justify the value a company puts on my skills. If
       // THANK YOU / GRATITUDE
       if (q === 'thanks' || q === 'thank you' || q === 'thx' || q === 'ty' || q.includes('much appreciated') || q.includes('appreciate it') || q.includes('thanks so much') || q.includes('thank you so much') || q.includes('thanks a lot') || q.includes('thanks for') || q.includes('thank you for') || q.includes('helpful') || q.includes('this was great') || q.includes('this is great')) {
         const thankYouResponses = [
-          `Happy to help. If you've got more questions — or want to talk to the human — I'm here.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Glad I could help. Let me know if there's anything else, or reach out to Justin directly.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `You're welcome. I'm just the appetizer — the real conversation is with Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
+          `Happy to help. If you've got more questions — or want to talk to the human — I'm here.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Glad I could help. Let me know if there's anything else, or reach out to Justin directly.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `You're welcome. I'm just the appetizer — the real conversation is with Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
         ];
         return thankYouResponses[Math.floor(Math.random() * thankYouResponses.length)];
       }
@@ -1978,7 +2008,7 @@ I'm less attached to the title than to the impact. Five years from now, I want t
 
 I can connect you with people who've worked with me directly — colleagues, stakeholders, and executives I've supported. Just let me know when you're ready.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // "Tell me about a failure" / "Tell me about a mistake"
@@ -2094,7 +2124,7 @@ But here's what I can tell you: Justin does his homework. Before any real conver
 
 If you want to tell me more about your organization, I'm happy to discuss how Justin's experience might fit. Or just reach out directly:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // Curveball / quirky interview questions
@@ -2268,7 +2298,7 @@ I lived in Canada for grad school, which might raise the question — but no, I'
 
 The role asks for someone who can develop executive speeches, support SVP-level leaders, and drive external thought leadership for a technology company. That's literally what I do now.
 
-Want to talk specifics? 📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+Want to talk specifics? 📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
         }
         // Generic role fit question
         return `Depends on the role — but if you're asking, something probably caught your eye.
@@ -2287,7 +2317,7 @@ Want to talk specifics? 📧 <a href="mailto:justinrossmorris@gmail.com" class="
 
 Tell me more about the role and I can give you a more specific answer. Or just reach out directly:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // "What do you know about HPE?" / "Why HPE?"
@@ -2525,7 +2555,7 @@ But honestly? The real reason is fit. You're not just hiring a skill set — you
 
 The best way to know if that's true is to talk.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // "Will you do a writing exercise / test / sample?"
@@ -2536,7 +2566,7 @@ The portfolio has real work samples. The chatbot you're talking to is a writing 
 
 But spec work? I've done enough reps. Let's talk instead.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // PUSHBACK DETECTION - check if they're skeptical about previous response
@@ -3066,7 +3096,7 @@ That said, I'm not a job-hopper. I stayed 4+ years at Mercer-MacKay. I commit wh
 
 Let's talk specifics directly:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -3099,7 +3129,7 @@ Now, is there something more valuable than money you can offer? Equity in a rock
 
 Best to discuss directly:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -3256,7 +3286,7 @@ Worked with Joyce on pacing, emphasis, and teleprompter comfort. Adjusted lines 
       if (q.includes('schedule') || q.includes('calendar') || q.includes('book time') || q.includes('set up a call') || q.includes('meet') || q.includes('chat') || q.includes('coffee')) {
         return `I don't have a public calendar link, but I'm responsive on email. Reach out and we'll find a time:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>
 
 I typically respond within 24 hours. If it's urgent, say so — I'll prioritize.`;
@@ -3646,7 +3676,7 @@ Otherwise? I'd need to be compelled.
 
 Feel free to compel me.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -3748,7 +3778,7 @@ I think what you think, and I like thinking it.
 
 Wait, why are we talking about food?
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -3785,7 +3815,7 @@ Yes. Clearly.
 
 This isn't a template I bought somewhere. I built it — the logic, the responses, the design. If you need something similar for your organization, let's talk.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // "Why did you create this chatbot" / "Why did Justin build this"
@@ -3798,7 +3828,7 @@ This is better, isn't it?
 
 Plus, it shows I can actually do things with AI, not just talk about it. The chatbot itself is the portfolio piece.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -4204,7 +4234,7 @@ But here's what Justin would want to know:
 
 If you want to discuss these for real:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -4220,7 +4250,7 @@ And I built this chatbot to prove I can think differently about how to communica
 
 The question isn't whether I can do the job. It's whether we're the right fit. Let's find out.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
@@ -4498,7 +4528,7 @@ What I actually value is being useful. I'd rather be the person who ships the th
       if ((q.includes('click') || q.includes('copy') || q.includes('paste')) && (q.includes('link') || q.includes('email') || q.includes('linkedin'))) {
         return `Fair point. Here — these ones work:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>
 
 (Good catch. Consider it noted.)`;
@@ -4508,7 +4538,7 @@ What I actually value is being useful. I'd rather be the person who ships the th
       if (q.includes('contact') || q.includes('connect') || q.includes('reach') || q.includes('email') || q.includes('linkedin')) {
         return `Best ways to reach Justin:
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>
 
 Usually responsive within 24 hours.`;
@@ -4829,7 +4859,7 @@ The quotes I reference (like Joyce saying "I trust you") are from private conver
 
 I take confidentiality seriously. It's part of the job.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // Samples / portfolio / writing samples
@@ -4851,7 +4881,7 @@ Each case study includes the challenge, my approach, sample excerpts, and outcom
 
 If you need additional samples for a hiring process, happy to discuss.
 
-📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
       }
 
       // Years of experience
@@ -5267,14 +5297,14 @@ The academic training wasn't a detour. It's why I can hold my own with technical
       if (consecutiveFallbacks >= 2) {
         consecutiveFallbacks = 0; // Reset after acknowledging
         const selfAwareResponses = [
-          `Alright, I'm clearly not equipped for this line of questioning. Rather than keep fumbling, let me hand you off to the human.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Two misses in a row — I can take a hint. You're asking questions I wasn't built for. Justin can actually answer them.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Look, I'm repeating myself and that's not useful to anyone. Let's skip the middleman.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `I'm about to give you another redirect, which tells me you need the real conversation, not the chatbot demo.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `My pattern-matching has failed you twice now. That's on me. Here's where the actual human lives.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `I could keep serving you canned responses, but that feels disrespectful to your time. Let's get you to Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Okay, I've hit my limits. The good news: Justin doesn't have a "fallback response." He just... responds.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
-          `Self-awareness moment: I'm not helping. Justin will.\n\n📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
+          `Alright, I'm clearly not equipped for this line of questioning. Rather than keep fumbling, let me hand you off to the human.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Two misses in a row — I can take a hint. You're asking questions I wasn't built for. Justin can actually answer them.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Look, I'm repeating myself and that's not useful to anyone. Let's skip the middleman.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `I'm about to give you another redirect, which tells me you need the real conversation, not the chatbot demo.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `My pattern-matching has failed you twice now. That's on me. Here's where the actual human lives.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `I could keep serving you canned responses, but that feels disrespectful to your time. Let's get you to Justin.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Okay, I've hit my limits. The good news: Justin doesn't have a "fallback response." He just... responds.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`,
+          `Self-awareness moment: I'm not helping. Justin will.\n\n📧 <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>\n🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`
         ];
         return companyQuip + selfAwareResponses[Math.floor(Math.random() * selfAwareResponses.length)];
       }
