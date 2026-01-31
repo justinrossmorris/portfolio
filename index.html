@@ -1646,15 +1646,109 @@ Interested? Let's talk.
         return laughResponses[Math.floor(Math.random() * laughResponses.length)];
       }
 
-      // CASUAL CHAT - general small talk that doesn't fit elsewhere
-      const qClean = q.replace(/[.!?,]+$/, ''); // Strip trailing punctuation for greeting matches
-      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || qClean === 'sup' || qClean === 'hey' || qClean === 'hi' || qClean === 'hello' || qClean === 'howdy' || qClean === 'yo' || q.startsWith('hey ') || q.startsWith('hi ') || q.startsWith('hello ') || q.startsWith('yo ') || q.startsWith('sup ')) {
-        const greetingResponses = [
+      // CASUAL CHAT - "how are you" type questions (NOT simple greetings)
+      if (q.includes('how are you') || q.includes('how\'s it going') || q.includes('what\'s up') || q.includes('how you doing') || q.includes('how are things')) {
+        const howAreYouResponses = [
           `I'm a chatbot, so "existing" is about as good as it gets. What can I tell you about Justin?`,
           `Operational. Ready to answer questions. What do you want to know?`,
           `All good on my end. Ask me something — experience, skills, work samples, whatever you're curious about.`
         ];
+        return howAreYouResponses[Math.floor(Math.random() * howAreYouResponses.length)];
+      }
+
+      // Simple greetings (hi, hey, hello, etc.)
+      const qClean = q.replace(/[.!?,]+$/, ''); // Strip trailing punctuation
+      if (qClean === 'hi' || qClean === 'hey' || qClean === 'hello' || qClean === 'howdy' || qClean === 'yo' || qClean === 'sup' || qClean === 'hiya' || qClean === 'heya' || q === 'hi there' || q === 'hey there' || q === 'hello there') {
+        const greetingResponses = [
+          `Hey! What can I tell you about Justin?`,
+          `Hi! I'm an AI trained on Justin's background. Ask me anything about his experience, skills, or fit.`,
+          `Hello! Fire away — experience, work samples, why he's looking, whatever's on your mind.`
+        ];
         return greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
+      }
+
+      // Time-of-day greetings
+      if (q.includes('good morning') || q.includes('good afternoon') || q.includes('good evening') || q.includes('good night')) {
+        const timeGreetings = [
+          `And to you! What can I tell you about Justin?`,
+          `Thanks! What brings you to the portfolio today?`,
+          `Same to you. Fire away with any questions about Justin's experience or fit.`
+        ];
+        return timeGreetings[Math.floor(Math.random() * timeGreetings.length)];
+      }
+
+      // Simple acknowledgments (ok, got it, I see, makes sense)
+      if (qClean === 'ok' || qClean === 'okay' || qClean === 'k' || qClean === 'kk' || qClean === 'got it' || qClean === 'i see' || qClean === 'makes sense' || qClean === 'alright' || qClean === 'understood' || qClean === 'fair enough' || qClean === 'right' || qClean === 'ah') {
+        const ackResponses = [
+          `What else would you like to know?`,
+          `Got more questions? I'm here.`,
+          `Anything else about Justin's experience or fit?`,
+          `What's next on your list?`
+        ];
+        return ackResponses[Math.floor(Math.random() * ackResponses.length)];
+      }
+
+      // Simple positive reactions (cool, nice, interesting, wow)
+      if (qClean === 'cool' || qClean === 'nice' || qClean === 'neat' || qClean === 'wow' || qClean === 'whoa' || qClean === 'impressive' || qClean === 'amazing' || qClean === 'awesome' || qClean === 'sweet' || qClean === 'dope' || q === 'that\'s cool' || q === 'that\'s interesting' || q === 'that\'s impressive') {
+        const positiveResponses = [
+          `Glad that landed. What else can I tell you?`,
+          `Thanks! Got more questions?`,
+          `Appreciate it. What else are you curious about?`
+        ];
+        return positiveResponses[Math.floor(Math.random() * positiveResponses.length)];
+      }
+
+      // Thinking sounds (hmm, hm, uh huh)
+      if (qClean === 'hmm' || qClean === 'hm' || qClean === 'hmmm' || qClean === 'uh huh' || qClean === 'mhm' || qClean === 'ah ok' || qClean === 'i wonder') {
+        return `Take your time. When you've got a question, I'm ready.`;
+      }
+
+      // Follow-up requests (tell me more, go on, elaborate)
+      if (q.includes('tell me more') || q.includes('go on') || q.includes('continue') || q.includes('elaborate') || q.includes('expand on') || q === 'more' || q === 'and?' || q === 'so?' || q.includes('keep going') || q.includes('what else')) {
+        if (lastTopic) {
+          return `What specifically would you like me to expand on? You can ask about ${lastTopic} in more detail, or shift to a new topic.`;
+        }
+        return `Happy to go deeper. What specifically would you like to know more about? Experience, skills, specific projects?`;
+      }
+
+      // Confusion (what?, huh?, I don't understand)
+      if (qClean === 'what' || qClean === 'huh' || qClean === 'eh' || q === 'i don\'t understand' || q === 'i dont understand' || q === 'confused' || q === 'i\'m confused' || q === 'that doesn\'t make sense' || q === 'not sure i follow') {
+        return `Let me try that differently. What specific part wasn't clear? Or ask me a new question and I'll give it another shot.`;
+      }
+
+      // Repeat requests
+      if (q.includes('say that again') || q.includes('repeat that') || q.includes('come again') || q.includes('one more time') || q.includes('didn\'t catch') || q.includes('what did you say')) {
+        return `I'd rephrase, but I don't have memory of my exact last response. Try asking your question again and I'll give you a fresh answer.`;
+      }
+
+      // Skepticism (really?, prove it, I don't believe you)
+      if (qClean === 'really' || q === 'prove it' || q === 'i don\'t believe you' || q === 'i dont believe you' || q === 'sounds fake' || q === 'that\'s hard to believe' || q === 'you sure?' || q === 'are you sure' || qClean === 'source' || q === 'citation needed') {
+        return `Fair skepticism. I can only share what's in my training data. If you want verification, the case studies on this site have real excerpts, or you can reach out to Justin directly at justinrossmorris@gmail.com.`;
+      }
+
+      // "What should I ask?" / help / guidance
+      if (q.includes('what should i ask') || q.includes('where do i start') || q.includes('help me') || q.includes('what can you tell me') || q.includes('what do you know') || q === 'help' || q.includes('don\'t know what to ask') || q.includes('not sure what to ask') || q.includes('any suggestions')) {
+        return `Good starting points:\n\n• "Tell me about yourself" — the highlight reel\n• "What are your strengths?" — what I'm best at\n• "Why are you looking for a new role?" — the honest answer\n• "Can I see writing samples?" — case studies and examples\n\nOr hit the **Surprise me** button below for something unexpected. I've got answers about the 180M tree campaign, a boxing-themed keynote entrance, Gates Foundation ethics work, and more.`;
+      }
+
+      // "Just browsing" / "just looking"
+      if (q.includes('just browsing') || q.includes('just looking') || q.includes('just curious') || q.includes('just checking') || q === 'browsing' || q === 'looking around') {
+        return `No pressure. Poke around, scroll through the site, come back if you have questions. I'm not going anywhere.`;
+      }
+
+      // Single character or just punctuation
+      if (q.length <= 2 && !/[a-z]/.test(q)) {
+        return `Not sure what to do with that. Try asking a question about Justin's experience, skills, or fit.`;
+      }
+
+      // Standalone "yes" / affirmatives without context
+      if (qClean === 'yes' || qClean === 'yep' || qClean === 'yeah' || qClean === 'yup' || qClean === 'sure' || qClean === 'absolutely' || qClean === 'definitely') {
+        return `Great! What would you like to know? Experience, skills, work samples, fit... I'm ready.`;
+      }
+
+      // Standalone "no" / negatives without context
+      if (qClean === 'no' || qClean === 'nope' || qClean === 'nah' || qClean === 'not really') {
+        return `Fair enough. If you change your mind or think of a question, I'll be here.`;
       }
 
       // "What job is Justin looking for?"
