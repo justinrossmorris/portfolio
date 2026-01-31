@@ -2070,6 +2070,98 @@ The CTO's office needs someone who can learn the technology fast, build trust wi
 The Hybrid Cloud business is the growth engine. I want to help tell that story.`;
       }
 
+      // "What do you know about Fidelma Russo?" / "Who is Fidelma Russo?"
+      if (q.includes('fidelma') || q.includes('russo')) {
+        return `Fidelma Russo is EVP/GM of Hybrid Cloud and Chief Technology Officer at HPE. She joined in September 2021 and leads HPE's innovation agenda and technology roadmap.
+
+**What I've learned about her:**
+She has a Master's in AI and has been in the industry long enough to see multiple waves of machine learning hype. She's not naive about failed AI projects, but she's genuinely excited about what's different now: the democratization of AI through LLMs and the processing power to back it up.
+
+**Her philosophy (from a recent podcast):**
+"The benefits go to the brave." She sees disruption as opportunity, not threat. She emphasizes doing AI "in an ethical and safe way" but also being bold. She believes AI will make tech more inclusive by forcing teams to think cross-functionally and design for broader populations.
+
+**Why this matters for the role:**
+She's a technical leader who thinks in systems. The comms person supporting her office needs to translate that depth into external narratives without dumbing it down. That's exactly the work I've been doing for technical leaders at Insight.`;
+      }
+
+      // "Experience with thought leadership campaigns?"
+      if ((q.includes('thought leadership') && (q.includes('campaign') || q.includes('experience') || q.includes('example'))) || (q.includes('thought leader') && q.includes('success'))) {
+        return `Yes, across multiple contexts:
+
+**At Insight:**
+• IDC CIO Summit presentation for 40 enterprise CIOs (external thought leadership positioning Insight through third-party data)
+• LinkedIn ghostwriting for C-suite executives positioning them on cloud, AI, and digital transformation trends
+• Tech Journal bylines translating technical capabilities into business narratives
+
+**As a B2B consultant:**
+• Ghostwritten thought leadership for executives at NetApp, AWS, Google Cloud, Microsoft
+• Long-form content (e-books, white papers) establishing client POV on industry trends
+• "Storyteller of the Year" award at Mercer-MacKay for campaign work
+
+The pattern: take complex technical positions, find the human story, position the executive as the voice of that story. That's thought leadership.`;
+      }
+
+      // "Experience with speaker prep / coaching executives?"
+      if ((q.includes('speaker') && (q.includes('prep') || q.includes('coach') || q.includes('train'))) || (q.includes('coach') && q.includes('exec')) || (q.includes('presentation') && q.includes('coach'))) {
+        return `I prep executives, but I don't position myself as a "coach" in the formal sense. Here's what I actually do:
+
+**Script development as prep:**
+I write scripts designed for how each executive actually speaks. When the SVP of Infrastructure delivered his first major keynote, we did 11+ iterations. By the end, he wasn't memorizing my words; he was speaking his own thoughts that I'd helped him organize.
+
+**Run-throughs and feedback:**
+I sit in rehearsals, note where they stumble, and revise the script to match their natural delivery. I'm not teaching them to present. I'm removing the friction between them and the material.
+
+**Real-time adaptation:**
+During CEO review sessions, I adapt in real-time to feedback. "This doesn't sound like me." Okay, let's fix it now.
+
+It's not formal coaching. It's collaborative script development that makes the speaker sound like their best self.`;
+      }
+
+      // "Central Time Zone / Houston / travel"
+      if ((q.includes('central') && q.includes('time')) || (q.includes('houston') && !q.includes('we have a problem')) || (q.includes('travel') && q.includes('willing'))) {
+        return `I'm in Columbus, Ohio (Eastern Time), one hour ahead of Central. That's worked fine supporting executives across Insight's global footprint, including APAC and EMEA.
+
+**Travel:** Happy to travel to Houston as needed for key moments: exec prep sessions, major events, strategy meetings. I've done this for Insight's Amplify conference and other high-stakes deliverables.
+
+**What I've learned:** The best exec comms work happens in a mix of async collaboration and in-person intensity. I don't need to be in the building every day. I do need to be there when it matters.`;
+      }
+
+      // "Measuring / evaluating communications programs"
+      if ((q.includes('measure') || q.includes('evaluat') || q.includes('metric') || q.includes('kpi')) && (q.includes('comms') || q.includes('communication') || q.includes('program'))) {
+        return `Exec comms measurement is tricky because the outcomes are often indirect. But here's how I think about it:
+
+**Leading indicators:**
+• Executive satisfaction (do they feel prepared, confident, authentically represented?)
+• Stakeholder feedback (what did the audience take away?)
+• Media/social pickup on thought leadership content
+
+**Lagging indicators:**
+• Business outcomes tied to moments (the $19M deal where the CEO video was "the first thing the customer mentioned")
+• Share of voice and executive visibility in industry conversations
+• Internal alignment (did the town hall actually land the message?)
+
+**What I track:**
+Deliverable volume, turnaround time, revision cycles (fewer is better), and qualitative feedback. I keep a tracker of every CEO deliverable with context and outcomes.
+
+The honest answer: the best measurement is whether the executive keeps coming back to you. Joyce Mullen has said "I trust you, Justin." That's the metric.`;
+      }
+
+      // "Virtual teams / cross-functional collaboration"
+      if ((q.includes('virtual') && q.includes('team')) || (q.includes('cross') && q.includes('function')) || (q.includes('collaborate') && (q.includes('team') || q.includes('global')))) {
+        return `I've worked cross-functionally across Insight for two years, and before that coordinated with agencies and client teams as an independent consultant.
+
+**At Insight:**
+• Partner with Events on keynote logistics and run-of-show
+• Coordinate with Marketing on brand alignment and campaign tie-ins
+• Work with HR/Internal Comms on town hall messaging and employee moments
+• Align with regional teams (APAC, EMEA, Canada) on localized content
+
+**The approach:**
+I don't wait for handoffs. I build relationships early so when the high-pressure moment comes, trust is already there. And I document everything so virtual teams stay aligned without endless meetings.
+
+Remote collaboration isn't a compromise for me. It's how I've operated successfully at Fortune 500 scale.`;
+      }
+
       // "Remote / hybrid / in-office preferences?" - exclude "hybrid cloud" which is a product/role name
       if ((q.includes('remote') || q.includes('in-office') || q.includes('in office') || q.includes('on-site') || q.includes('onsite') || q.includes('work from home') || q.includes('wfh') || (q.includes('where') && q.includes('work')) || (q.includes('hybrid') && !q.includes('cloud'))) && !q.includes('fit')) {
         return `Remote is my preference — and here's why: CEOs and executives are always on the move. Conferences, board meetings, investor visits. I've spent years supporting leaders who are rarely in the same building as me, and it works. If I can do it across time zones for a Fortune 500 CEO, I can do it for you.
