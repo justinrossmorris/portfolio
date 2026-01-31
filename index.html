@@ -1773,13 +1773,15 @@ I'm also curious what drew you to my profile — that usually tells me a lot abo
 
       // "Have you managed people?" / Management experience
       if (q.includes('manage') && (q.includes('people') || q.includes('team') || q.includes('direct report')) || q.includes('management experience') || q.includes('led a team') || q.includes('leadership experience')) {
-        return `Not in a formal "direct reports" sense — but I've led without the title.
+        return `I haven't managed a corporate writing team, but I have real leadership experience:
 
-At Insight, I coordinate across 24+ executives, align with Events, Marketing, and external agencies, and often serve as the de facto project lead on major deliverables. When you're managing a CEO keynote, you're managing a lot of moving parts even if none of them report to you.
+**In academia:** I designed and taught a university course at McMaster and supervised 15+ teaching assistants. That meant hiring, training, giving feedback, and managing workload across a team.
 
-I've also supervised TAs during my teaching days and mentored junior writers informally. I'm comfortable giving feedback, setting direction, and holding people accountable.
+**At Insight:** I coordinate across 24+ executives, align with Events, Marketing, and external agencies, and serve as project lead on major deliverables. When you're managing a CEO keynote, you're managing a lot of moving parts.
 
-Would I want to build and lead a team? Absolutely. I just haven't had the org chart to match the work yet.`;
+**At Gates Foundation:** I led high-stakes stakeholder engagement on controversial biotech topics, managing relationships with scientists, ethicists, and policy experts.
+
+The corporate manager title is new territory. The leadership muscle isn't. And yes, I want the opportunity to build and lead a team.`;
       }
 
       // "Are you interviewing elsewhere?"
@@ -2053,6 +2055,19 @@ Want to talk specifics? 📧 <a href="mailto:justinrossmorris@gmail.com" class="
 Tell me more about the role and I can give you a more specific answer. Or just reach out directly:
 
 📧 <a href="mailto:justinrossmorris@gmail.com" class="text-emerald-400 underline">justinrossmorris@gmail.com</a>`;
+      }
+
+      // "What do you know about HPE?" / "Why HPE?"
+      if ((q.includes('know') && q.includes('hpe')) || (q.includes('know') && q.includes('hewlett')) || (q.includes('why') && q.includes('hpe')) || (q.includes('why') && q.includes('hewlett')) || (q.includes('interest') && q.includes('hpe'))) {
+        return `HPE sits at the center of enterprise infrastructure: hybrid cloud, AI systems, edge computing, high-performance computing. The Office of the CTO is where the technical vision gets translated into market positioning.
+
+**Why that appeals to me:**
+I've spent years writing about cloud infrastructure, AI, and digital transformation for companies like NetApp, AWS, Google Cloud, and Microsoft. I understand the space. More importantly, I know how to make it land for audiences who aren't engineers.
+
+**What I see in this role:**
+The CTO's office needs someone who can learn the technology fast, build trust with senior technical leaders, and produce external content that positions HPE as a thought leader. That's the work I already do for Insight's CTO and SVP of Infrastructure.
+
+The Hybrid Cloud business is the growth engine. I want to help tell that story.`;
       }
 
       // "Remote / hybrid / in-office preferences?" - exclude "hybrid cloud" which is a product/role name
@@ -2892,18 +2907,21 @@ The specifics depend on the opportunity. I'm less focused on titles than on impa
       }
 
       // "Can you manage a team / team management experience"
-      if ((q.includes('manage') && (q.includes('team') || q.includes('writer') || q.includes('people') || q.includes('direct report'))) || (q.includes('management') && q.includes('experience'))) {
-        return `Honest answer: I haven't directly managed a writing team yet — but I've operated in ways that translate.
+      if ((q.includes('manage') && (q.includes('team') || q.includes('writer') || q.includes('people') || q.includes('direct report'))) || (q.includes('management') && q.includes('experience')) || (q.includes('managerial') && q.includes('experience'))) {
+        return `I haven't managed a corporate writing team yet, but I have real leadership experience:
 
-**What I have done:**
-• Collaborated with agencies (Mercer-MacKay, vendor writers) — providing direction, reviewing work, giving feedback
-• Coordinated across 24+ executives with competing priorities — that's stakeholder management at scale
-• Built voice profiles and style guides that other writers could execute against
-• Mentored junior copywriters informally at previous roles
+**Direct management:**
+• Designed and taught a university course at McMaster; supervised 15+ teaching assistants
+• That meant hiring, training, giving feedback, managing workload across a team
 
-**What I want:** A path to team leadership. I've been a high-output IC. The next step is shaping how a team operates — hiring, developing, setting standards.
+**Stakeholder leadership:**
+• Coordinated across 24+ executives with competing priorities at Insight
+• Led high-stakes projects for the Gates Foundation, engaging diverse stakeholders on controversial biotech
+• Collaborated with agencies (Mercer-MacKay, vendor writers): providing direction, reviewing work, managing quality
 
-I'm not going to pretend I've done it. But I'm ready to.`;
+**What I bring:** I know how to give feedback that improves work without demoralizing people. I know how to manage up, down, and sideways. I've built voice profiles and style guides other writers can execute against.
+
+The corporate manager title is new territory. The leadership muscle isn't.`;
       }
 
       // External communications experience (vs internal)
@@ -4155,20 +4173,18 @@ The combination is rare. Executive speechwriters don't usually have campaign exp
 **Honest caveat:** If the role requires building a team from scratch at an early-stage company, that's newer territory for me. I've operated within established orgs.`;
       }
 
-      if (q.includes('weakness') || q.includes('gap') || q.includes('improve') || q.includes('limitation')) {
-        return `I'd rather flag these upfront than oversell:
+      if (q.includes('weakness') || q.includes('shortcoming') || q.includes('gap') || q.includes('improve') || q.includes('limitation') || q.includes('work on') || q.includes('development area')) {
+        return `I'll be direct about growth areas, but context matters:
 
-**Consumer marketing** — My career has been B2B. I understand consumer principles but haven't shipped campaigns at that scale.
+**"Only 2 years in exec comms"**: The title is recent. The skillset isn't. Before Insight, I wrote CEO scripts and executive content at Mercer-MacKay (won Storyteller of the Year). Before that, I consulted for the Gates Foundation on high-stakes stakeholder communications. I taught a university course and supervised 15+ TAs. I ghostwrote thought leadership for C-suite executives at Fortune 500 tech companies for four years. The trajectory matters: every step built toward this work.
 
-**Visual design** — I collaborate with designers and provide detailed creative direction, but I'm not executing in Figma myself.
+**Strategy ownership:** I've shaped exec comms strategy, but I haven't yet owned a full annual roadmap independently. That's a growth area I'm ready for, and frankly why I'm exploring new opportunities.
 
-**Paid media strategy** — I write the content, I don't run the campaigns. I partner with performance marketers.
+**People management:** I've supervised TAs in academia, collaborated with agencies, and influenced cross-functional teams. I haven't directly managed a corporate writing team yet.
 
-**Early-stage startup** — Most of my experience is at established companies. I haven't been the first marketing hire building from zero.
+**Media relations:** My strength is creating the content. I partner with PR on pitching and placement rather than owning reporter relationships.
 
-**Managing writers** — I've collaborated with agencies but haven't directly managed a writing team.
-
-Self-awareness matters. These gaps are real, and I'd want to know if any are dealbreakers for your role.`;
+The honest answer: I'm ready for more ownership than my current role offers. That's not a weakness. That's why I'm here.`;
       }
 
       if (q.includes('joyce') || q.includes('ceo')) {
