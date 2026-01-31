@@ -315,7 +315,7 @@
             </div>
           </div>
           <ul class="space-y-2 text-sm text-slate-300">
-            <li class="flex items-start gap-2"><span class="text-amber-400">•</span>NetApp + Microsoft: 180M trees planted (goal: 300)</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400">•</span>NetApp + Microsoft: 180M trees planted (goal was 300 — not a typo)</li>
             <li class="flex items-start gap-2"><span class="text-amber-400">•</span>Lead gen: 3,487 MQLs vs 1,000 target (237%)</li>
             <li class="flex items-start gap-2"><span class="text-amber-400">•</span>Clients: AWS, Google Cloud, Optimizely, Snowflake</li>
             <li class="flex items-start gap-2"><span class="text-amber-400">•</span>Storyteller of the Year 2022</li>
@@ -2091,19 +2091,37 @@ She's a technical leader who thinks in systems. The comms person supporting her 
       if ((q.includes('thought leadership') && (q.includes('campaign') || q.includes('experience') || q.includes('example'))) || (q.includes('thought leader') && q.includes('success'))) {
         return `Yes. I've written published thought leadership under my own byline and ghostwritten it for executives.
 
-**Bylined articles (Insight's Tech Journal):**
-• "Is Your Security AI-Proof? How to Prepare for the Weaponization of Generative AI"
-• "It's Not Dead — and Other Facts You Need to Know About the Metaverse"
-• "All Fun and Gamechangers: Exploring the Undeniable Educational Value of Esports"
-• "Going for the Green: 5 Steps Leaders Can Use to Convert ESG Commitments into ROI"
-• "Technical Debt: Your Biggest Obstacle (and Opportunity) to Long-Term Innovation"
+**Bylined articles (Insight's Tech Journal, 2023–2024):**
+• <a href="https://insight.turtl.co/story/tech-journal-summer-issue-2024/page/3?assetInteraction=issueSum24" target="_blank" class="text-emerald-400 underline">Silicon Wars: The Battle for AI Device Dominance</a> — Summer 2024
+• <a href="https://insight.turtl.co/story/tech-journal-spring-issue-2024/page/4/1?assetInteraction=issueSpr24" target="_blank" class="text-emerald-400 underline">Technical Debt: Your Biggest Obstacle (and Opportunity) to Long-Term Innovation</a> — Spring 2024
+• <a href="https://insight.turtl.co/story/techjournal_fall2023_issue/page/4/1?assetInteraction=issueFal23" target="_blank" class="text-emerald-400 underline">It's Not Dead — and Other Facts You Need to Know About the Metaverse</a> — Fall 2023
+• <a href="https://insight.turtl.co/story/tech-journal-winter-issue-2023/page/8/1?assetInteraction=issueWin23" target="_blank" class="text-emerald-400 underline">Going for the Green: 5 Steps Leaders Can Use to Convert ESG Commitments into ROI</a> — Winter 2023
 
 **Ghostwritten executive content:**
-• "The Executive Guide to Generative AI" — a 40+ page Insight Intelligent Technology Report featuring Joyce Mullen's CEO message and insights from 8 executives (CTOs, CDO, CISO, SVP Strategy). I wrote the entire document.
-• "We Saved Hundreds of Hours: The Story of Insight's Generative AI Journey" — ghostwritten for Insight's Chief Enterprise Architect, published in Tech Journal
-• IDC CIO Summit presentation for 40 enterprise CIOs (external thought leadership)
+• <a href="https://insight.turtl.co/story/insight-intelligent-technology-report-generative-ai/page/1?assetInteraction=ITR-AI-report" target="_blank" class="text-emerald-400 underline">Executive Guide to Generative AI</a> — 40+ page report, content for 9 C-suite contributors including CEO, CTOs, CDO, CISO
+• Ghostwritten Tech Journal articles: Gen AI & Education, InsightGPT, Intel Esports, Microsoft-sponsored content
+• IDC CIO Summit keynote for SVP Canada (external thought leadership)
 
 The pattern: take complex technical positions, find the human story, make the executive the voice of that story.`;
+      }
+
+      // "Tech Journal / writing samples / published articles / ghostwritten work"
+      if (q.includes('tech journal') || q.includes('writing sample') || q.includes('published article') || q.includes('byline') || (q.includes('ghost') && q.includes('writ')) || q.includes('portfolio') || (q.includes('see') && q.includes('work'))) {
+        lastTopic = 'techjournal';
+        return `I've got both bylined and ghostwritten work to show.
+
+**Bylined articles (Insight's Tech Journal):**
+Published under "Dr. Justin Morris" — click to read:
+• <a href="https://insight.turtl.co/story/tech-journal-summer-issue-2024/page/3?assetInteraction=issueSum24" target="_blank" class="text-emerald-400 underline">Silicon Wars: The Battle for AI Device Dominance</a> — Summer 2024, feature story
+• <a href="https://insight.turtl.co/story/tech-journal-spring-issue-2024/page/4/1?assetInteraction=issueSpr24" target="_blank" class="text-emerald-400 underline">Technical Debt: Your Biggest Obstacle (and Opportunity) to Long-Term Innovation</a> — Spring 2024
+• <a href="https://insight.turtl.co/story/techjournal_fall2023_issue/page/4/1?assetInteraction=issueFal23" target="_blank" class="text-emerald-400 underline">It's Not Dead — and Other Facts You Need to Know About the Metaverse</a> — Fall 2023
+• <a href="https://insight.turtl.co/story/tech-journal-winter-issue-2023/page/8/1?assetInteraction=issueWin23" target="_blank" class="text-emerald-400 underline">Going for the Green: 5 Steps Leaders Can Use to Convert ESG Commitments into ROI</a> — Winter 2023
+
+**Ghostwritten executive publications:**
+<a href="https://insight.turtl.co/story/insight-intelligent-technology-report-generative-ai/page/1?assetInteraction=ITR-AI-report" target="_blank" class="text-emerald-400 underline">The Executive Guide to Generative AI</a> — I wrote the entire 40+ page report. Content for 9 C-suite contributors including CEO Joyce Mullen, two CTOs, CDO, CISO, and SVPs.
+
+**Other ghostwritten Tech Journal articles:**
+Gen AI & Education, InsightGPT company journey, Intel Esports, Microsoft-sponsored content.`;
       }
 
       // "Experience with speaker prep / coaching executives?"
@@ -2852,8 +2870,25 @@ Best to discuss directly:
 🔗 <a href="https://linkedin.com/in/the-copy-doc" target="_blank" class="text-emerald-400 underline">linkedin.com/in/the-copy-doc</a>`;
       }
 
-      // "Remote / hybrid / onsite / work arrangement"
-      if (q.includes('remote') || q.includes('hybrid') || q.includes('onsite') || q.includes('office') || q.includes('work from home') || q.includes('location')) {
+      // "Hybrid cloud" as a technology topic (not work style)
+      if (q.includes('hybrid cloud') || (q.includes('cloud') && q.includes('infrastructure')) || (q.includes('multi') && q.includes('cloud'))) {
+        lastTopic = 'hybridcloud';
+        return `Hybrid cloud, multi-cloud, infrastructure modernization — I've written about all of it.
+
+**Published work:**
+• "Technical Debt: Your Biggest Obstacle (and Opportunity) to Long-Term Innovation" — Tech Journal, covers why legacy infrastructure becomes a drag on cloud migration
+• Ghostwrote the **Executive Guide to Generative AI** for Insight, which includes sections on cloud-native AI deployment and data architecture
+• Microsoft-sponsored Tech Journal article on cloud partnerships
+
+**Executive comms:**
+• Keith Duffy (SVP Infrastructure) keynote at Amplify — his domain is exactly this: cloud, data center, hybrid solutions
+• Content for Juan Orlandini (CTO North America) on digital transformation and infrastructure strategy
+
+**The pitch:** Hybrid cloud isn't exciting until you connect it to what the CIO actually cares about: flexibility, cost control, avoiding vendor lock-in. I write the story, not just the specs.`;
+      }
+
+      // "Remote / hybrid / onsite / work arrangement" - exclude "hybrid cloud" which is a product/tech term
+      if (q.includes('remote') || (q.includes('hybrid') && !q.includes('cloud')) || q.includes('onsite') || q.includes('office') || q.includes('work from home') || q.includes('location')) {
         return `I'm based in Columbus, Ohio and open to remote, hybrid, or onsite depending on the role.
 
 My current position is largely remote, and I've proven I can deliver high-stakes executive comms without being in the building. That said, I understand some roles benefit from in-person collaboration — especially during ramp-up or around major events.
@@ -4602,6 +4637,23 @@ Generated 3,487 MQLs (237% above target) while coming in $65K under budget. Camp
 **Also relevant:** At daXai, I built the brand strategy from scratch and scripted five CEO-led tutorial videos — basically exec comms before I called it that.
 
 **Why it matters:** I know what moves pipeline. That commercial awareness carries into everything I write now.`;
+      }
+
+      // Creative direction / Bob & DJ / brand personas
+      if (q.includes('creative direction') || q.includes('creative director') || (q.includes('bob') && q.includes('dj')) || q.includes('brand persona') || q.includes('brand character') || (q.includes('netapp') && q.includes('linkedin'))) {
+        lastTopic = 'creativedirection';
+        return \`Not just a writer — I've done creative direction too.
+
+**Bob & DJ: Operation Humanize (NetApp)**
+NetApp wanted to humanize their corporate LinkedIn presence. My solution: create two fictional IT Operations personas.
+• **DJ** represents life with NetApp — optimized, efficient, calm
+• **Bob** is "NetApp-less" — a walking pain point
+
+I provided creative direction, wrote creative briefs, guided content development, and reviewed every post. The challenge was making fictional characters compelling enough that the audience would forget they're not real.
+
+**The result:** Bob & DJ gained traction and NetApp greenlit their own video series.
+
+**Why it matters:** B2B doesn't have to be boring. I can do brand voice work that takes risks — not just execute safe corporate copy.\`;
       }
 
       // Why hire Justin / why should we hire you
