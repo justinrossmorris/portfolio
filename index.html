@@ -3527,6 +3527,23 @@ Exec comms is all pressure. Multiple executives, competing deadlines, last-minut
 I've turned around overnight keynote rewrites, juggled 24+ executives' requests, and adapted scripts in real-time during review sessions. Triage makes it possible.`;
       }
 
+      // Multiple clients / stakeholders
+      if ((q.includes('multiple') && (q.includes('client') || q.includes('stakeholder') || q.includes('executive'))) || (q.includes('handle') && q.includes('client')) || (q.includes('juggle') && q.includes('client'))) {
+        lastTopic = 'multipleclients';
+        return `Multitasking is a myth. The real skill is finding order in the chaos.
+
+I prioritize by deadline type. Is this for a live event? That date is concrete. Is it part of a larger campaign winding through review? Not an emergency.
+
+When someone is working on something, it feels like the most important thing in the world. There are lots of "someones." My job is figuring out which "most important" actually is.
+
+**Practical moves:**
+• Find out which deadlines are soft, which are hard, and which are drop-dead
+• Communicate timelines early so people aren't surprised
+• Protect focus time for the thing that actually matters today
+
+At Insight I supported 24+ executives simultaneously. That only works if you're ruthless about prioritization.`;
+      }
+
       // "Onsite / in-person / relocation"
       if (q.includes('onsite') || q.includes('on-site') || q.includes('in-person') || q.includes('relocate') || q.includes('relocation') || (q.includes('come') && q.includes('office'))) {
         return `If the role is in Columbus, Ohio — easy. I'm already here.
@@ -4556,7 +4573,7 @@ It's counterintuitive — leading with failure — but it lands better than poli
       }
 
       // Fastest turnaround
-      if ((q.includes('fast') && q.includes('turnaround')) || (q.includes('quick') && q.includes('turn')) || q.includes('tight deadline') || (q.includes('how fast') && q.includes('write'))) {
+      if ((q.includes('fast') && (q.includes('turnaround') || q.includes('turn around'))) || (q.includes('quick') && q.includes('turn')) || q.includes('tight deadline') || (q.includes('how fast') && q.includes('write')) || (q.includes('turn around') && q.includes('script'))) {
         lastTopic = 'turnaround';
         return `48 hours for a CEO video that helped close a $19M deal.
 
@@ -4661,6 +4678,43 @@ I wrote a 25-page literature review called "Gene-driven to Extinction" analyzing
 The skill is identical to exec comms: take dense, contested material and make it actionable for leaders making high-stakes decisions. Whether it's "should we fund gene drives?" or "how do we position our AI strategy?" — the translation work is the same.`;
       }
 
+      // Ethics background
+      if ((q.includes('ethics') && q.includes('background')) || (q.includes('tell') && q.includes('ethics'))) {
+        lastTopic = 'ethics';
+        return `Three years at the Institute on Ethics & Policy for Innovation at McMaster, working directly with the Gates Foundation. I wrote white papers on gene drives, CRISPR applications, and closing the gender gap in clinical trials.
+
+I also taught Environmental Philosophy and published peer-reviewed work on animal ethics, ecofeminism, interspecies communication, and argumentation theory. My dissertation defended human dignity as a meaningful concept.
+
+**Publications:**
+• "The precarious art of interspecies conversation" (Cutting Edge, 2016)
+• "Queer earth mothering: Thinking through the biological paradigm of motherhood" (Feminist Philosophy Quarterly, 2015)
+• "Narrative, intersectionality and argumentative discourse" (OSSA, 2013)
+
+Ethics isn't an add-on for me. It's where I started.`;
+      }
+
+      // Mission-driven work
+      if ((q.includes('mission') && (q.includes('driven') || q.includes('work'))) || (q.includes('nonprofit') && q.includes('work')) || (q.includes('purpose') && q.includes('driven'))) {
+        lastTopic = 'mission';
+        return `Gates Foundation ethics consulting on gene drives and clinical trial equity. Teaching Environmental Philosophy at McMaster. Peer-reviewed publications on animal ethics, interspecies communication, and ecofeminism.
+
+I was vegan for ten years. Not performatively, but because I'd read Livestock's Long Shadow and understood that everything is connected in concrete ways. I've mellowed into a flexitarian pragmatist, but the instinct to ask "am I contributing to the moral economy or draining it?" never left.
+
+That background shapes how I approach any communications work. Even writing about cloud infrastructure, I'm thinking about what story we're telling and whether it's worth telling.`;
+      }
+
+      // Values-based work / axiology
+      if ((q.includes('values') && (q.includes('based') || q.includes('work') || q.includes('drew'))) || q.includes('axiology') || (q.includes('what drew') && q.includes('values'))) {
+        lastTopic = 'values';
+        return `Axiology, the study of values, is fascinating.
+
+Anyone who's ever thought "a dollar is just a piece of paper" is revealing that values are co-created. They require tacit agreement. That doesn't make them arbitrary. Arbitrary means random, coincidental. Values evolve. They have their own anthropology.
+
+Understanding how that works is useful whether you're writing about human dignity or a CEO's brand promise. In both cases, you're articulating something people already half-believe and making it explicit enough to act on.
+
+That's what drew me to philosophy originally, and it's what makes communications interesting now.`;
+      }
+
       // NDA / confidentiality / permission concerns
       if (q.includes('nda') || q.includes('permission') || q.includes('confidential') || q.includes('allowed to share') || q.includes('share these') || q.includes('disclose') || (q.includes('can you') && q.includes('talk about'))) {
         lastTopic = 'nda';
@@ -4723,7 +4777,7 @@ I'm not a 20-year speechwriting veteran. But I've compressed a lot of relevant e
       }
 
       // NETAPP / MICROSOFT TREES CAMPAIGN
-      if ((q.includes('netapp') && (q.includes('tree') || q.includes('sustain') || q.includes('microsoft'))) || (q.includes('180') && q.includes('million')) || q.includes('tree campaign') || (q.includes('59') && q.includes('%'))) {
+      if ((q.includes('netapp') && (q.includes('tree') || q.includes('sustain') || q.includes('microsoft'))) || (q.includes('180') && (q.includes('million') || q.includes('tree'))) || q.includes('180m') || q.includes('tree campaign') || (q.includes('59') && q.includes('%'))) {
         return `The NetApp + Microsoft sustainability campaign is probably my most memorable B2B project.
 
 **The setup:** NetApp partnered with Microsoft Azure on a sustainability initiative. The goal was to plant 300 trees. The mechanism: every customer meeting booked through the campaign would trigger a tree donation.
@@ -4893,6 +4947,16 @@ This skill translates to exec comms too. An internal comms email is still a nurt
 **Example:** For the NetApp + Microsoft sustainability campaign, I wrote the LinkedIn ads that drove initial traffic. The angle wasn't "download our e-book." It was "your cloud migration doesn't have to cost the planet."
 
 **Honest caveat:** I'm a writer, not a media buyer. I write the copy; someone else handles targeting, bidding, and optimization. I know enough about paid media to write for it effectively, but I don't run campaigns myself.`;
+      }
+
+      // Campaign results / show me results
+      if ((q.includes('campaign') && q.includes('result')) || (q.includes('show') && q.includes('result')) || (q.includes('what') && q.includes('result'))) {
+        lastTopic = 'results';
+        return `The headline: 180 million trees planted on a campaign with a goal of 300. That's 59,999,900% above target. I wrote the e-book, landing page, nurture emails, LinkedIn ads, and sales call script.
+
+Also: 237% MQL increase on a data fabric campaign (3,487 MQLs against a 1,000 target, $65K under budget). And a $19M deal closed partly because of a 48-hour CEO video turnaround.
+
+The numbers matter because they show I understand what moves pipeline. Exec comms isn't just about sounding good. It's about business impact.`;
       }
 
       // B2B / marketing / copywriting background
