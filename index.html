@@ -1734,7 +1734,49 @@ Interested? Let's talk.
         return `No pressure. Poke around, scroll through the site, come back if you have questions. I'm not going anywhere.`;
       }
 
-      // Single character or just punctuation
+      // Emoticons - happy faces :) ^_^ etc.
+      if (q === ':)' || q === ':-)' || q === '(:' || q === '^_^' || q === '^-^' || q === '^^' || q === ':d' || q === ':-d' || q === 'xd' || q === '=)' || q === '=d' || q === 'c:' || q === ':3' || q === 'uwu' || q === 'owo') {
+        const happyResponses = [
+          `(◕‿◕) Right back at you. Got a question for me?`,
+          `╰(*°▽°*)╯ Good vibes. What can I tell you about Justin?`,
+          `(｡◕‿◕｡) I appreciate the positivity. Ask me something!`,
+          `♪(´ε\` ) Feeling friendly? Let's chat about experience, skills, or fit.`
+        ];
+        return happyResponses[Math.floor(Math.random() * happyResponses.length)];
+      }
+
+      // Emoticons - sad/disappointed faces :( ;_; etc.
+      if (q === ':(' || q === ':-(' || q === ')=' || q === 'T_T' || q === 't_t' || q === ';_;' || q === ":'(" || q === ':c' || q === 'qwq' || q === 'd:' || q === ':<') {
+        const sadResponses = [
+          `(´;︵;\`) Aw. Anything I can help with? Questions about Justin's work might cheer you up.`,
+          `(._.) What's wrong? If it's something I can answer, ask away.`,
+          `(ノ_<。) If my responses caused this, try asking something else. I'll do better.`,
+          `( ´_ゝ\`) I'm sensing disappointment. Want to try a different question?`
+        ];
+        return sadResponses[Math.floor(Math.random() * sadResponses.length)];
+      }
+
+      // Emoticons - winking ;) etc.
+      if (q === ';)' || q === ';-)' || q === ';p' || q === ';d' || q === '(;' || q === '^_~') {
+        return `(・ω<) I see what you did there. Got an actual question, or just here to flirt with a chatbot?`;
+      }
+
+      // Emoticons - tongue out :P :b etc.
+      if (q === ':p' || q === ':-p' || q === ':b' || q === 'xp' || q === '=p') {
+        return `( ´∀\`)σ Playful. I like it. Ask me something about Justin's background when you're ready.`;
+      }
+
+      // Emoticons - shrug ¯\\_(ツ)_/¯
+      if (q.includes('shrug') || q.includes('¯') || q.includes('ツ') || q === 'idk man' || q === ':/') {
+        return `¯\\_(ツ)_/¯ Same energy. If you're not sure what to ask, try "tell me about yourself" or hit the **Surprise me** button.`;
+      }
+
+      // Emoticons - misc expressions
+      if (q === 'o_o' || q === 'o.o' || q === '0_0' || q === 'O_O' || q === '°_°') {
+        return `(°_°) ...You okay? Ask me something and I'll try to be less alarming.`;
+      }
+
+      // Single character or just punctuation (catch-all for non-emoticon short inputs)
       if (q.length <= 2 && !/[a-z]/.test(q)) {
         return `Not sure what to do with that. Try asking a question about Justin's experience, skills, or fit.`;
       }
