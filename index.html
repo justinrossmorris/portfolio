@@ -607,118 +607,78 @@
     </div>
   </section>
 
-  <!-- SKILLS - HONEST ASSESSMENT -->
-  <section class="py-20 bg-slate-800/50">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-4 text-center">Honest Skills Assessment</h2>
-      <p class="text-slate-400 text-center mb-12">Self-awareness is part of the job. Here's where I'm strong, capable, and where I'd need to ramp up.</p>
+  <!-- SKILLS - HONEST ASSESSMENT (Accordion) -->
+  <section class="py-16 bg-slate-800/50">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-3 text-center">Honest Skills Assessment</h2>
+      <p class="text-slate-400 text-center mb-8 text-sm">Self-awareness is part of the job. Click to explore.</p>
 
-      <div class="grid md:grid-cols-3 gap-6">
-
+      <div class="space-y-3">
         <!-- Strong -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
-            <h3 class="font-semibold text-emerald-400">Strong</h3>
+        <div class="rounded-xl border border-slate-700 overflow-hidden">
+          <button onclick="toggleSkills('strong')" class="w-full flex items-center justify-between p-4 bg-slate-800/80 hover:bg-slate-800 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+              <span class="font-semibold text-emerald-400">Strong</span>
+              <span class="text-slate-500 text-sm">(10)</span>
+            </div>
+            <svg id="chevron-strong" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="skills-strong" class="hidden p-4 bg-slate-900/50">
+            <div class="flex flex-wrap gap-2">
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Executive Speechwriting<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Fortune 500 CEO keynotes, town halls</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">C-Suite Ghostwriting<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Voice matching, authentic tone</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">B2B Technology Content<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Cloud, AI, infrastructure messaging</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Video Scriptwriting<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">CEO videos, executive content</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Context Engineering<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">AI collaboration, conversation architecture</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Executive Collaboration<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Direct working sessions, real-time adaptation</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Research & Analysis<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Ph.D., peer-reviewed publications</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Thought Leadership<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Bylined tech content, published analysis</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Speaker Prep & Stage Direction<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Delivery choreography, physical presence</span></span>
+              <span class="group relative px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-sm text-white cursor-default">Email Marketing<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Nurture sequences, 237% MQL lift</span></span>
+            </div>
           </div>
-          <ul class="space-y-3">
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Executive Speechwriting</p>
-              <p class="text-xs text-slate-400">Fortune 500 CEO keynotes, town halls</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">C-Suite Ghostwriting</p>
-              <p class="text-xs text-slate-400">Voice matching, authentic tone</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">B2B Technology Content</p>
-              <p class="text-xs text-slate-400">Cloud, AI, infrastructure messaging</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Video Scriptwriting</p>
-              <p class="text-xs text-slate-400">CEO videos, executive content</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Context Engineering</p>
-              <p class="text-xs text-slate-400">AI collaboration, conversation architecture</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Executive Collaboration</p>
-              <p class="text-xs text-slate-400">Direct working sessions, real-time adaptation</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Research & Long-form Analysis</p>
-              <p class="text-xs text-slate-400">Ph.D., peer-reviewed publications</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Thought Leadership</p>
-              <p class="text-xs text-slate-400">Bylined tech content, published analysis</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Speaker Prep & Stage Direction</p>
-              <p class="text-xs text-slate-400">Delivery choreography, physical presence</p>
-            </li>
-            <li class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Email Marketing</p>
-              <p class="text-xs text-slate-400">Nurture sequences, 237% MQL lift</p>
-            </li>
-          </ul>
         </div>
 
         <!-- Moderate -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-3 h-3 rounded-full bg-blue-400"></div>
-            <h3 class="font-semibold text-blue-400">Moderate</h3>
+        <div class="rounded-xl border border-slate-700 overflow-hidden">
+          <button onclick="toggleSkills('moderate')" class="w-full flex items-center justify-between p-4 bg-slate-800/80 hover:bg-slate-800 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-3 h-3 rounded-full bg-blue-400"></div>
+              <span class="font-semibold text-blue-400">Moderate</span>
+              <span class="text-slate-500 text-sm">(4)</span>
+            </div>
+            <svg id="chevron-moderate" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="skills-moderate" class="hidden p-4 bg-slate-900/50">
+            <div class="flex flex-wrap gap-2">
+              <span class="group relative px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-white cursor-default">Sales Enablement<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Battlecards, competitive positioning</span></span>
+              <span class="group relative px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-white cursor-default">Investor Relations<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Earnings call support, not full scripts</span></span>
+              <span class="group relative px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-white cursor-default">Social Media Strategy<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">LinkedIn thought leadership, not platform mgmt</span></span>
+              <span class="group relative px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-sm text-white cursor-default">Presentation Design<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Can build decks, prefer content focus</span></span>
+            </div>
           </div>
-          <ul class="space-y-3">
-            <li class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Sales Enablement</p>
-              <p class="text-xs text-slate-400">Battlecards, competitive positioning</p>
-            </li>
-            <li class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Investor Relations</p>
-              <p class="text-xs text-slate-400">Earnings call support, not full scripts</p>
-            </li>
-            <li class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Social Media Strategy</p>
-              <p class="text-xs text-slate-400">LinkedIn thought leadership, not platform mgmt</p>
-            </li>
-            <li class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Presentation Design</p>
-              <p class="text-xs text-slate-400">Can build decks, prefer content focus</p>
-            </li>
-          </ul>
         </div>
 
         <!-- Gaps -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-3 h-3 rounded-full bg-amber-400"></div>
-            <h3 class="font-semibold text-amber-400">Gaps</h3>
+        <div class="rounded-xl border border-slate-700 overflow-hidden">
+          <button onclick="toggleSkills('gaps')" class="w-full flex items-center justify-between p-4 bg-slate-800/80 hover:bg-slate-800 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+              <span class="font-semibold text-amber-400">Gaps</span>
+              <span class="text-slate-500 text-sm">(5)</span>
+            </div>
+            <svg id="chevron-gaps" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="skills-gaps" class="hidden p-4 bg-slate-900/50">
+            <div class="flex flex-wrap gap-2">
+              <span class="group relative px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-sm text-white cursor-default">Consumer Marketing<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">B2B focused, LinkedIn only</span></span>
+              <span class="group relative px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-sm text-white cursor-default">Visual Design<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Collaborate with designers, don't design</span></span>
+              <span class="group relative px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-sm text-white cursor-default">Paid Media Strategy<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Write content, don't run campaigns</span></span>
+              <span class="group relative px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-sm text-white cursor-default">Early-Stage Startup<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Haven't built from zero</span></span>
+              <span class="group relative px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-sm text-white cursor-default">Content Operations<span class="invisible group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-700 text-xs text-slate-300 rounded whitespace-nowrap z-10">Strategy yes, calendars/budgets no</span></span>
+            </div>
           </div>
-          <ul class="space-y-3">
-            <li class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Consumer Marketing</p>
-              <p class="text-xs text-slate-400">B2B focused, LinkedIn only</p>
-            </li>
-            <li class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Visual Design</p>
-              <p class="text-xs text-slate-400">Collaborate with designers, don't design</p>
-            </li>
-            <li class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Paid Media Strategy</p>
-              <p class="text-xs text-slate-400">Write content, don't run campaigns</p>
-            </li>
-            <li class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Early-Stage Startup</p>
-              <p class="text-xs text-slate-400">Haven't built from zero</p>
-            </li>
-            <li class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-              <p class="font-medium text-white text-sm">Content Operations</p>
-              <p class="text-xs text-slate-400">Strategy yes, calendars/budgets no</p>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -985,6 +945,13 @@ Fire away.`;
     function surpriseMe() {
       const randomFact = surpriseFacts[Math.floor(Math.random() * surpriseFacts.length)];
       askQuestion(randomFact);
+    }
+
+    function toggleSkills(category) {
+      const content = document.getElementById('skills-' + category);
+      const chevron = document.getElementById('chevron-' + category);
+      content.classList.toggle('hidden');
+      chevron.classList.toggle('rotate-180');
     }
 
     function handleChat(e) {
