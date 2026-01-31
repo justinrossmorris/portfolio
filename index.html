@@ -46,6 +46,7 @@
       <div class="flex items-center gap-3 md:gap-6 text-xs md:text-sm">
         <a href="#about" class="hidden md:block text-slate-400 hover:text-white transition-colors">About</a>
         <a href="#work" class="text-slate-400 hover:text-white transition-colors">Work</a>
+        <a href="#published" class="text-slate-400 hover:text-white transition-colors">Published</a>
         <a href="#testimonials" class="hidden md:block text-slate-400 hover:text-white transition-colors">Testimonials</a>
         <a href="mailto:justinrossmorris@gmail.com?subject=Found%20you%20via%20your%20portfolio" class="bg-emerald-500 hover:bg-emerald-600 px-2 md:px-3 py-1.5 rounded-lg text-white transition-colors">Contact</a>
       </div>
@@ -515,7 +516,7 @@
   </section>
 
   <!-- PUBLISHED WORK - TECH JOURNAL -->
-  <section class="py-20 bg-slate-800/50">
+  <section id="published" class="py-20 bg-slate-800/50">
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-3xl font-bold mb-4 text-center">Published Work</h2>
       <p class="text-slate-400 text-center mb-12">Bylined thought leadership for Insight's Tech Journal. Click to read.</p>
@@ -766,7 +767,7 @@
         <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700">
           <div class="text-2xl mb-3">📜</div>
           <h3 class="font-semibold text-lg mb-2">Defended Human Dignity (Literally)</h3>
-          <p class="text-sm text-slate-400">My dissertation argued that "human dignity" isn't the meaningless buzzword critics claim. 200+ pages defending a concept most people use without thinking. The committee agreed.</p>
+          <p class="text-sm text-slate-400">My <a href="https://macsphere.mcmaster.ca/bitstreams/640885a4-7a14-418a-84ea-5946ccc6f560/download" target="_blank" class="text-emerald-400 hover:underline">dissertation</a> argued that "human dignity" isn't the meaningless buzzword critics claim. 200+ pages defending a concept most people use without thinking. The committee agreed.</p>
         </div>
 
         <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700">
@@ -5089,7 +5090,9 @@ The philosophy of mind debates are fascinating, but for my work, the question is
       if (q.includes('phd') || q.includes('ph.d') || q.includes('philosophy') || q.includes('academic') || q.includes('degree') || q.includes('education') || q.includes('dissertation')) {
         return `**Ph.D. in Philosophy, McMaster University (2020)**
 
-My dissertation was titled "Human dignity: In (pragmatistic) defence of a (purportedly) useless concept." I defended the philosophical coherence of human dignity against critics who call it meaningless. Funded by SSHRC ($40,000 doctoral fellowship) and multiple Ontario Graduate Scholarships.
+My dissertation was titled <a href="https://macsphere.mcmaster.ca/bitstreams/640885a4-7a14-418a-84ea-5946ccc6f560/download" target="_blank" class="text-emerald-400 underline">"Human Dignity: In (pragmatistic) defence of a (purportedly) useless concept"</a> — 200+ pages defending a concept critics call meaningless. Funded by SSHRC ($40,000 doctoral fellowship) and multiple Ontario Graduate Scholarships.
+
+**The short version:** Is "human dignity" just a buzzword, or does it do real philosophical work? I argued for the latter. The committee agreed.
 
 **Before that:**
 • M.A. Philosophy, University of Windsor (2013)
