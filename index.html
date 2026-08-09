@@ -33,6 +33,14 @@
   .btn:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--gold)}
   .btn:active{transform:translate(0,0);box-shadow:none}
   .card-lift{transition:transform .12s ease,box-shadow .12s ease}
+  .pq{margin:0;padding:12px 14px;background:#fbf7ea;border-left:3px solid var(--gold);border-radius:0 10px 10px 0}
+  .pq .tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#a2987f}
+  .pq .stage{margin:5px 0 0;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;color:var(--muted)}
+  .pq .line{margin:5px 0 0;font-size:clamp(15px,1.15vw,17px);line-height:1.52;color:var(--ink)}
+  .pq .line .w{position:relative;z-index:0}
+  .pq .line .w::before{content:'';position:absolute;left:-2px;right:-2px;top:2px;bottom:0;background:var(--gold);border-radius:3px;transform:scaleX(0);transform-origin:left;opacity:0;z-index:-1;transition:transform .16s ease,opacity .16s ease}
+  .pq .line .w.cue::before{transform:scaleX(1);opacity:.85}
+  @media (prefers-reduced-motion: reduce){.pq .line .w::before{transition:none}}
   .card-lift:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--gold)}
   .card-lift:active{transform:translate(0,0);box-shadow:4px 4px 0 var(--gold)}
   .two>div,.three>div{transition:transform .14s ease,box-shadow .14s ease}
@@ -497,18 +505,19 @@
 
     <div class="rv" id="work" style="margin-top:56px">
       <div style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">05 &middot; The work</div>
-      <h2 style="margin:6px 0 0;font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.02em">What I've shipped.</h2>
+      <h2 style="margin:6px 0 0;font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.02em">My words from their lips.</h2>
       <div class="wtabs" role="tablist" style="display:flex;gap:9px;flex-wrap:wrap;margin-top:18px">
         <button class="wtab" role="tab" id="wt-work" aria-selected="true" aria-controls="wp-work">Case studies</button>
         <button class="wtab" role="tab" id="wt-b2b" aria-selected="false" aria-controls="wp-b2b">B2B &amp; tech</button>
       </div>
       <div class="wpanel" role="tabpanel" id="wp-work" aria-labelledby="wt-work">
-      <p style="margin:8px 0 0;font-size:clamp(16px,1.15vw,18px);line-height:1.6;color:var(--body)">Real projects with real excerpts. Click to explore.</p>
+      <p style="margin:8px 0 0;font-size:clamp(16px,1.15vw,18px);line-height:1.6;color:var(--body)">Real projects with real excerpts. These words are delivered scripts.</p>
       <a href="case-study-ceo-video.html" class="card-lift cs-hero" style="display:grid;grid-template-columns:1.25fr 1fr;gap:0;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:20px;overflow:hidden;color:var(--ink);margin-top:20px">
         <div style="padding:32px 30px;display:flex;flex-direction:column;gap:13px">
           <div style="display:flex;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">EXECUTIVE COMMS</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">FEATURED</span></div>
           <h3 style="margin:0;font-size:clamp(26px,3.4vw,36px);font-weight:800;line-height:1.06;letter-spacing:-.025em">CEO Video for Enterprise RFP</h3>
           <p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.55;color:var(--body);max-width:46ch">A personalized video from CEO Joyce Mullen that helped win a $19M public-sector contract. The client called it "the first thing they mentioned."</p>
+          <div class="pq"><div class="tag">Differentiator section</div><p class="line">&ldquo;I could give you a hundred reasons why I think [COMPANY] is the right partner. But let&rsquo;s focus on four that apply directly to your needs&hellip;&rdquo;</p></div>
           <span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue);margin-top:2px">Read the case study →</span>
         </div>
         <div class="cs-hero-stat" style="background:var(--gold-pale);border-left:2px solid var(--ink);padding:32px 30px;display:flex;flex-direction:column;justify-content:center;gap:16px">
@@ -517,9 +526,9 @@
         </div>
       </a>
       <div class="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
-        <a href="case-study-lifetime-achievement.html" class="card-lift" style="display:flex;flex-direction:column;gap:11px;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;color:var(--ink)"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">EXECUTIVE COMMS</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">PRESS QUOTED</span></div><h3 style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.15">Lifetime Achievement Award Speech</h3><p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.5;color:var(--body);flex:1">A 3-minute acceptance speech for CEO Joyce Mullen at an industry gala. The central story was quoted extensively in CRN's coverage.</p><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue)">Read the case study →</span></a>
-        <a href="case-study-amplify-keynote.html" class="card-lift" style="display:flex;flex-direction:column;gap:11px;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;color:var(--ink)"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">EXECUTIVE COMMS</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">1,500+ · 11 DRAFTS</span></div><h3 style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.15">Amplify Sales Kickoff Keynote</h3><p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.5;color:var(--body);flex:1">A 25-minute keynote for a new SVP's first major stage at Insight's Amplify. Boxing-themed entrance, embedded customer fireside, 11 script iterations.</p><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue)">Read the case study →</span></a>
-        <a href="case-study-idc-cio-summit.html" class="card-lift" style="display:flex;flex-direction:column;gap:11px;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;color:var(--ink)"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">THOUGHT LEADERSHIP</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">46% C-LEVEL</span></div><h3 style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.15">IDC CIO Summit Keynote</h3><p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.5;color:var(--body);flex:1">A 20-minute thought-leadership talk for the SVP of Insight Canada at an external industry conference. Research-backed, audience-segmented.</p><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue)">Read the case study →</span></a>
+        <a href="case-study-lifetime-achievement.html" class="card-lift" style="display:flex;flex-direction:column;gap:11px;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;color:var(--ink)"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">EXECUTIVE COMMS</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">PRESS QUOTED</span></div><h3 style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.15">Lifetime Achievement Award Speech</h3><p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.5;color:var(--body);flex:1">Three minutes for CEO Joyce Mullen at an industry gala. CRN quoted this passage.</p><div class="pq"><div class="tag">Opening</div><p class="line">&ldquo;One of the men at the table looked at me and asked if I&rsquo;d make him a coffee. He told me exactly how he liked it: two sugars, one cream.&rdquo;</p></div><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue)">Read the case study →</span></a>
+        <a href="case-study-amplify-keynote.html" class="card-lift" style="display:flex;flex-direction:column;gap:11px;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;color:var(--ink)"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">EXECUTIVE COMMS</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">1,500+ · 11 DRAFTS</span></div><h3 style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.15">Amplify Sales Kickoff Keynote</h3><p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.5;color:var(--body);flex:1">A new SVP's first major stage. 25 minutes, 11 script iterations.</p><div class="pq"><div class="tag">Opening, after the Rocky entrance</div><p class="stage">[TAKES OFF BOXING GLOVES]</p><p class="line">&ldquo;Alright, let me take these off before I hurt somebody. 122 days at this company. And I have never been more certain about anything in my career: nobody can do what we do.&rdquo;</p></div><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue)">Read the case study →</span></a>
+        <a href="case-study-idc-cio-summit.html" class="card-lift" style="display:flex;flex-direction:column;gap:11px;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;color:var(--ink)"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;letter-spacing:.1em;color:var(--blue)">THOUGHT LEADERSHIP</span><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px">46% C-LEVEL</span></div><h3 style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:800;line-height:1.15">IDC CIO Summit Keynote</h3><p style="margin:0;font-size:clamp(16px,1.15vw,18px);line-height:1.5;color:var(--body);flex:1">Twenty minutes for the SVP of Insight Canada at an external industry conference.</p><div class="pq"><div class="tag">Opening hook</div><p class="line">&ldquo;When Microsoft asked us to be their first enterprise AI partner in 2022, there was no playbook. So we wrote one.&rdquo;</p></div><span style="font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--blue)">Read the case study →</span></a>
       </div>
       <a href="copywriting.html?access=hire-me" style="display:inline-block;margin-top:18px;text-decoration:none;font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:2px">Interested in my copywriting chops? Right this way →</a>
       </div>
@@ -533,6 +542,31 @@
       <a href="copywriting.html?access=hire-me" style="display:inline-block;margin-top:18px;text-decoration:none;font-family:'Space Mono',monospace;font-size:clamp(12.5px,.95vw,14px);font-weight:700;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:2px">See the full B2B library →</a>
       </div>
     </div>
+
+    <script>
+    (function(){
+      var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+      [].slice.call(document.querySelectorAll('#work .pq .line')).forEach(function(el){
+        var parts=el.textContent.split(/(\s+)/); el.textContent='';
+        parts.forEach(function(w){
+          if(/^\s+$/.test(w)){ el.appendChild(document.createTextNode(w)); return; }
+          var s=document.createElement('span'); s.className='w'; s.textContent=w; el.appendChild(s);
+        });
+      });
+      [].slice.call(document.querySelectorAll('#work .card-lift')).forEach(function(card){
+        var ws=[].slice.call(card.querySelectorAll('.pq .line .w')), timers=[];
+        function stop(){ timers.forEach(clearTimeout); timers=[]; ws.forEach(function(w){w.classList.remove('cue');}); }
+        function run(){ if(reduce) return; stop();
+          ws.forEach(function(w,i){
+            timers.push(setTimeout(function(){ w.classList.add('cue'); }, i*38));
+            timers.push(setTimeout(function(){ w.classList.remove('cue'); }, i*38+260));
+          });
+        }
+        card.addEventListener('mouseenter',run); card.addEventListener('mouseleave',stop);
+        card.addEventListener('focus',run); card.addEventListener('blur',stop);
+      });
+    })();
+    </script>
 
     <!-- skills -->
     <div class="rv" style="margin-top:56px">
